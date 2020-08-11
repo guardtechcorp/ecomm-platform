@@ -1,0 +1,89 @@
+<%@ page import="com.zyzit.weboffice.model.MemberInfo"%>
+<%@ page import="com.zyzit.weboffice.util.Utilities" %>
+<%
+{
+    MemberInfo mbInfo = mcBean.getMemberInfo();
+    MemberInfo onInfo = mcBean.getSiteOwnerInfo();
+//    <TABLE border="0" cellspacing="0" cellpadding="0" width="100%" height="100%" style="background-color: #6698cb; border: 1px solid #DFDFDF;" align="right">
+    String sPageTitle = mcBean.getPageTitle(request);    
+    if (sPageTitle==null || sPageTitle.length()==0)
+       sPageTitle = Utilities.getValue(cfInfo.Title);
+
+    String sTitle = mcBean.getText(sPageTitle, cfInfo.TitleSize, cfInfo.TitleFont, cfInfo.TitleColor, true, false);
+
+%>
+<SCRIPT Language="JavaScript" src="/staticfile/web/scripts/dropmenu.js" type="text/javascript"></SCRIPT>
+<TABLE border="0" cellspacing="0" cellpadding="0" width="100%" height="100%" style="background-color: <%=cfInfo.DomainFont%>; border: 1px solid #DFDFDF;" align="right">
+<% if (mbInfo!=null) { %>
+<SCRIPT Language="JavaScript" type="text/javascript">
+var account_menu=new Array();
+account_menu[0]='<a href="<%=mcBean.encodedUrl("index.jsp?action=Edit_Profile&rootlink=yes&pagetitle=Account Information")%>">My Account</a>';
+account_menu[1]='<a href="<%=mcBean.encodedUrl("index.jsp?action=Edit_Photo&rootlink=yes&pagetitle=My Photo")%>">My Photo</a>';
+account_menu[2]='<a href="<%=mcBean.encodedUrl("index.jsp?action=Edit_Password&rootlink=yes&pagetitle=Change Password")%>">Change Password</a>';
+account_menu[3]='<a href="<%=mcBean.encodedUrl("index.jsp?action=Load_CancelAccount&rootlink=yes&pagetitle=Cancel Account")%>">Cancel Account</a>';
+//account_menu[4]='<a href="javascript:;"></a>';
+//account_menu[5]='<a href="<%=mcBean.encodedUrl("index.jsp?action=Edit_Company&rootlink=yes&pagetitle=Business Information")%>">Business Information</a>';
+var upgrade_menu=new Array();
+upgrade_menu[0]='<a href="<%=mcBean.encodedUrl("index.jsp?action=Load_UpgradeAccount&rootlink=yes&pagetitle=Upgrade Account")%>">Upgrade Account</a>';
+
+var member_menu=new Array();
+member_menu[0]='<a href="<%=mcBean.encodedUrl("index.jsp?action=Load_MemberList&rootlink=yes&pagetitle=Member List")%>">Member List</a>';
+var message_menu=new Array();
+message_menu[0]='<a href="<%=mcBean.encodedUrl("index.jsp?action=Load_MsgInboxList&rootlink=yes&pagetitle=Inbox Message")%>">Inbox Message</a>';
+message_menu[1]='<a href="<%=mcBean.encodedUrl("index.jsp?action=Load_MsgSentList&rootlink=yes&pagetitle=Send Message")%>">Sent Message</a>';
+var filestorage_menu=new Array();
+filestorage_menu[0]='<a href="<%=mcBean.encodedUrl("index.jsp?action=List_FileStorage&rootlink=yes&pagetitle=File Storage List")%>">File List</a>';
+//filestorage_menu[1]='<a href="<%=mcBean.encodedUrl("index.jsp?action=Load_CategoryList&rootlink=yes&pagetitle=Category List")%>">Categories</a>';
+var product_menu=new Array();
+product_menu[0]='<a href="<%=mcBean.encodedUrl("index.jsp?action=Load_CategoryList&rootlink=yes&pagetitle=Category List")%>">Categories</a>';
+product_menu[1]='<a href="<%=mcBean.encodedUrl("index.jsp?action=Load_ProductList&rootlink=yes&pagetitle=Product List")%>">Products</a>';
+var website_menu=new Array();
+website_menu[0]='<a href="<%=mcBean.encodedUrl("index.jsp?action=Edit_SiteSetting&rootlink=yes&pagetitle=Site Settings")%>">Site Settings</a>';
+website_menu[1]='<a href="<%=mcBean.encodedUrl("index.jsp?action=Load_WebPageList&rootlink=yes&pagetitle=Web Page List")%>">Web Pages</a>';
+website_menu[2]='<a href="<%=mcBean.encodedUrl("index.jsp?action=Goto_MenuLink&rootlink=yes&pagetitle=Change the Links Positions")%>">Memu Link Changes</a>';
+</SCRIPT>
+<TR>
+<% if (cfInfo.VerticalBarSide==2) { %>
+ <TD align="center"><%=sTitle%></TD>
+<% } %>
+ <TD width="300" align="<%=cfInfo.VerticalBarSide==1?"left":"right"%>">
+  <table border="0" cellspacing="0" cellpadding="0" height="100%" style="background-color: #7392D4;">
+   <tr>
+    <td id="underlinetd" nowrap>
+    <!--A href='<%=mcBean.encodedUrl("index.jsp?action=Visit_MyHome&rootlink=yes&pagetitle=My Home")%>'>My Home</A-->
+    <!--A class="topbutton" href="#" onClick="return clickreturnvalue()" onMouseover="dropdownmenu(this, event, message_menu, '110px')" onMouseout="delayhidemenu()">Message</A-->
+    <A class="topbutton" href="#" onClick="return clickreturnvalue()" onMouseover="dropdownmenu(this, event, account_menu, '150px')" onMouseout="delayhidemenu()">Profile</A>
+<% if (mbInfo.Type==0) { %>
+    <A href="<%=mcBean.encodedUrl("index.jsp?action=Load_UpgradeAccount&rootlink=yes&pagetitle=Upgrade Account")%>">Upgrade Account</A>
+<% if (!mcBean.isMemberOfSite(mbInfo.MemberID)) { %>
+    <A class="content" href='<%=mcBean.encodedUrl("index.jsp?action=Apply_SiteMember&rootlink=yes&pagetitle=Apply Membership of This Site")%>' title="Click to apply the membership of <%=cfInfo.WebTitle%>.">Apply Membership</A>
+<% } %>
+<% } else { %>
+<% if (onInfo==null || mbInfo.MemberID!=onInfo.MemberID) { %>
+   <A href="<%=mcBean.encodedUrl("index.jsp?action=Switch_ToMytSite&rootlink=yes")%>">To My Website</a>
+<% if (!mcBean.isMemberOfSite(mbInfo.MemberID)) { %>
+   <A class="content" href='<%=mcBean.encodedUrl("index.jsp?action=Apply_SiteMember&rootlink=yes&pagetitle=Apply Membership of This Site")%>' title="Click to apply the membership of <%=cfInfo.WebTitle%>.">Apply Membership</A>
+<% } %>
+<% } else { %>
+   <A href="#" onClick="return clickreturnvalue()" onMouseover="dropdownmenu(this, event, member_menu, '110px')" onMouseout="delayhidemenu()">Members</A>
+   <A href="#" onClick="return clickreturnvalue()" onMouseover="dropdownmenu(this, event, filestorage_menu, '110px')" onMouseout="delayhidemenu()">File Storage</A>
+    <!--A class="topbutton" href="#" onClick="return clickreturnvalue()" onMouseover="dropdownmenu(this, event, product_menu, '110px')" onMouseout="delayhidemenu()">Product</A-->
+   <A href="#" onClick="return clickreturnvalue()" onMouseover="dropdownmenu(this, event, website_menu, '130px')" onMouseout="delayhidemenu()">Web Site</A>
+<% } %>
+<% } %>
+    &nbsp;
+    </td>
+   </tr>
+  </table>
+ </TD>
+<% if (cfInfo.VerticalBarSide==1) { %>
+ <TD align="center"><%=sTitle%></TD>
+<% } %>
+</TR>
+<% } else { %>
+<TR>
+ <TD align="center"><%=sTitle%></TD>
+</TR>
+<% }  %>
+</TABLE>
+<% } %>

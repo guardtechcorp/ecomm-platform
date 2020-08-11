@@ -1,0 +1,203 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+<meta Author: Nick Merkel>
+<meta Created: 4/17/2006>
+<title>Select Smilie</title>
+</head>
+<script language="JavaScript" type="text/javascript">
+
+var qsParm = new Array();
+var url = "http://www.webonlinemanage.com/wom_images/smilies/";
+
+/* ---------------------------------------------------------------------- *\
+  Function    : retrieveWYSIWYG()
+  Description : Retrieves the textarea ID for which the smilie will be inserted into.
+\* ---------------------------------------------------------------------- */
+function retreiveWYSIWYG() {
+  var query = window.location.search.substring(1);
+  var parms = query.split('&');
+  for (var i=0; i<parms.length; i++) {
+    var pos = parms[i].indexOf('=');
+    if (pos > 0) {
+       var key = parms[i].substring(0,pos);
+       var val = parms[i].substring(pos+1);
+       qsParm[key] = val;
+    }
+  }
+  document.getElementById('enterSmilie').value = url + (qsParm['smilie']);
+}
+
+/* ---------------------------------------------------------------------- *\
+  Function    : selectSmilie()
+  Description : Inserts smilie into the WYSIWYG.
+\* ---------------------------------------------------------------------- */
+function selectSmilie(smilie) {
+  var image = '<img src="' + url + smilie + '">';
+  if (window.dialogArguments)
+  {
+    var oMyObject = window.dialogArguments;
+    var parentWin = oMyObject.parentWin;
+    parentWin.insertHTML(image, qsParm['wysiwyg']);
+  }
+  else
+    window.opener.insertHTML(image, qsParm['wysiwyg']);
+
+  window.close();
+}
+
+</script>
+<body bgcolor="#FFFFFF" marginwidth="0" marginheight="0" topmargin="0" leftmargin="0" onLoad="retreiveWYSIWYG();">
+<form onSubmit="selectSmilie(document.getElementById('enterSmilie').value);">
+</form>
+<center>
+<table border=5 cellspacing=0 cellpadding=3 bgcolor="#FFFFFF" bordercolor="#EEEEEE" style="cursor: hand;" >
+ <tr background="../icons/background_silver.jpg">
+  <td onClick="selectSmilie('01-01.gif')"><img src="../smilies/01-01.gif"></td>
+  <td onClick="selectSmilie('01-02.gif')"><img src="../smilies/01-02.gif"></td>
+  <td onClick="selectSmilie('01-03.gif')"><img src="../smilies/01-03.gif"></td>
+  <td onClick="selectSmilie('01-04.gif')"><img src="../smilies/01-04.gif"></td>
+  <td onClick="selectSmilie('01-05.gif')"><img src="../smilies/01-05.gif"></td>
+  <td onClick="selectSmilie('01-06.gif')"><img src="../smilies/01-06.gif"></td>
+  <td onClick="selectSmilie('01-07.gif')"><img src="../smilies/01-07.gif"></td>
+  <td onClick="selectSmilie('01-08.gif')"><img src="../smilies/01-08.gif"></td>
+  <td onClick="selectSmilie('01-09.gif')"><img src="../smilies/01-09.gif"></td>
+  <td onClick="selectSmilie('01-10.gif')"><img src="../smilies/01-10.gif"></td>
+  <td onClick="selectSmilie('01-11.gif')"><img src="../smilies/01-11.gif"></td>
+  <td onClick="selectSmilie('01-12.gif')"><img src="../smilies/01-12.gif"></td>
+  <td onClick="selectSmilie('01-13.gif')"><img src="../smilies/01-13.gif"></td>
+  <td onClick="selectSmilie('01-14.gif')"><img src="../smilies/01-14.gif"></td>
+  <td onClick="selectSmilie('01-15.gif')"><img src="../smilies/01-15.gif"></td>
+  <td onClick="selectSmilie('01-16.gif')"><img src="../smilies/01-16.gif"></td>
+ </tr>
+ <tr background="../icons/background_silver.jpg">
+  <td onClick="selectSmilie('02-01.gif')"><img src="../smilies/02-01.gif"></td>
+  <td onClick="selectSmilie('02-02.gif')"><img src="../smilies/02-02.gif"></td>
+  <td onClick="selectSmilie('02-03.gif')"><img src="../smilies/02-03.gif"></td>
+  <td onClick="selectSmilie('02-04.gif')"><img src="../smilies/02-04.gif"></td>
+  <td onClick="selectSmilie('02-05.gif')"><img src="../smilies/02-05.gif"></td>
+  <td onClick="selectSmilie('02-06.gif')"><img src="../smilies/02-06.gif"></td>
+  <td onClick="selectSmilie('02-07.gif')"><img src="../smilies/02-07.gif"></td>
+  <td onClick="selectSmilie('02-08.gif')"><img src="../smilies/02-08.gif"></td>
+  <td onClick="selectSmilie('02-09.gif')"><img src="../smilies/02-09.gif"></td>
+  <td onClick="selectSmilie('02-10.gif')"><img src="../smilies/02-10.gif"></td>
+  <td onClick="selectSmilie('02-11.gif')"><img src="../smilies/02-11.gif"></td>
+  <td onClick="selectSmilie('02-12.gif')"><img src="../smilies/02-12.gif"></td>
+  <td onClick="selectSmilie('02-13.gif')"><img src="../smilies/02-13.gif"></td>
+  <td onClick="selectSmilie('02-14.gif')"><img src="../smilies/02-14.gif"></td>
+  <td onClick="selectSmilie('02-15.gif')"><img src="../smilies/02-15.gif"></td>
+  <td onClick="selectSmilie('02-16.gif')"><img src="../smilies/02-16.gif"></td>
+ </tr>
+ <tr background="../icons/background_silver.jpg">
+  <td onClick="selectSmilie('03-01.gif')"><img src="../smilies/03-01.gif"></td>
+  <td onClick="selectSmilie('03-02.gif')"><img src="../smilies/03-02.gif"></td>
+  <td onClick="selectSmilie('03-03.gif')"><img src="../smilies/03-03.gif"></td>
+  <td onClick="selectSmilie('03-04.gif')"><img src="../smilies/03-04.gif"></td>
+  <td onClick="selectSmilie('03-05.gif')"><img src="../smilies/03-05.gif"></td>
+  <td onClick="selectSmilie('03-06.gif')"><img src="../smilies/03-06.gif"></td>
+  <td onClick="selectSmilie('03-07.gif')"><img src="../smilies/03-07.gif"></td>
+  <td onClick="selectSmilie('03-08.gif')"><img src="../smilies/03-08.gif"></td>
+  <td onClick="selectSmilie('03-09.gif')"><img src="../smilies/03-09.gif"></td>
+  <td onClick="selectSmilie('03-10.gif')"><img src="../smilies/03-10.gif"></td>
+  <td onClick="selectSmilie('03-11.gif')"><img src="../smilies/03-11.gif"></td>
+  <td onClick="selectSmilie('03-12.gif')"><img src="../smilies/03-12.gif"></td>
+  <td onClick="selectSmilie('03-13.gif')"><img src="../smilies/03-13.gif"></td>
+  <td onClick="selectSmilie('03-14.gif')"><img src="../smilies/03-14.gif"></td>
+  <td onClick="selectSmilie('03-15.gif')"><img src="../smilies/03-15.gif"></td>
+  <td onClick="selectSmilie('03-16.gif')"><img src="../smilies/03-16.gif"></td>
+ </tr>
+ <tr background="../icons/background_silver.jpg">
+  <td onClick="selectSmilie('04-01.gif')"><img src="../smilies/04-01.gif"></td>
+  <td onClick="selectSmilie('04-02.gif')"><img src="../smilies/04-02.gif"></td>
+  <td onClick="selectSmilie('04-03.gif')"><img src="../smilies/04-03.gif"></td>
+  <td onClick="selectSmilie('04-04.gif')"><img src="../smilies/04-04.gif"></td>
+  <td onClick="selectSmilie('04-05.gif')"><img src="../smilies/04-05.gif"></td>
+  <td onClick="selectSmilie('04-06.gif')"><img src="../smilies/04-06.gif"></td>
+  <td onClick="selectSmilie('04-07.gif')"><img src="../smilies/04-07.gif"></td>
+  <td onClick="selectSmilie('04-08.gif')"><img src="../smilies/04-08.gif"></td>
+  <td onClick="selectSmilie('04-09.gif')"><img src="../smilies/04-09.gif"></td>
+  <td onClick="selectSmilie('04-10.gif')"><img src="../smilies/04-10.gif"></td>
+  <td onClick="selectSmilie('04-11.gif')"><img src="../smilies/04-11.gif"></td>
+  <td onClick="selectSmilie('04-12.gif')"><img src="../smilies/04-12.gif"></td>
+  <td onClick="selectSmilie('04-13.gif')"><img src="../smilies/04-13.gif"></td>
+  <td onClick="selectSmilie('04-14.gif')"><img src="../smilies/04-14.gif"></td>
+  <td onClick="selectSmilie('04-15.gif')"><img src="../smilies/04-15.gif"></td>
+  <td onClick="selectSmilie('04-16.gif')"><img src="../smilies/04-16.gif"></td>
+ </tr>
+ <tr background="../icons/background_silver.jpg">
+  <td onClick="selectSmilie('05-01.gif')"><img src="../smilies/05-01.gif"></td>
+  <td onClick="selectSmilie('05-02.gif')"><img src="../smilies/05-02.gif"></td>
+  <td onClick="selectSmilie('05-03.gif')"><img src="../smilies/05-03.gif"></td>
+  <td onClick="selectSmilie('05-04.gif')"><img src="../smilies/05-04.gif"></td>
+  <td onClick="selectSmilie('05-05.gif')"><img src="../smilies/05-05.gif"></td>
+  <td onClick="selectSmilie('05-06.gif')"><img src="../smilies/05-06.gif"></td>
+  <td onClick="selectSmilie('05-07.gif')"><img src="../smilies/05-07.gif"></td>
+  <td onClick="selectSmilie('05-08.gif')"><img src="../smilies/05-08.gif"></td>
+  <td onClick="selectSmilie('05-09.gif')"><img src="../smilies/05-09.gif"></td>
+  <td onClick="selectSmilie('05-10.gif')"><img src="../smilies/05-10.gif"></td>
+  <td onClick="selectSmilie('05-11.gif')"><img src="../smilies/05-11.gif"></td>
+  <td onClick="selectSmilie('05-12.gif')"><img src="../smilies/05-12.gif"></td>
+  <td onClick="selectSmilie('05-13.gif')"><img src="../smilies/05-13.gif"></td>
+  <td onClick="selectSmilie('05-14.gif')"><img src="../smilies/05-14.gif"></td>
+  <td onClick="selectSmilie('05-15.gif')"><img src="../smilies/05-15.gif"></td>
+  <td onClick="selectSmilie('05-16.gif')"><img src="../smilies/05-16.gif"></td>
+ </tr>
+ <tr background="../icons/background_silver.jpg">
+  <td onClick="selectSmilie('06-01.gif')"><img src="../smilies/06-01.gif"></td>
+  <td onClick="selectSmilie('06-02.gif')"><img src="../smilies/06-02.gif"></td>
+  <td onClick="selectSmilie('06-03.gif')"><img src="../smilies/06-03.gif"></td>
+  <td onClick="selectSmilie('06-04.gif')"><img src="../smilies/06-04.gif"></td>
+  <td onClick="selectSmilie('06-05.gif')"><img src="../smilies/06-05.gif"></td>
+  <td onClick="selectSmilie('06-06.gif')"><img src="../smilies/06-06.gif"></td>
+  <td onClick="selectSmilie('06-07.gif')"><img src="../smilies/06-07.gif"></td>
+  <td onClick="selectSmilie('06-08.gif')"><img src="../smilies/06-08.gif"></td>
+  <td onClick="selectSmilie('06-09.gif')"><img src="../smilies/06-09.gif"></td>
+  <td onClick="selectSmilie('06-10.gif')"><img src="../smilies/06-10.gif"></td>
+  <td onClick="selectSmilie('06-11.gif')"><img src="../smilies/06-11.gif"></td>
+  <td onClick="selectSmilie('06-12.gif')"><img src="../smilies/06-12.gif"></td>
+  <td onClick="selectSmilie('06-13.gif')"><img src="../smilies/06-13.gif"></td>
+  <td onClick="selectSmilie('06-14.gif')"><img src="../smilies/06-14.gif"></td>
+  <td onClick="selectSmilie('06-15.gif')"><img src="../smilies/06-15.gif"></td>
+  <td onClick="selectSmilie('06-16.gif')"><img src="../smilies/06-16.gif"></td>
+ </tr>
+ <tr background="../icons/background_silver.jpg">
+  <td onClick="selectSmilie('07-01.gif')"><img src="../smilies/07-01.gif"></td>
+  <td onClick="selectSmilie('07-02.gif')"><img src="../smilies/07-02.gif"></td>
+  <td onClick="selectSmilie('07-03.gif')"><img src="../smilies/07-03.gif"></td>
+  <td onClick="selectSmilie('07-04.gif')"><img src="../smilies/07-04.gif"></td>
+  <td onClick="selectSmilie('07-05.gif')"><img src="../smilies/07-05.gif"></td>
+  <td onClick="selectSmilie('07-06.gif')"><img src="../smilies/07-06.gif"></td>
+  <td onClick="selectSmilie('07-07.gif')"><img src="../smilies/07-07.gif"></td>
+  <td onClick="selectSmilie('07-08.gif')"><img src="../smilies/07-08.gif"></td>
+  <td onClick="selectSmilie('07-09.gif')"><img src="../smilies/07-09.gif"></td>
+  <td onClick="selectSmilie('07-10.gif')"><img src="../smilies/07-10.gif"></td>
+  <td onClick="selectSmilie('07-11.gif')"><img src="../smilies/07-11.gif"></td>
+  <td onClick="selectSmilie('07-12.gif')"><img src="../smilies/07-12.gif"></td>
+  <td onClick="selectSmilie('07-13.gif')"><img src="../smilies/07-13.gif"></td>
+  <td onClick="selectSmilie('07-14.gif')"><img src="../smilies/07-14.gif"></td>
+  <td onClick="selectSmilie('07-15.gif')"><img src="../smilies/07-15.gif"></td>
+  <td onClick="selectSmilie('07-16.gif')"><img src="../smilies/07-16.gif"></td>
+ </tr>
+ <tr background="../icons/background_silver.jpg">
+  <td onClick="selectSmilie('08-01.gif')"><img src="../smilies/08-01.gif"></td>
+  <td onClick="selectSmilie('08-02.gif')"><img src="../smilies/08-02.gif"></td>
+  <td onClick="selectSmilie('08-03.gif')"><img src="../smilies/08-03.gif"></td>
+  <td onClick="selectSmilie('08-04.gif')"><img src="../smilies/08-04.gif"></td>
+  <td onClick="selectSmilie('08-05.gif')"><img src="../smilies/08-05.gif"></td>
+  <td onClick="selectSmilie('08-06.gif')"><img src="../smilies/08-06.gif"></td>
+  <td onClick="selectSmilie('08-07.gif')"><img src="../smilies/08-07.gif"></td>
+  <td onClick="selectSmilie('08-08.gif')"><img src="../smilies/08-08.gif"></td>
+  <td onClick="selectSmilie('08-09.gif')"><img src="../smilies/08-09.gif"></td>
+  <td onClick="selectSmilie('08-10.gif')"><img src="../smilies/08-10.gif"></td>
+  <td onClick="selectSmilie('08-11.gif')"><img src="../smilies/08-11.gif"></td>
+  <td onClick="selectSmilie('08-12.gif')"><img src="../smilies/08-12.gif"></td>
+  <td onClick="selectSmilie('08-13.gif')"><img src="../smilies/08-13.gif"></td>
+  <td onClick="selectSmilie('08-14.gif')"><img src="../smilies/08-14.gif"></td>
+  <td onClick="selectSmilie('08-15.gif')"><img src="../smilies/08-15.gif"></td>
+  <td onClick="selectSmilie('08-16.gif')"><img src="../smilies/08-16.gif"></td>
+ </tr>
+</table>
+</center>
+</body>
+</html>

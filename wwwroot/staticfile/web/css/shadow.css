@@ -1,0 +1,24 @@
+<style type="text/css">
+
+.shadow{
+border:1px solid silver;
+font:10pt arial;
+position:relative;
+display:inline;
+background:white;
+z-index:100
+}
+
+.shadow_inner{
+overflow:hidden;
+position:absolute;
+top: -1000px;
+filter:alpha(Opacity=10); /*modify to change the shade solidity/opacity, same as below*/
+opacity:0.1; /*firefox 1.5 opacity*/
+-moz-opacity:0.1; /*mozilla opacity*/
+-khtml-opacity:0.1; /*opacity*/
+z-index:10
+}
+
+</style>
+

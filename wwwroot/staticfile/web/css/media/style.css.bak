@@ -1,0 +1,18 @@
+.tblBorder {
+	BORDER-RIGHT: #c2c2c2 1px solid; BORDER-TOP: #c2c2c2 1px solid; BORDER-LEFT: #c2c2c2 1px solid; BORDER-BOTTOM: #c2c2c2 1px solid
+}
+.tblBrdrBG {
+	BORDER-RIGHT: #c2c2c2 1px solid; BORDER-TOP: #c2c2c2 1px solid; BACKGROUND: url(../images/tablebg.gif) repeat-x left bottom; BORDER-LEFT: #c2c2c2 1px solid; BORDER-BOTTOM: #c2c2c2 1px solid
+}
+.tblTopLeftCorner {
+	MARGIN-TOP: -1px; BACKGROUND: url(media/cornercurvetl.gif) no-repeat left top; MARGIN-LEFT: -1px; WIDTH: 5px; POSITION: relative; HEIGHT: 5px
+}
+.tblTopRightCorner {
+	MARGIN-TOP: -1px; BACKGROUND: url(media/cornercurvetr.gif) no-repeat right top; WIDTH: 5px; MARGIN-RIGHT: -1px; POSITION: relative; HEIGHT: 5px
+}
+.tblBotLeftCorner {
+	BACKGROUND: url(media/cornercurvebl.gif) no-repeat left bottom; MARGIN-BOTTOM: -1px; MARGIN-LEFT: -1px; WIDTH: 5px; POSITION: relative; HEIGHT: 5px
+}
+.tblBotRightCorner {
+	BACKGROUND: url(media/cornercurvebr.gif) no-repeat right bottom; MARGIN-BOTTOM: -1px; WIDTH: 5px; MARGIN-RIGHT: -1px; POSITION: relative; HEIGHT: 5px
+}

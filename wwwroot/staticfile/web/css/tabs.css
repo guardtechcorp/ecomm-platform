@@ -1,0 +1,466 @@
+.glossymenu{
+list-style-type: none;
+margin: 5px 0;
+padding: 0;
+width: 178px;
+border: 1px solid #9A9A9A;
+border-bottom-width: 0;
+}
+.glossymenu li a{
+background: white url(media/glossyback.gif) repeat-x bottom left;
+font: bold 13px "Lucida Grande", "Trebuchet MS", Verdana, Helvetica, sans-serif;
+color: white;
+display: block;
+width: auto;
+padding: 3px 0;
+padding-left: 10px;
+text-decoration: none;
+}
+* html .glossymenu li a{ /*IE only. Actual menu width minus left padding of A element (10px) */
+width: 178px;
+}
+.glossymenu li a:visited, .glossymenu li a:active{
+color: white;
+}
+.glossymenu li a:hover{
+background-image: url(media/glossyback2.gif);
+}
+
+
+.shadetabs{
+border-bottom: 1px solid gray;
+/* width: 90%; width of menu. Uncomment to change to a specific width */
+margin-bottom: 1em;
+}
+
+.shadetabs ul{
+padding: 3px 0;
+margin-left: 0;
+margin-top: 1px;
+margin-bottom: 0;
+font: bold 12px Verdana;
+list-style-type: none;
+text-align: left; /*set to left, center, or right to align the menu as desired*/
+}
+
+.shadetabs li{
+display: inline;
+margin: 0;
+}
+
+.shadetabs li a{
+text-decoration: none;
+padding: 3px 7px;
+margin-right: 3px;
+border: 1px solid #778;
+color: #2d2b2b;
+background: white url(media/shade.gif) top left repeat-x;
+}
+
+.shadetabs li a:visited{
+color: #2d2b2b;
+}
+
+.shadetabs li a:hover{
+text-decoration: underline;
+color: #2d2b2b;
+}
+
+.shadetabs li.selected{
+position: relative;
+top: 1px;
+}
+
+.shadetabs li.selected a{ /*selected main tab style */
+background-image: url(media/shadeactive.gif);
+border-bottom-color: white;
+}
+
+.shadetabs li.selected a:hover{ /*selected main tab style */
+text-decoration: none;
+}
+
+
+#navigation {
+text-align: center;
+float: right; /*Set to "left" or "right" to position menu accordingly*/
+/*border-bottom: 1px solid #999e87; uncomment this line to add bottom border*/
+}
+#navigation ul {
+	font-family: Verdana;
+	font-size: 12px;
+	font-weight: bold;
+	text-decoration: none;
+	margin: 0;
+	padding: 0;
+	list-style:none;	
+}
+#navigation li {
+	display: inline;
+	background: url(media/greenbg.gif) repeat-x center top;
+	text-align: center;
+	padding: 0;
+	margin-right: 4px;	
+	float: left;
+}
+#navigation a {
+	color: #663300;
+	background: url(media/greenleft.gif) no-repeat left top;
+	float: left;
+	margin:	0;
+	padding-left:7px;
+	text-decoration: none;
+}
+#navigation a span {
+	background: url(media/greenright.gif) no-repeat right top;
+	display: block;
+	padding:7px 13px 4px 5px;
+}
+#navigation a span {
+	float: none;
+}
+
+
+#vdividermenu ul{
+margin: 0;
+padding: 0;
+margin-bottom: 1em;
+float: left;
+font: bold 100% Tohoma;
+width: 100%;
+border: 1px solid #625e00;
+background-color: #f9ff91;
+}
+
+* html #vdividermenu ul{ /*IE only rule, reduce menu width*/
+width: 99%;
+}
+
+#vdividermenu ul li{
+display: inline;
+}
+
+#vdividermenu ul li a{
+float: left;
+color: black;
+padding: 2px 12px;
+text-decoration: none;
+background: transparent url(media/vertical.gif) center right no-repeat;
+}
+
+#vdividermenu ul li a:visited{
+color: black;
+}
+
+#vdividermenu ul li a:hover{
+color: black;
+background-color: #ffe84f;
+}
+
+
+
+#ddcolortabs{
+margin-left: 4px;
+padding: 0;
+width: 100%;
+background: transparent;
+voice-family: "\"}\"";
+voice-family: inherit;
+padding-left: 5px;
+}
+
+#ddcolortabs ul{
+font: bold 11px Arial, Verdana, sans-serif;
+margin:0;
+padding:0;
+list-style:none;
+}
+
+#ddcolortabs li{
+display:inline;
+margin:0 2px 0 0;
+padding:0;
+text-transform:uppercase;
+}
+
+
+#ddcolortabs a{
+float:left;
+color: white;
+background: #678b3f url(media/color_tabs_left.gif) no-repeat left top;
+margin:0 2px 0 0;
+padding:0 0 1px 3px;
+text-decoration:none;
+letter-spacing: 1px;
+}
+
+#ddcolortabs a span{
+float:left;
+display:block;
+background: transparent url(media/color_tabs_right.gif) no-repeat right top;
+padding:4px 9px 2px 6px;
+}
+
+#ddcolortabs a span{
+float:none;
+}
+
+#ddcolortabs a:hover{
+background-color: #8cb85c;
+}
+
+#ddcolortabs a:hover span{
+background-color: #8cb85c;
+}
+
+#ddcolortabs #current a, #ddcolortabs #current span{ /*currently selected tab*/
+background-color: #8cb85c;
+}
+
+#ddcolortabsline{
+clear: both;
+padding: 0;
+width: 100%;
+height: 8px;
+line-height: 8px;
+background: #678b3f;
+border-top: 1px solid #fff; /*Remove this to remove border between bar and tabs*/
+}
+
+
+
+#slantedmenu{
+font-weight: bold;
+font-size: 90%;
+}
+
+#slantedmenu:after{ /*Add margin between menu and rest of content in Firefox*/
+content: "."; 
+display: block; 
+height: 0; 
+clear: both; 
+visibility: hidden;
+}
+
+#slantedmenu ul{
+text-indent: 10px;
+padding: 3px 0;
+margin: 0;
+background-color: #e0e0e0;
+border: 1px solid #bebebe;
+text-align: left; /*set value to "center" for example to center items*/
+}
+
+#slantedmenu ul li{
+display: inline;
+}
+
+#slantedmenu ul li a{
+color: #494949;
+padding: 3px 0;
+padding-right: 25px;
+margin: 0;
+text-decoration: none;
+background: transparent url(media/slantdivider.gif) top right no-repeat;
+}
+
+#slantedmenu ul li a:visited{
+color: #494949;
+} 
+
+#slantedmenu ul li a:hover{
+color: black;
+}
+
+
+#pointermenu{
+border-top: 7px solid black; /*optional border across top*/
+margin: 0;
+padding: 0;
+}
+
+#pointermenu ul{
+margin: 0;
+margin-left: 15px; /*menu offset from left edge of window*/
+float: left;
+padding-left: 8px;
+font: bold 13px Verdana;
+background-color: black;
+background: black url(media/leftround.gif) bottom left no-repeat; /*optional left round corner*/
+}
+
+* html #pointermenu ul{ /*IE6 only rule. Decrease ul left margin and add 1em bottom margin*/
+margin-bottom: 1em;
+margin-left: 7px; /*menu offset from left edge of window in IE*/
+}
+
+#pointermenu ul li{
+display: inline;
+}
+
+#pointermenu ul li a{
+float: left;
+color: white;
+font-weight: bold;
+padding: 2px 11px 7px 7px;
+text-decoration: none;
+background: url(media/pointer.gif) bottom center no-repeat;
+}
+
+#pointermenu ul li a:visited{
+color: white;
+}
+
+#pointermenu ul li a:hover, #pointermenu ul li a#selected{ /*hover and selected link*/
+color: white;
+background-color: darkred;
+}
+
+#pointermenu ul li a#rightcorner{
+padding-right: 0;
+padding-left: 2px;
+background: url(media/rightround.gif) bottom right no-repeat; /*optional right round corner*/
+}
+
+
+#invertedtabs{
+margin-left: 4px;
+padding: 0;
+width: 100%;
+background: transparent;
+voice-family: "\"}\"";
+voice-family: inherit;
+padding-left: 5px;
+}
+
+#invertedtabs ul{
+font: bold 11px Arial, Verdana, sans-serif;
+margin:0;
+margin-bottom: 1em; /*margin between menu and rest of content*/
+padding:0;
+list-style:none;
+}
+
+#invertedtabs li{
+display:inline;
+margin:0 2px 0 0;
+padding:0;
+text-transform:uppercase;
+line-height: 1.5em;
+}
+
+
+#invertedtabs a{
+float:left;
+color: white;
+background: #8b0000 url(media/color_tabs_left2.gif) no-repeat left bottom;
+margin:0 2px 0 0;
+padding:0 0 0 3px;
+text-decoration:none;
+letter-spacing: 1px;
+}
+
+#invertedtabs a span{
+float:left;
+display:block;
+background: transparent url(media/color_tabs_right2.gif) no-repeat right bottom;
+padding:3px 9px 3px 6px;
+}
+
+#invertedtabs a span{
+float:none;
+}
+
+#invertedtabs a:hover{
+background-color: #d50509;
+}
+
+#invertedtabs a:hover span{
+background-color: #d50509;
+}
+
+#invertedtabs #current a, #invertedtabs #current span{ /*currently selected tab*/
+background-color: #d50509;
+}
+
+#invertedtabsline{
+clear: both;
+padding: 0;
+width: 100%;
+height: 8px;
+line-height: 8px;
+background: #8b0000;
+border-bottom: 1px solid #fff; /*Remove this to remove border between bar and tabs*/
+}
+
+
+.rssbutton{
+background-color: #ff6600;
+border: 1px #ff6600 outset;
+padding: 0 2px;
+color: white;
+text-decoration: none;
+font: bold 10px Verdana;
+}
+
+.rssbutton:visited, .rssbutton:hover, .rssbutton:active{
+color: white;
+}
+
+.cssbutton{
+background-color: #d1ec4c;
+border: 2px #d1ec4c outset;
+padding: 1px 4px;
+color: black;
+text-decoration: none;
+font: bold 90% "Lucida Grande", "Trebuchet MS", Verdana, Helvetica, sans-serif;
+}
+
+.cssbutton:visited{
+color: black;
+}
+
+.cssbutton:hover{
+border-style: inset;
+background-color: #e3f48e;
+padding: 2px 3px 0 5px; /*shift text 1px to the right and down*/
+}
+
+.cssbutton:active{
+color: black;
+}
+
+
+.cssform p{
+width: 300px;
+clear: left;
+margin: 0;
+padding: 5px 0 8px 0;
+padding-left: 155px; /*width of left column containing the label elements*/
+border-top: 1px dashed gray;
+height: 1%;
+}
+
+.cssform label{
+font-weight: bold;
+float: left;
+margin-left: -155px; /*width of left column*/
+width: 150px; /*width of labels. Should be smaller than left column (155px) to create some right margin*/
+}
+
+.cssform input[type="text"]{ /*width of text boxes. IE6 does not understand this attribute*/
+width: 180px;
+}
+
+.cssform textarea{
+width: 250px;
+height: 150px;
+}
+
+/*.threepxfix class below:
+Targets IE6- ONLY. Adds 3 pixel indent for multi-line form contents.
+to account for 3 pixel bug: http://www.positioniseverything.net/explorer/threepxtest.html
+*/
+* html .threepxfix{
+margin-left: 3px;
+}

@@ -1,0 +1,301 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+<meta Author: Nick Merkel>
+<meta Created: 4/25/2006>
+<title>openWYSIWYG | Select Special Character</title>
+</head>
+<script language="JavaScript" type="text/javascript">
+
+var qsParm = new Array();
+
+/* ---------------------------------------------------------------------- *\
+Function : retrieveWYSIWYG()
+Description : Retrieves the textarea ID for which the special character will be inserted into.
+\* ---------------------------------------------------------------------- */
+function retreiveWYSIWYG() {
+var query = window.location.search.substring(1);
+var parms = query.split('&');
+for (var i=0; i<parms.length; i++) {
+var pos = parms[i].indexOf('=');
+if (pos > 0) {
+var key = parms[i].substring(0,pos);
+var val = parms[i].substring(pos+1);
+qsParm[key] = val;
+}
+}
+document.getElementById('enterSC').value = (qsParm['sc']);
+}
+
+/* ---------------------------------------------------------------------- *\
+Function : selectSC()
+Description : Inserts special character into the WYSIWYG.
+\* ---------------------------------------------------------------------- */
+function selectSC(sc) {
+var x = '&#' + sc + ';';
+if (window.dialogArguments)
+{
+  var oMyObject = window.dialogArguments;
+  var parentWin = oMyObject.parentWin;
+  parentWin.insertHTML(x, qsParm['wysiwyg']);
+}
+else
+  window.opener.insertHTML(x, qsParm['wysiwyg']);
+window.close();
+}
+
+</script>
+<body bgcolor="#FFFFFF" marginwidth="0" marginheight="0" topmargin="0" leftmargin="0" onLoad="retreiveWYSIWYG();">
+<form onSubmit="selectSC(document.getElementById('enterSC').value);">
+</form>
+<center>
+<table border=1 cellspacing=0 cellpadding=6 background="../icons/background_silver.jpg" bgcolor="#000000" bordercolor="#EEEEEE" style="cursor: hand;">
+<tr height="34">
+<td onClick="selectSC('186')">º</td>
+<td onClick="selectSC('185')">¹</td>
+<td onClick="selectSC('178')">²</td>
+<td onClick="selectSC('179')">³</td>
+<td onClick="selectSC('188')">¼</td>
+<td onClick="selectSC('189')">½</td>
+<td onClick="selectSC('190')">¾</td>
+<td onClick="selectSC('37')">%</td>
+<td onClick="selectSC('8240')">‰</td>
+<td onClick="selectSC('36')">$</td>
+<td onClick="selectSC('162')">¢</td>
+<td onClick="selectSC('163')">£</td>
+<td onClick="selectSC('164')">¤</td>
+<td onClick="selectSC('165')">¥</td>
+<td onClick="selectSC('169')">©</td>
+<td onClick="selectSC('174')">®</td>
+<td onClick="selectSC('153')">™</td>
+<td onClick="selectSC('161')">¡</td>
+<td onClick="selectSC('191')">¿</td>
+<td onClick="selectSC('9829')">?</td>
+<td onClick="selectSC('9830')">?</td>
+<td onClick="selectSC('9827')">?</td>
+<td onClick="selectSC('9824')">?</td>
+<td onClick="selectSC('135')">‡</td>
+<td onClick="selectSC('134')">†</td>
+</tr>
+<tr height="34">
+<td onClick="selectSC('192')">À</td>
+<td onClick="selectSC('193')">Á</td>
+<td onClick="selectSC('194')">Â</td>
+<td onClick="selectSC('195')">Ã</td>
+<td onClick="selectSC('196')">Ä</td>
+<td onClick="selectSC('197')">Å</td>
+<td onClick="selectSC('198')">Æ</td>
+<td onClick="selectSC('199')">Ç</td>
+<td onClick="selectSC('200')">È</td>
+<td onClick="selectSC('201')">É</td>
+<td onClick="selectSC('202')">Ê</td>
+<td onClick="selectSC('203')">Ë</td>
+<td onClick="selectSC('204')">Ì</td>
+<td onClick="selectSC('205')">Í</td>
+<td onClick="selectSC('206')">Î</td>
+<td onClick="selectSC('207')">Ï</td>
+<td onClick="selectSC('208')">Ð</td>
+<td onClick="selectSC('209')">Ñ</td>
+<td onClick="selectSC('210')">Ò</td>
+<td onClick="selectSC('211')">Ó</td>
+<td onClick="selectSC('212')">Ô</td>
+<td onClick="selectSC('213')">Õ</td>
+<td onClick="selectSC('214')">Ö</td>
+<td onClick="selectSC('215')">×</td>
+<td onClick="selectSC('216')">Ø</td>
+</tr>
+<tr height="34">
+<td onClick="selectSC('217')">Ù</td>
+<td onClick="selectSC('218')">Ú</td>
+<td onClick="selectSC('219')">Û</td>
+<td onClick="selectSC('220')">Ü</td>
+<td onClick="selectSC('221')">Ý</td>
+<td onClick="selectSC('222')">Þ</td>
+<td onClick="selectSC('223')">ß</td>
+<td onClick="selectSC('224')">à</td>
+<td onClick="selectSC('225')">á</td>
+<td onClick="selectSC('226')">â</td>
+<td onClick="selectSC('227')">ã</td>
+<td onClick="selectSC('228')">ä</td>
+<td onClick="selectSC('229')">å</td>
+<td onClick="selectSC('230')">æ</td>
+<td onClick="selectSC('231')">ç</td>
+<td onClick="selectSC('232')">è</td>
+<td onClick="selectSC('233')">é</td>
+<td onClick="selectSC('234')">ê</td>
+<td onClick="selectSC('235')">ë</td>
+<td onClick="selectSC('236')">ì</td>
+<td onClick="selectSC('237')">í</td>
+<td onClick="selectSC('238')">î</td>
+<td onClick="selectSC('239')">ï</td>
+<td onClick="selectSC('240')">ð</td>
+<td onClick="selectSC('241')">ñ</td>
+</tr>
+<tr height="34">
+<td onClick="selectSC('242')">ò</td>
+<td onClick="selectSC('243')">ó</td>
+<td onClick="selectSC('244')">ô</td>
+<td onClick="selectSC('245')">õ</td>
+<td onClick="selectSC('246')">ö</td>
+<td onClick="selectSC('247')">÷</td>
+<td onClick="selectSC('248')">ø</td>
+<td onClick="selectSC('249')">ù</td>
+<td onClick="selectSC('250')">ú</td>
+<td onClick="selectSC('251')">û</td>
+<td onClick="selectSC('252')">ü</td>
+<td onClick="selectSC('253')">ý</td>
+<td onClick="selectSC('254')">þ</td>
+<td onClick="selectSC('255')">ÿ</td>
+<td onClick="selectSC('256')">?</td>
+<td onClick="selectSC('257')">?</td>
+<td onClick="selectSC('258')">?</td>
+<td onClick="selectSC('259')">?</td>
+<td onClick="selectSC('260')">?</td>
+<td onClick="selectSC('261')">?</td>
+<td onClick="selectSC('262')">?</td>
+<td onClick="selectSC('263')">?</td>
+<td onClick="selectSC('264')">?</td>
+<td onClick="selectSC('265')">?</td>
+<td onClick="selectSC('266')">?</td>
+</tr>
+<tr height="34">
+<td onClick="selectSC('267')">?</td>
+<td onClick="selectSC('268')">?</td>
+<td onClick="selectSC('269')">?</td>
+<td onClick="selectSC('270')">?</td>
+<td onClick="selectSC('271')">?</td>
+<td onClick="selectSC('272')">?</td>
+<td onClick="selectSC('273')">?</td>
+<td onClick="selectSC('274')">?</td>
+<td onClick="selectSC('275')">?</td>
+<td onClick="selectSC('276')">?</td>
+<td onClick="selectSC('277')">?</td>
+<td onClick="selectSC('278')">?</td>
+<td onClick="selectSC('279')">?</td>
+<td onClick="selectSC('280')">?</td>
+<td onClick="selectSC('281')">?</td>
+<td onClick="selectSC('282')">?</td>
+<td onClick="selectSC('283')">?</td>
+<td onClick="selectSC('284')">?</td>
+<td onClick="selectSC('285')">?</td>
+<td onClick="selectSC('286')">?</td>
+<td onClick="selectSC('287')">?</td>
+<td onClick="selectSC('288')">?</td>
+<td onClick="selectSC('289')">?</td>
+<td onClick="selectSC('290')">?</td>
+<td onClick="selectSC('291')">?</td>
+</tr>
+<tr height="34">
+<td onClick="selectSC('292')">?</td>
+<td onClick="selectSC('293')">?</td>
+<td onClick="selectSC('294')">?</td>
+<td onClick="selectSC('295')">?</td>
+<td onClick="selectSC('296')">?</td>
+<td onClick="selectSC('297')">?</td>
+<td onClick="selectSC('298')">?</td>
+<td onClick="selectSC('299')">?</td>
+<td onClick="selectSC('300')">?</td>
+<td onClick="selectSC('301')">?</td>
+<td onClick="selectSC('302')">?</td>
+<td onClick="selectSC('303')">?</td>
+<td onClick="selectSC('304')">?</td>
+<td onClick="selectSC('305')">?</td>
+<td onClick="selectSC('306')">?</td>
+<td onClick="selectSC('307')">?</td>
+<td onClick="selectSC('308')">?</td>
+<td onClick="selectSC('309')">?</td>
+<td onClick="selectSC('310')">?</td>
+<td onClick="selectSC('311')">?</td>
+<td onClick="selectSC('312')">?</td>
+<td onClick="selectSC('313')">?</td>
+<td onClick="selectSC('314')">?</td>
+<td onClick="selectSC('315')">?</td>
+<td onClick="selectSC('316')">?</td>
+</tr>
+<tr height="34">
+<td onClick="selectSC('317')">?</td>
+<td onClick="selectSC('318')">?</td>
+<td onClick="selectSC('319')">?</td>
+<td onClick="selectSC('320')">?</td>
+<td onClick="selectSC('321')">?</td>
+<td onClick="selectSC('322')">?</td>
+<td onClick="selectSC('323')">?</td>
+<td onClick="selectSC('324')">?</td>
+<td onClick="selectSC('325')">?</td>
+<td onClick="selectSC('326')">?</td>
+<td onClick="selectSC('327')">?</td>
+<td onClick="selectSC('328')">?</td>
+<td onClick="selectSC('329')">?</td>
+<td onClick="selectSC('330')">?</td>
+<td onClick="selectSC('331')">?</td>
+<td onClick="selectSC('332')">?</td>
+<td onClick="selectSC('333')">?</td>
+<td onClick="selectSC('334')">?</td>
+<td onClick="selectSC('335')">?</td>
+<td onClick="selectSC('336')">?</td>
+<td onClick="selectSC('337')">?</td>
+<td onClick="selectSC('338')">Œ</td>
+<td onClick="selectSC('339')">œ</td>
+<td onClick="selectSC('340')">?</td>
+<td onClick="selectSC('341')">?</td>
+</tr>
+<tr height="34">
+<td onClick="selectSC('342')">?</td>
+<td onClick="selectSC('343')">?</td>
+<td onClick="selectSC('344')">?</td>
+<td onClick="selectSC('345')">?</td>
+<td onClick="selectSC('346')">?</td>
+<td onClick="selectSC('347')">?</td>
+<td onClick="selectSC('348')">?</td>
+<td onClick="selectSC('349')">?</td>
+<td onClick="selectSC('350')">?</td>
+<td onClick="selectSC('351')">?</td>
+<td onClick="selectSC('352')">Š</td>
+<td onClick="selectSC('353')">š</td>
+<td onClick="selectSC('354')">?</td>
+<td onClick="selectSC('355')">?</td>
+<td onClick="selectSC('356')">?</td>
+<td onClick="selectSC('357')">?</td>
+<td onClick="selectSC('358')">?</td>
+<td onClick="selectSC('359')">?</td>
+<td onClick="selectSC('360')">?</td>
+<td onClick="selectSC('361')">?</td>
+<td onClick="selectSC('362')">?</td>
+<td onClick="selectSC('363')">?</td>
+<td onClick="selectSC('364')">?</td>
+<td onClick="selectSC('365')">?</td>
+<td onClick="selectSC('366')">?</td>
+</tr>
+<tr height="34">
+<td onClick="selectSC('367')">?</td>
+<td onClick="selectSC('368')">?</td>
+<td onClick="selectSC('369')">?</td>
+<td onClick="selectSC('370')">?</td>
+<td onClick="selectSC('371')">?</td>
+<td onClick="selectSC('372')">?</td>
+<td onClick="selectSC('373')">?</td>
+<td onClick="selectSC('374')">?</td>
+<td onClick="selectSC('375')">?</td>
+<td onClick="selectSC('376')">Ÿ</td>
+<td onClick="selectSC('377')">?</td>
+<td onClick="selectSC('378')">?</td>
+<td onClick="selectSC('379')">?</td>
+<td onClick="selectSC('380')">?</td>
+<td onClick="selectSC('381')">Ž</td>
+<td onClick="selectSC('382')">ž</td>
+<td onClick="selectSC('')"></td>
+<td onClick="selectSC('')"></td>
+<td onClick="selectSC('')"></td>
+<td onClick="selectSC('')"></td>
+<td onClick="selectSC('')"></td>
+<td onClick="selectSC('')"></td>
+<td onClick="selectSC('')"></td>
+<td onClick="selectSC('')"></td>
+<td onClick="selectSC('')"></td>
+</tr>
+</table>
+</center>
+</body>
+</html>
+

@@ -1,0 +1,339 @@
+body {
+	background-color: #E8EBF4;
+	margin-left: 5px;
+	margin-top: 1px;
+	margin-right: 0px;
+	margin-bottom: 0px;
+
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size : 11; color : #000000;
+}
+
+/* General font families for common tags */
+font,th,td,p { font-family: Verdana, Arial, Helvetica, sans-serif }
+p, td		{ font-size : 11; color : #000000; }
+
+a:link,a:active,a:visited { color : #006699; }
+a:hover		{ text-decoration: underline; color : #DD6900; }
+hr	{ height: 0px; border: solid #D1D7DC 0px; border-top-width: 1px;}
+h1,h2		{ font-family: "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif; font-size : 20px; font-weight : bold; text-decoration : none; line-height : 120%; color : #000000;}
+
+
+/* This is the border line & background colour round the entire page */
+.bodyline	{ background-color: #FFFFFF; border: 1px #98AAB1 solid; }
+
+/* This is the outline round the main forum tables */
+.forumline	{ background-color: #FFFFFF; border: 2px #006699 solid; }
+.forumline2	{ background-color: #FFFFFF; border: 1px #4279bd solid; }
+
+/* Main table cell colours and backgrounds */
+tr.row1	{ background-color: #EFEFEF; }
+tr.row2	{ background-color: #DEE3E7; }
+tr.row3	{ background-color: #D1D7DC; }
+
+/* Main table cell colours and backgrounds */
+td.row1	{ background-color: #EFEFEF; }
+td.row2	{ background-color: #DEE3E7; }
+td.row3	{ background-color: #D1D7DC; }
+td.row4	{ background-color: #EFF7FE; }
+
+td.rowpic {
+		background-color: #FFFFFF;
+		background-repeat: repeat-y;
+}
+
+th	{
+	color: #FFFFFF; font-size: 10px; font-weight : bold;
+	background-color: #4959A7; height: 20px;
+}
+
+td.cat,td.catHead,td.catSides,td.catLeft,td.catRight {
+   background-color:#D1D7DC; border: #FFFFFF; border-style: solid; height: 20px;
+}
+
+td.catBottom {
+   background-color:#9AAEDA; border: #FFFFFF; border-style: solid; height: 20px;
+}
+
+td.cat,td.catHead,td.catBottom {
+	height: 20px;
+	border-width: 0px 0px 0px 0px;
+}
+th.thHead,th.thSides,th.thTop,th.thLeft,th.thRight,th.thBottom,th.thCornerL,th.thCornerR {
+	font-weight: bold; border: #FFFFFF; border-style: solid; height: 20px; }
+td.row3Right,td.spaceRow {
+	background-color: #EFEFEF; border: #FFFFFF; border-style: solid; }
+
+th.thHead,td.catHead { font-size: 12px; border-width: 1px 1px 0px 1px; }
+th.thSides,td.catSides,td.spaceRow	 { border-width: 0px 1px 0px 1px; }
+th.thRight,td.catRight,td.row3Right	 { border-width: 0px 1px 0px 0px; }
+th.thLeft,td.catLeft	  { border-width: 0px 0px 0px 1px; }
+th.thBottom,td.catBottom  { border-width: 0px 1px 1px 1px; }
+th.thTop	 { border-width: 1px 0px 0px 0px; }
+th.thCornerL { border-width: 1px 0px 0px 1px; }
+th.thCornerR { border-width: 1px 1px 0px 0px; }
+
+
+/* The largest text used in the index page title and toptic title etc. */
+.maintitle	{
+			font-weight: bold; font-size: 22px; font-family: "Trebuchet MS",Verdana, Arial, Helvetica, sans-serif;
+			text-decoration: none; line-height : 120%; color : #000000;
+}
+
+
+/* General text */
+.gen { font-size : 12px; }
+.genmed { font-size : 11px; }
+.gensmall { font-size : 10px; }
+.gen,.genmed,.gensmall { color : #000000; }
+a.gen,a.genmed,a.gensmall { color: #006699; text-decoration: none; }
+a.gen:hover,a.genmed:hover,a.gensmall:hover	{ color: #DD6900; text-decoration: underline; }
+
+.successful { font-size : 12px; color: #0000ff; }
+.failed { font-size : 12px; color: #ff0000; }
+.notificationBox {width: 100%; background-color: #EFF7FE; border: 1px solid #003366;}
+
+/* The register, login, search etc links at the top of the page */
+.mainmenu		{ font-size : 11px; color : #000000 }
+a.mainmenu		{ text-decoration: none; color : #006699;  }
+a.mainmenu:hover{ text-decoration: underline; color : #DD6900; }
+
+.cattitle		{ font-weight: bold; font-size: 12px ; letter-spacing: 1px; color : #006699}
+a.cattitle		{ text-decoration: none; color : #006699; }
+a.cattitle:hover{ text-decoration: underline; }
+
+
+/* Forum title: Text and link to the forums used in: index.php */
+.forumlink	{ font-weight: bold; font-size: 12px; color : #006699; }
+a.forumlink 	{ text-decoration: none; color : #006699; }
+a.forumlink:hover{ text-decoration: underline; color : #DD6900; }
+
+a.helplink          {color: #E59043; text-decoration: none; }
+a.helplink:visited  {color: #E59043; text-decoration: none}
+a.helplink:active   {color: #E59043; text-decoration: none}
+a.helplink:link     {color: #E59043; text-decoration: none}
+a.helplink:hover    {color: #006699; text-decoration: underline; }
+
+.nav			{ font-weight: bold; font-size: 11px; color : #000000;}
+a.nav			{ text-decoration: none; color : #006699; }
+a.nav:hover		{ text-decoration: underline; }
+.name			{ font-size : 11px; color : #000000;}
+.postdetails		{ font-size : 10px; color : #000000; }
+
+.postbody { font-size : 12px; line-height: 18px}
+a.postlink:link	{ text-decoration: none; color : #006699 }
+a.postlink:visited { text-decoration: none; color : #5493B4; }
+a.postlink:hover { text-decoration: underline; color : #DD6900}
+
+A.button:link {
+	/*FONT: bold 12px Arial; COLOR: #37618D; TEXT-DECORATION: none*/
+	COLOR: #37618D; TEXT-DECORATION: none
+}
+A.button:visited {
+	COLOR: #37618D; TEXT-DECORATION: none
+}
+A.button:active {
+	COLOR: #37618D; TEXT-DECORATION: none
+}
+A.button:hover {
+	COLOR: #FF8400; TEXT-DECORATION: none
+}
+
+.code {
+	font-family: Courier, 'Courier New', sans-serif; font-size: 11px; color: #006600;
+	background-color: #FAFAFA; border: #D1D7DC; border-style: solid;
+	border-left-width: 1px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px
+}
+
+.quote {
+	font-family: Verdana, Arial, Helvetica, sans-serif; font-size: 11px; color: #444444; line-height: 125%;
+	background-color: #FAFAFA; border: #D1D7DC; border-style: solid;
+	border-left-width: 1px; border-top-width: 1px; border-right-width: 1px; border-bottom-width: 1px
+}
+
+.copyright		{ font-size: 10px; font-family: Verdana, Arial, Helvetica, sans-serif; color: #444444; letter-spacing: -1px;}
+a.copyright		{ color: #444444; text-decoration: none;}
+a.copyright:hover { color: #000000; text-decoration: underline;}
+
+/* The text input fields background colour */
+input.post, textarea.post, select {
+	background-color : #FFFFFF;
+}
+
+input { text-indent : 2px; }
+
+/* The buttons used for bbCode styling in message post */
+input.button {
+	background-color : #EFEFEF;
+	color : #000000;
+	font-size: 10px; font-family: Verdana, Arial, Helvetica, sans-serif;
+}
+
+.helpline { background-color: #DEE3E7; border-style: none; }
+
+.highlight_row           { font: bold 12px Arial; background-color: #CED6E6; }
+.highlight_row_click     { font: bold 12px Arial; background-color: #CED6E6; }
+.normal_row              { font: 12px Arial; background-color: #EEEEEE;}
+.normal_row2             { font: 12px Arial; background-color: #CCCCCC;}
+.highlight2_row          { font: 12px Arial; background-color: #CED6E6; }
+
+tr.mouseout { background-color:#ffffff; }
+tr.mousein  { background-color:#eeeeee; }
+tr.checked  { background-color:#cccccc }
+tr.mousechecked { background-color:#c0c0c0 }
+
+a.sortlink          {color: #ffffff; text-decoration: none; }
+a.sortlink:visited  {color: #ffffff; text-decoration: none}
+a.sortlink:active   {color: #ffffff; text-decoration: none}
+a.sortlink:link     {color: #ffffff; text-decoration: none}
+a.sortlink:hover    {color: #DD6900; text-decoration: underline; }
+
+.title111 { color : #004B97; }
+.bg111 { color : #D4DCF5; }
+.bg222 { color : #E8EBF4; }
+.button111 { color : #E6E6E6; }
+.maincontent { PADDING-RIGHT: 12px; PADDING-LEFT: 12px; PADDING-BOTTOM: 3px; PADDING-TOP: 8px}
+
+
+#leftcolumn {
+	PADDING-RIGHT: 1px; FLOAT: left; WIDTH: 120px; MARGIN-RIGHT: 2px; BACKGROUND-COLOR: transparent
+}
+#leftcolumn .headers {
+	FONT-WEIGHT: bold; FONT-SIZE: 94%; MARGIN: 0px; COLOR: #FCA331
+}
+
+#leftbar {
+	WIDTH: 120px
+}
+#leftbar A:hover {
+}
+
+.categorylinks {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px auto 10px 10px; PADDING-TOP: 0px
+}
+.categorylinks LI {
+	PADDING-BOTTOM: 1px
+}
+.categorylinks LI A {
+	PADDING-RIGHT: 1px; DISPLAY: block; PADDING-LEFT: 0px; FONT-WEIGHT: bold; FONT-SIZE: 9px; PADDING-BOTTOM: 0px; MARGIN-LEFT: -4px; COLOR: #ffffff; PADDING-TOP: 0px; BORDER-BOTTOM: #ececec 0px solid; TEXT-DECORATION: none
+}
+.categorylinks A:visited {
+	COLOR: #ffffff
+}
+.categorylinks A:hover {
+	BACKGROUND: #8EBAE5; COLOR: #ffffff; TEXT-DECORATION: none
+}
+
+.categorylinks1 {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; PADDING-BOTTOM: 0px; MARGIN: 0px auto 10px 10px; PADDING-TOP: 0px
+}
+.categorylinks1 LI {
+	PADDING-BOTTOM: 1px
+}
+.categorylinks1 LI A {
+	PADDING-RIGHT: 1px; DISPLAY: block; PADDING-LEFT: 0px; FONT-WEIGHT: bold; FONT-SIZE: 10px; PADDING-BOTTOM: 0px; MARGIN-LEFT: -4px; COLOR: #4C678E; PADDING-TOP: 0px; BORDER-BOTTOM: #ececec 1px solid; TEXT-DECORATION: none
+}
+.categorylinks1 A:visited {
+	COLOR: #4C678E
+}
+.categorylinks1 A:hover {
+	BACKGROUND: #8EBAE5; COLOR: #ffffff; TEXT-DECORATION: none
+}
+
+/*
+.diffpointer {
+	LIST-STYLE-IMAGE: url(arrow.png)
+}
+
+#leftbar .headers {
+	PADDING-RIGHT: 2px; PADDING-LEFT: 2px; PADDING-BOTTOM: 2px; FONT: bold 110% Arial; COLOR: white; PADDING-TOP: 2px; BACKGROUND-COLOR: #008000; TEXT-ALIGN: center
+}
+#leftbar .menuitems {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; LIST-STYLE-IMAGE: url(arrow.gif); PADDING-BOTTOM: 0px; MARGIN: 5px auto 10px 17px; LINE-HEIGHT: 1.2em; PADDING-TOP: 0px
+}
+#leftbar .menuitems LI {
+	BACKGROUND-POSITION: left bottom; BACKGROUND-IMAGE: url(menuline.gif); PADDING-BOTTOM: 8px; BACKGROUND-REPEAT: no-repeat
+}
+#leftbar .menuitems LI A {
+	FONT-WEIGHT: bold; TEXT-DECORATION: none
+}
+*/
+
+HR.dotted {width: 98%; margin:2px 0px 4px 0px; border-top: 0px; border-bottom: 2px dotted #aaa;}
+HR.dottedMarginBottom {width: 100%; margin: 0px 0px 15px 0px; border-top: 0px; border-bottom: 2px dotted #aaa;}
+HR.dottedNoPadding {width: 100%; margin: 0px; padding: 0px; border-left: #fff; border-right: #fff; border-top: #fff; border-bottom: 2px dotted #aaa;}
+HR.dottedWhite {width: 100%; margin-top: 0px; margin-bottom: 0px; border-left: #fff; border-right: #fff; border-top: #fff; border-bottom: 2px dotted #fff;}
+HR.solid {width: 100%; margin-top: 5px; margin-bottom: 0px; border-left: #fff; border-right: #fff; border-top: #fff; border-bottom: 2px solid #999;}
+HR.solidWhite {width: 100%; margin-top: 0px; margin-bottom: 0px; border-left: #fff; border-right: #fff; border-top: #fff; border-bottom: 1px solid #fff;}
+HR.solidGreen {margin: 0px 0px 0px 0px; border-top: solid 1px #fff; border-bottom: solid 1px #C1DBB9;}
+HR.SolidLightGreen {margin: 2px 0px 6px 0px; border-top: solid 0px #C7D6BF; border-bottom: solid 0px #C7D6BF; size: 1px; color: #C7D6BF;}
+HR.solidSmall {margin: 8px 0px 6px 0px; border-top: solid 1px #999; border-bottom: solid 1px #999; size: 1px; color: #036;}
+HR.dottedRLMargin {width: 100%; margin-top: 0px; margin-bottom: 0px; margin-left: 5px; margin-right: 5px; border-left: 0px #000; border-right: 0px #000; border-top: 0px #000; border-bottom: 2px dotted #aaa;}
+
+.infobox {width: 100%; background-color: #EFF7FE; border: 1px solid #003366;}
+.borderimage { border:1px solid white; }
+.ten { font: 10pt Arial }
+.nine { font: 8pt Arial }
+.eight { font: 8pt Arial }
+.seven { font: 7pt Arial }
+.six { font: 6pt Arial }
+.WB10 { color: white; font: bold 10pt Arial,Helvetica;}
+.fontsize1 { font-size: 8pt }
+.fontsize2 { font-size: 10pt }
+.fontsize3 { font-size: 12pt }
+.fontsize4 { font-size: 14pt }
+.fontsize5 { font-size: 17pt }
+.fontsize6 { font-size: 24pt }
+
+@media print                {
+.notprint                   {font-size:0px; height: 0px; width: 0px}
+.oneline                    {font: 8px Arial}
+}
+
+.navtitlebar {
+  BORDER-RIGHT: #7898b5 0px solid; PADDING-RIGHT: 0px; BORDER-TOP: #7898b5 0px solid; BORDER-BOTTOM: #7898b5 2px solid; PADDING-LEFT: 0px; BACKGROUND: #E8EBF4 fixed repeat-x; PADDING-BOTTOM: 0px; BORDER-LEFT: #7898b5 0px solid; PADDING-TOP: 0px
+}
+
+.prog-border {
+  height: 18px;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #000;
+  margin: 0;
+  padding: 0;
+  }
+
+.prog-bar {
+  height: 16px;
+  margin: 1px;
+  padding: 0px;
+  background: blue;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size : 12px;
+  font-weight : bold;
+/*  text-decoration : none; line-height : 120%; */
+  color : #FFFFFF;
+  }
+
+.prog-text {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size : 12px;
+  font-weight : normal;
+  color : #000000;
+  }
+
+.pagetitle {
+/*color: ffcc00;*/
+color: #4279bd;
+/*font: bold 16px MS Sans Serif;*/
+font: bold 14px Verdana, Arial, Helvetica, sans-serif;
+padding: 3px;
+}
+
+.highinfo {background-color: #f7f7f7; border: 1px solid #cccccc;}
+
+a.currentpage { /*Style for currently selected page link*/
+/*background-color: #2e6ab1;*/
+color: pink;
+cursor: default;
+}

@@ -1,0 +1,138 @@
+<%@ page import="java.util.List"%>
+<%@ page import="com.zyzit.weboffice.util.*"%>
+<%@ page import="com.zyzit.weboffice.web.BuyCreditWeb"%>
+<%@ page import="com.zyzit.weboffice.web.TransferWeb"%>
+<%@ page import="com.zyzit.weboffice.model.CustomerInfo"%>
+<%@ page import="com.zyzit.weboffice.model.ConfigInfo"%>
+<%@ page import="com.zyzit.weboffice.model.MoneyPocketInfo"%>
+<%@ page import="com.zyzit.weboffice.model.Temp6Info"%>
+<%@ page import="com.zyzit.weboffice.message.DisplayMessage"%>
+<%
+{
+  BuyCreditWeb web = new BuyCreditWeb(session, 10);
+  String sAction = web.getRealAction(request);
+  CustomerInfo ctInfo =  web.getCustomerInfo();
+  if (ctInfo==null)
+  {//. It is not login and we need to forece it to login first
+//    response.sendRedirect(web.encodedUrl("index.jsp?action=cp-memberlogin&nextaction=cp-creditlist"));
+    TransferWeb.sendRedirectContent(response, "index.jsp?action=cp-accountlogin&nextaction=cp-creditlist");
+    return;
+  }
+
+  String sType = request.getParameter("type");
+//  if ("afterlogin".equalsIgnoreCase(sType))
+  {
+     int nTotalRecords = web.getTotalRecords(request);
+//System.out.println("nTotalRecords=" + nTotalRecords);
+  }
+
+//  ConfigInfo cfInfo = web.getConfigInfo();
+  List ltTransaction = web.getPageList(request, "index.jsp?action=cp-transactionlist");
+
+  String sTitleLinks = web.getNavigationWeb(request, "Credit List");
+%>
+<table cellspacing=1 cellpadding=0 width="100%" align="right">
+ <tr>
+  <td height=20><%=sTitleLinks%></td>
+ </tr>
+ <TR>
+  <TD height="5" valign="top"></TD>
+ </TR>
+ <TR>
+  <TD align="center"><font class='pagetitle'>Buy Credit List</font></TD>
+ </TR>
+ <TR>
+  <TD height="5" valign="bottom"></TD>
+ </TR>
+ <TR>
+  <TD>
+  <TABLE width="99%" align="center" border=0 cellpadding="0" cellspacing="1" class="table-4borders">
+  <TR vAlign="middle" bgColor="#4959A7">
+<% if (ltTransaction==null || ltTransaction.size()==0) { %>
+    <!--td width="6%"><input type="checkbox" name="allbox" value="1" onClick='alert("you click it.");'>&nbsp;<FONT color="#ffffff"><b>No.</b></FONT></td-->
+    <td width="7%" align="center"><FONT color="#ffffff"><b>No.</b></FONT></td>
+    <!--td width="24%" align="center" height=20><FONT color="#ffffff"><b>Invoice/Report No.</b></FONT></td-->
+    <td width="20%" align="center" height=20><FONT color="#ffffff"><b>Money Total</b></FONT></td>
+    <td width="28%" align="center" height=20><FONT color="#ffffff"><b>How To Get</b></FONT></td>
+    <td width="20%" align="center" height=20><FONT color="#ffffff"><b>Expired Date</b></FONT></td>
+    <td width="24%" align="center" height=20><FONT color="#ffffff"><b>Date and Time</b></FONT></td>
+  </TR>
+  <TR>
+    <td colspan="6">There is no any trasaction available.<td>
+<% } else { %>
+    <td width="7%" align="center"><FONT color="#ffffff"><b>No.</b></FONT></td>
+    <!--td width="24%" align="center" height=20><%=web.getSortNameLink("ReferenceNo", web.encodedUrl("index.jsp?action=cp-creditlist"), "Invoice/Report No.", true)%></td-->
+    <td width="20%" align="center" height=20><%=web.getSortNameLink("Money", web.encodedUrl("index.jsp?action=cp-creditlist"), "Money Total", true)%></td>
+    <td width="28%" align="center" height=20><%=web.getSortNameLink("Type", web.encodedUrl("index.jsp?action=cp-creditlist"), "How To Get", true)%></td>
+    <td width="24%" align="center" height=20><%=web.getSortNameLink("CreateDate", web.encodedUrl("index.jsp?action=cp-creditlist"), "When Did Get", true)%></td>
+    <td width="20%" align="center" height=20><%=web.getSortNameLink("ExpiredDate", web.encodedUrl("index.jsp?action=cp-creditlist"), "Expired Date", true)%></td>
+<% } %>
+  </TR>
+<%
+  String sColor;
+  int nStartNo = Utilities.getInt(web.getCacheData(web.KEY_STARTROWNO), 1);
+  for (int i=0; ltTransaction!=null && i<ltTransaction.size(); i++) {
+    MoneyPocketInfo info = (MoneyPocketInfo)ltTransaction.get(i);
+
+    if (i%2==0)
+       sColor = "#f7f7f7";
+    else
+       sColor = "#ffffff";
+%>
+  <tr bgColor="<%=sColor%>">
+    <td width="7%" height="18" align="center">&nbsp;<%=(nStartNo+i)%></td>
+    <!--td width="24%" height="18" align="center"><%=Utilities.getValue(info.ReferenceNo)%></td-->
+    <td width="20%" height="18" align="right"><%=Utilities.getNumberFormat(info.Money,'$',2)%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+    <td width="28%" height="18" align="center"><%=web.getThroughWay(info)%></td>
+    <td width="24%" height="20" align="center"><%=Utilities.getDateValue(info.CreateDate, 19)%></td>
+    <td width="20%" height="18" align="center"><%=Utilities.getValue(info.ExpiredDate)%></td>
+  </tr>
+<% } %>
+<% if (ltTransaction!=null && ltTransaction.size()>0) { %>
+   <tr>
+    <td colspan="6" align="right" height="20" class="row-footer"><%=web.encodedHrefLink(web.getCacheData(web.KEY_PAGELINKS))%></td>
+   </tr>
+<% } %>
+   </TABLE>
+   </TD>
+ </TR>
+ <TR>
+  <TD height="5" align="center"></TD>
+ </TR>
+ <TR>
+  <TD align="center"><font class='pagetitle'>Summary of Usage</font></TD>
+ </TR>
+ <TR>
+  <TD height="2" align="center"></TD>
+ </TR>
+ <TR>
+  <TD>
+<%
+   Temp6Info t6Info = web.getTranactionSummary(request, ctInfo.CustomerID);
+   if (t6Info.DateFrom==null)
+     t6Info.DateFrom = ctInfo.CreateDate;
+   if (t6Info.DateTo==null)
+     t6Info.DateTo = Utilities.getTodayDateTime().substring(0, 10);
+%>
+   <table align="center" border="0" cellpadding="1" cellspacing="0" width="98%" class="highinfo">
+    <tr>
+     <td height="20" width="35%" align="right">Date Range:&nbsp;&nbsp;<td>
+     <td colspan="3"><b><%=Utilities.getDateValue(t6Info.DateFrom, 10)%> -- <%=Utilities.getDateValue(t6Info.DateTo, 10)%></b><td>
+    </tr>
+    <tr>
+     <td height="20" align="right" width="35%">Total times to use credit:&nbsp;&nbsp;<td>
+     <td width="15%"><font color="#DD6900"><b><%=t6Info.UseTimes%></b></font><td>
+     <td align="right" width="35%">Total spent from credit:&nbsp;&nbsp;<td>
+     <td><font color="red"><b><%=Utilities.getNumberFormat(t6Info.TotalPay, '$', 2)%></b><font><td>
+    </tr>
+    <tr>
+     <td height="25" align="right" width="35%">Total credit to have:&nbsp;&nbsp;<td>
+     <td width="15%"><font color="green"><b><%=Utilities.getNumberFormat(t6Info.TotalBuy, '$', 2)%></b></font><td>
+     <td align="right" width="35%">The current balance of credit:&nbsp;&nbsp;<td>
+     <td><font color="green"><b><%=Utilities.getNumberFormat(t6Info.Balance, '$', 2)%></b></font><td>
+    </tr>
+   </table>
+  </TD>
+ </TR>
+</table>
+<% } %>

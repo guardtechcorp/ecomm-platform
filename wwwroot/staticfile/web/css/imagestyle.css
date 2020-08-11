@@ -1,0 +1,79 @@
+.thumbnail{
+position: relative;
+z-index: 0;
+}
+
+.thumbnail:hover{
+background-color: transparent;
+z-index: 50;
+}
+
+.thumbnail span{ /*CSS for enlarged image*/
+position: absolute;
+background-color: lightyellow;
+padding: 5px;
+left: -1000px;
+border: 1px dashed gray;
+visibility: hidden;
+color: black;
+text-decoration: none;
+}
+
+.thumbnail span img{ /*CSS for enlarged image*/
+border-width: 0;
+padding: 2px;
+}
+
+.thumbnail:hover span{ /*CSS for enlarged image on hover*/
+visibility: visible;
+top: 0;
+left: 60px; /*position where enlarged image should offset horizontally */
+
+}
+
+
+/*
+<a class="thumbnail" href="#thumb"><img src="media/tree_thumb.jpg" width="100px" height="66px" border="0" /><span><img src="media/tree.jpg" /><br />Simply beautiful.</span></a>
+
+<a class="thumbnail" href="#thumb"><img src="media/ocean_thumb.jpg" width="100px" height="66px" border="0" /><span><img src="media/ocean.jpg" /><br />So real, it's unreal. Or is it?</span></a>
+
+<br />
+<br />
+
+<a class="thumbnail" href="#thumb">Dynamic Drive<span><img src="media/dynamicdrive.gif" /><br />Dynamic Drive</span></a><br />
+<a class="thumbnail" href="#thumb">Zoka Coffee<span><img src="media/zoka.gif" /><br />Zoka Coffee</span></a>
+
+*/
+
+
+.toggleopacity img{
+filter:progid:DXImageTransform.Microsoft.Alpha(opacity=50);
+-moz-opacity: 0.5;
+}
+
+.toggleopacity:hover img{
+filter:progid:DXImageTransform.Microsoft.Alpha(opacity=100);
+-moz-opacity: 1;
+}
+
+.toggleopacity img{
+border: 1px solid #ccc;
+}
+
+.toggleborder:hover img{
+border: 1px solid navy;
+}
+
+.toggleborder:hover{
+color: red; /* Dummy definition to overcome IE bug */
+}
+
+/*
+<a class="toggleopacity" href="http://www.dynamicdrive.com">
+<img border="0" src="media/button.gif" width="137" height="26" />
+</a>
+
+<a class="toggleborder" href="http://www.dynamicdrive.com/style/">
+<img border="0" src="media/button2.gif" width="163" height="57" />
+</a>
+*/

@@ -1,0 +1,91 @@
+#dropmenudivxx{
+position:absolute;
+background-color: #ffffff;
+border:1px solid #dadada;
+border-bottom-width: 0;
+font:normal 14px /*Verdana*/;
+line-height:22px;
+z-index:100;
+}
+
+#dropmenudivxx a{
+color: #A70303;
+width: 100%;
+display: block;
+text-indent: 3px;
+border-bottom: 1px solid #dadada;
+padding: 1px 0;
+text-decoration: none;
+font-weight: bold;
+}
+
+#dropmenudivxx a:visited{
+color: #A70303;
+}
+
+#dropmenudivxx a:hover{ /*hover background color*/
+background-color: #F3F3F3;/*#C7FF5E;*/
+}
+
+/* Sample CSS definition for the example list. Remove if desired */
+.navlist li {
+list-style-type: square;
+width: 135px;
+background-color: #FFFFB9;
+}
+
+/*Default style for SPAN icons. Edit if desired: */
+.iconspan{
+float: right;
+margin: 2px;
+/*cursor:hand;*/
+cursor:pointer;
+font-weight: bold;
+}
+
+/*CSS used to style the examples. Remove if desired: */
+.eg-bar{
+ /*
+background-color: #EEF5D3;
+font-weight: bold;
+border: 1px solid black;
+padding: 4px;
+*/
+background: white url(media/glossyback2.gif) repeat-x bottom left;
+font: bold 12px "Lucida Grande", "Trebuchet MS", Verdana, Helvetica, sans-serif;
+color: white;
+display: block;
+width: auto;
+height: 14px;
+padding: 5px;
+text-decoration: none;
+/*margin-bottom: 2px;*/
+/*padding-bottom: 4px;*/
+/*border: 1px solid #9A9A9A;*/
+}
+
+div.eg-bar{
+width: 200px;
+}
+
+.icongroup1{
+width: 100%;/*185px;*/
+}
+
+.adminlinks UL {
+	MARGIN-BOTTOM: 0px;
+}
+
+.adminlinks LI {
+	PADDING-BOTTOM: 1px;
+}
+.adminlinks LI A {
+	PADDING-RIGHT: 15px; DISPLAY: block; PADDING-LEFT: 4px; FONT-WEIGHT: bold; FONT-SIZE: 11px; PADDING-BOTTOM: 1px; MARGIN-LEFT: -4px; COLOR: #4C678E; PADDING-TOP: 0px; BORDER-BOTTOM: #ececec 1px solid; TEXT-DECORATION: none
+}
+.adminlinks A:visited {
+	COLOR: #4C678E
+}
+.adminlinks A:hover {
+	BACKGROUND: #8EBAE5; COLOR: #ffffff; TEXT-DECORATION: none
+}
+

@@ -1,0 +1,100 @@
+/*Credits: Dynamic Drive CSS Library */
+/*URL: http://www.dynamicdrive.com/style/ */
+
+.halfmoon{
+margin-bottom: 1em;
+}
+
+.halfmoon ul{
+padding: 3px 9px 2px 5px;
+margin-left: 0;
+margin-top: 1px;
+margin-bottom: 0;
+font: bold 12px Verdana;
+list-style-type: none;
+text-align: left; /*set to left, center, or right to align the menu as desired*/
+border-bottom: 1px solid #929492;
+}
+
+.halfmoon li{
+display: inline;
+margin: 0;
+}
+
+.halfmoon li a{
+text-decoration: none;
+padding: 3px 9px 2px 5px;
+margin: 0;
+margin-right: 1px; /*distance between each tab*/
+border-left: 1px solid #DDD;
+color: black;
+font-size: 13px;
+background: #ECEEEC url(media/tabright.gif) top right no-repeat;
+}
+
+.halfmoon li a:visited{
+color: black;
+}
+
+.halfmoon li a:hover{
+background-color: #CDDADA;
+color: navy;
+}
+
+#vdividermenu ul{
+margin: 0;
+padding: 0;
+margin-bottom: -2;
+float: right;
+font: bold 100% Tohoma;
+width: 100%;
+height: 22;
+border: 1px solid #625e00;
+background-color: #f9ff91;
+}
+
+#underlinetd a {
+float: left;
+color: white;/*gray;*/
+font-weight: bold;
+padding: 2px 6px 4px 6px;
+text-decoration: none;
+background: #7392D4 url(media/menudivide.gif) top left repeat-y;
+}
+
+#underlinetd a:hover {
+color: #FCA331;
+background-color: #6698cb;
+border-bottom:2px solid #FCA331;
+padding-bottom: 0;
+}
+
+.calendarmain {
+width:192px;
+border:1px solid black;
+}
+
+.calendarmonth {
+background-color:black;
+font:bold 14px verdana;
+color:white;
+}
+
+.calendardaysofweek {
+background-color:gray;
+font:bold 12px verdana;
+color:white;
+}
+
+.calendardays {
+font-size: 12px;
+font-family:verdana;
+color:black;
+background-color: lightyellow;
+padding: 2px;
+}
+
+.calendardays #today{
+font-weight: bold;
+color: red;
+}

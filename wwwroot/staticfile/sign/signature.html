@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+<title>jQuery UI Signature Basics</title>
+<link href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/south-street/jquery-ui.css" rel="stylesheet">
+<link href="https://www.apollogen.com/staticfile/web/css/jquery.signature.css" rel="stylesheet">
+<link href="/staticfile/web/css/uploadfile.css" rel="stylesheet">
+<style>
+.kbw-signature { width: 442px; height: 170px; }
+</style>
+<!--[if IE]>
+<script src="https://www.apollogen.com//staticfile/web/scripts/excanvas.js"></script>
+<![endif]-->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/jquery-ui.min.js"></script>
+<script src="https://www.apollogen.com//staticfile/web/scripts/jquery.signature.js"></script>
+<script src="/staticfile/web/scripts/jquery.uploadfile.min.js"></script>
+<script>
+var qsParm = new Array();
+function parseParameters()
+{
+    var query = window.location.search.substring(1);
+    var parms = query.split('&');
+    for (var i=0; i<parms.length; i++) {
+        var pos = parms[i].indexOf('=');
+        if (pos > 0) {
+            var key = parms[i].substring(0,pos);
+            var val = parms[i].substring(pos+1);
+            qsParm[key] = val;
+        }
+    }
+}
+
+var uploadedfile = "";
+function initUploadImageFile(idUpload, card, idhtml, uploadUrl, imageUrl)
+{
+    var uploadObj =  $("#" + idUpload).uploadFile({
+        url:uploadUrl + "&card=" + card,
+        fileName:"SignFilename",
+        multiple:true,
+        dragDrop:false,
+        cache: false,
+        acceptFiles:"image/*",
+        maxFileCount:1,
+        maxFileSize:10*1024*1024,
+        dataType: 'json',
+        uploadStr:"Select Image File",
+        autoSubmit: true,
+
+        onSuccess:function(files,data,xhr,pd)
+        {
+            var json = eval("("+data+")")
+            //      alert("ret=" + json.filenames);
+            uploadedfile = json.filenames;
+        },
+
+        afterUploadAll:function(obj)
+        {
+            uploadObj.reset();
+            $('#sig').signature('clear');
+
+            updateImagePhoto(uploadedfile, card, idhtml, imageUrl);
+        }
+    });
+}
+
+function updateImagePhoto(files, card, idhtml, imageUrl)
+{
+    uploadedfile = files;
+
+    var sb = "";
+    if (files!=null && files.length>0)
+    {
+        var rootUrl = imageUrl + "&card=" + card + "&te=" + new Date().getTime();
+        var arFile = files.split(",");
+
+        for (var i=0; i<arFile.length; i++)
+        {
+            if (i>0)
+                sb += "&nbsp;&nbsp;";
+            var imageUrl =  rootUrl + "&index=" + (i+1);
+            var start = arFile[i].indexOf("-");
+            sb += "<a href='" + imageUrl + "' target='_ImageWin' title='View Image'><img src='" + imageUrl + "' height='44' alt='View Image'></a>";
+//            sb += " <a onClick=\"return removeCardFile(" + (i+1) + ",'"  + arFile[i].substr(start+1) + "','" + card + "','";
+//            sb += idhtml + "','" + imageUrl + "')\" href='#' title='Remove it'>Remove</a>&nbsp;";
+        }
+    }
+
+    $('#' + idhtml).html(sb);
+}
+
+function removeCardFile(index, filename, card, idhtml, imageUrl)
+{
+    if (!confirm("Are you sure you want to remove '" + filename + "'"))
+    {
+        return false;
+    }
+
+    var formdata = "&action1=FillTestForm-RemoveFile" + "&card=" + card + "&index=" + index + "&te="+new Date().getTime();
+
+    $.ajax({
+        url: '/Clinician',
+        method: 'post',
+        data: formdata,
+        dataType: 'json',
+        async: true,
+        success: function (json) {
+//alert("json=" + json.message);
+            if (json.ret)
+            {
+                uploadedfile = "";
+                updateImagePhoto(uploadedfile, card, idhtml, imageUrl);
+            }
+            else
+            {
+                alert(json.message);
+            }
+        }
+    });
+
+    return false;
+}
+
+function onChangeSignature(selectObj)
+{
+    if (selectObj.selectedIndex==0)
+    {
+        $("#sign_draw").show();
+        $("#sign_uploadfile").hide();
+    }
+    else
+    {
+        $("#sign_draw").hide();
+        $("#sign_uploadfile").show();
+    }
+}
+
+$(document).ready(function()
+{
+    parseParameters();
+
+    var uploadUrl;
+    var imageUrl;
+    var lines;
+    if (window.dialogArguments)
+    {
+        var oMyObject = window.dialogArguments;
+        var parentWin = oMyObject.parentWin;
+        lines = parentWin.getVectorLines(qsParm['person']);
+        if ("Physician"==qsParm['person'])
+        {
+           uploadUrl = parentWin.getUploadUrl(qsParm['person']);
+           imageUrl = parentWin.getImageUrl(qsParm['person']);
+        }
+    }
+    else
+    {
+        lines = window.opener.getVectorLines(qsParm['person']);
+        if ("Physician"==qsParm['person'])
+        {
+            uploadUrl = window.opener.getUploadUrl(qsParm['person']);
+            imageUrl = window.opener.getImageUrl(qsParm['person']);
+        }
+    }
+
+    if ("Physician"==qsParm['person'])
+    {
+       $('#id_person').html(qsParm['person']);
+
+       initUploadImageFile('physcianuploader', 'physciansign', 'id_uploadedfile', uploadUrl, imageUrl);
+    }
+    else
+    {
+       $('#id_person').html("Patient");
+
+//       $("#sign_uploadfile").hide();
+       document.signatureform.signway.disabled = true;
+    }
+
+	$('#sig').signature();
+	$('#clear').click(function() {
+
+       if (document.signatureform.signway.selectedIndex==0)
+       {
+	      $('#sig').signature('clear');
+       }
+       else
+       {
+          if (uploadedfile.length>3)
+          {
+             var start = uploadedfile.indexOf("-");
+             removeCardFile(1, uploadedfile.substr(start+1), 'physciansign', 'id_uploadedfile', imageUrl);
+          }
+       }
+
+       return false;
+	});
+	
+	$('#json').click(function() {
+		alert($('#sig').signature('toJSON'));
+	});
+	$('#svg').click(function() {
+		alert($('#sig').signature('toSVG'));
+	});
+
+  //alert("lines=" + lines.indexOf("{\"lines\":"));
+  if (lines.length>3)
+  {
+     if (lines.indexOf("{\"lines\":")>=0)
+     {
+        $('#sig').signature('draw', lines);
+        document.signatureform.signway.selectedIndex = 0;
+     }
+     else
+     {
+       updateImagePhoto(lines, 'physciansign', 'id_uploadedfile', imageUrl);
+
+       document.signatureform.signway.selectedIndex = 1;
+     }
+  }
+  else
+  {
+      document.signatureform.signway.selectedIndex = 0;
+  }
+
+  onChangeSignature(document.signatureform.signway);
+
+});
+
+function saveSignature()
+{
+  var lines = $('#sig').signature('toJSON');
+  if (document.signatureform.signway.selectedIndex==1)
+  {
+      lines = uploadedfile;
+  }
+
+  if (window.dialogArguments)
+  {
+     var oMyObject = window.dialogArguments;
+     var parentWin = oMyObject.parentWin;
+     parentWin.setVectorLines(lines, qsParm['person']);
+  }
+  else
+  {
+     window.opener.setVectorLines(lines, qsParm['person']);
+  }	
+
+  window.close(); 
+  return false;
+}
+
+function cancelSignature()
+{
+  window.close(); 
+  return false;
+}
+</script>
+</head>
+<body>
+<form name="signatureform">
+<table align="center" border=0 cellpadding="1" cellspacing="1" width="450">
+ <tr>
+  <td><font size=4><b><span id="id_person">Physician</span> Sign:</b></font></td>
+  <td align="right">
+    <select name="signway" onchange="onChangeSignature(this)">
+     <option value="draw">Sign with a Mouse</option>
+     <option value="upload">Upload a pre-saved signature image</option>
+    </select>
+  </td>
+ </tr>
+ <tr>
+  <td id="sign_draw" colspan=2>
+    <table width="100%" border=0 cellpadding=0 cellspacing="0">
+     <tr><td><div id="sig"></div></td></tr>
+	</table>
+  </td>
+ </tr>
+ <tr>
+  <td id="sign_uploadfile" colspan="2">
+    <table width="100%" height="175" style="border: 1px solid #777777" border=0 cellpadding="4" cellspacing="2">
+     <tr>
+       <td valign="top"><font size="3"><span id="physcianuploader">Upload Image File</span></font></td>
+     </tr>
+     <tr>
+       <td align='center' valign="top"><span id="id_uploadedfile"></span> </td>
+     </tr>
+    </table>
+  </td>
+ </tr>
+ <tr>
+  <td> 
+	<button id="clear" name="clear" style="width:100px;height:30px">Clear</button><!-- p><button id="json">JSON</button> <button id="svg">SVG</button-->
+  </td>
+  <td align="right">
+	<button name="cancel" onclick="return cancelSignature()" style="width:100px;height:30px">Cancel</button> 
+	<button name="save" onclick="return saveSignature()" style="width:120px;height:30px">Save Signature</button>
+  </td>
+</tr>
+</table>
+</form>
+</body>
+</html>

@@ -1,0 +1,45 @@
+.jsdomenudiv {
+	BORDER-RIGHT: #8a867a 1px solid; BORDER-TOP: #8a867a 1px solid; Z-INDEX: 10; BACKGROUND-IMAGE: url(media/office_xp_menu_left.png); VISIBILITY: hidden; PADDING-BOTTOM: 1px; BORDER-LEFT: #8a867a 1px solid; CURSOR: default; PADDING-TOP: 1px; BORDER-BOTTOM: #8a867a 1px solid; BACKGROUND-REPEAT: repeat-y; POSITION: absolute; BACKGROUND-COLOR: #ffffff
+}
+.jsdomenuitem {
+	PADDING-RIGHT: 15px; PADDING-LEFT: 30px; FONT-SIZE: 12px; BACKGROUND: none transparent scroll repeat 0% 0%; PADDING-BOTTOM: 3px; COLOR: #000000; BORDER-TOP-STYLE: none; PADDING-TOP: 3px; FONT-FAMILY: Tahoma, Helvetica, sans, Arial, sans-serif; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; POSITION: relative; BORDER-BOTTOM-STYLE: none
+}
+.jsdomenuitemover {
+	BORDER-RIGHT: #316ac5 1px solid; PADDING-RIGHT: 15px; BORDER-TOP: #316ac5 1px solid; PADDING-LEFT: 28px; FONT-SIZE: 12px; PADDING-BOTTOM: 2px; MARGIN-LEFT: 1px; BORDER-LEFT: #316ac5 1px solid; COLOR: #000000; MARGIN-RIGHT: 1px; PADDING-TOP: 2px; BORDER-BOTTOM: #316ac5 1px solid; FONT-FAMILY: Tahoma, Helvetica, sans, Arial, sans-serif; POSITION: relative; BACKGROUND-COLOR: #c1d2ee
+}
+.jsdomenuarrow {
+	RIGHT: 8px; BACKGROUND-IMAGE: url(media/office_xp_arrow.png); WIDTH: 4px; BACKGROUND-REPEAT: no-repeat; POSITION: absolute; HEIGHT: 7px
+}
+.jsdomenuarrowover {
+	RIGHT: 8px; BACKGROUND-IMAGE: url(media/office_xp_arrow_o.png); WIDTH: 4px; BACKGROUND-REPEAT: no-repeat; POSITION: absolute; HEIGHT: 7px
+}
+.jsdomenusep {
+	PADDING-LEFT: 28px
+}
+.jsdomenusep HR {
+	
+}
+.jsdomenubardiv {
+	BORDER-RIGHT: 1px outset; PADDING-RIGHT: 1px; BACKGROUND-POSITION: left 50%; BORDER-TOP: 1px outset; PADDING-LEFT: 1px; BACKGROUND-IMAGE: url(media/office_xp_divider.png); VISIBILITY: visible; PADDING-BOTTOM: 3px; BORDER-LEFT: 1px outset; CURSOR: default; PADDING-TOP: 3px; BORDER-BOTTOM: 1px outset; BACKGROUND-REPEAT: no-repeat; POSITION: absolute; BACKGROUND-COLOR: #ece9d8
+}
+.jsdomenubardragdiv {
+	PADDING-RIGHT: 5px; DISPLAY: inline; PADDING-LEFT: 5px; FONT-SIZE: 12px; VISIBILITY: hidden; PADDING-BOTTOM: 2px; WIDTH: 9px; CURSOR: move; PADDING-TOP: 2px; FONT-FAMILY: Tahoma, Helvetica, sans, Arial, sans-serif; POSITION: relative
+}
+.jsdomenubaritem {
+	PADDING-RIGHT: 10px; DISPLAY: inline; PADDING-LEFT: 24px; FONT-SIZE: 12px; PADDING-BOTTOM: 2px; COLOR: #000000; BORDER-TOP-STYLE: none; PADDING-TOP: 2px; FONT-FAMILY: Tahoma, Helvetica, sans, Arial, sans-serif; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; POSITION: relative; BACKGROUND-COLOR: #efedde; BORDER-BOTTOM-STYLE: none
+}
+.jsdomenubaritemover {
+	BORDER-RIGHT: #316ac5 1px solid; PADDING-RIGHT: 9px; BORDER-TOP: #316ac5 1px solid; DISPLAY: inline; PADDING-LEFT: 23px; FONT-SIZE: 12px; PADDING-BOTTOM: 2px; BORDER-LEFT: #316ac5 1px solid; COLOR: #000000; PADDING-TOP: 2px; BORDER-BOTTOM: #316ac5 1px solid; FONT-FAMILY: Tahoma, Helvetica, sans, Arial, sans-serif; POSITION: relative; BACKGROUND-COLOR: #c1d2ee
+}
+.jsdomenubaritemclick {
+	BORDER-RIGHT: #8a867a 1px solid; PADDING-RIGHT: 9px; BORDER-TOP: #8a867a 1px solid; DISPLAY: inline; PADDING-LEFT: 23px; FONT-SIZE: 12px; PADDING-BOTTOM: 2px; BORDER-LEFT: #8a867a 1px solid; COLOR: #000000; PADDING-TOP: 2px; BORDER-BOTTOM: #8a867a 1px solid; FONT-FAMILY: Tahoma, Helvetica, sans, Arial, sans-serif; POSITION: relative; BACKGROUND-COLOR: #efedde
+}
+.icon1 {
+	LEFT: 4px; BACKGROUND-IMAGE: url(media/icon1.png); WIDTH: 16px; BACKGROUND-REPEAT: no-repeat; POSITION: absolute; HEIGHT: 16px
+}
+.icon2 {
+	LEFT: 4px; BACKGROUND-IMAGE: url(media/icon2.png); WIDTH: 16px; BACKGROUND-REPEAT: no-repeat; POSITION: absolute; HEIGHT: 16px
+}
+.icon3 {
+	LEFT: 4px; BACKGROUND-IMAGE: url(media/icon3.png); WIDTH: 16px; BACKGROUND-REPEAT: no-repeat; POSITION: absolute; HEIGHT: 16px
+}

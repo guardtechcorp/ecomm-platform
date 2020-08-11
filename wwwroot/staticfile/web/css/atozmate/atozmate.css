@@ -1,0 +1,19 @@
+BODY {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; BACKGROUND: url(media/bgtile.jpg) #fffcc9 repeat; PADDING-BOTTOM: 20px; MARGIN: 0px; FONT: 0.75em Arial, Helvetica, Sans-Serif; COLOR: #573643; PADDING-TOP: 5px; TEXT-ALIGN: center
+}
+
+#shapes {
+	BACKGROUND: url(media/bgtop.png) no-repeat center 50%; HEIGHT: 204px
+}
+
+#header {
+	MARGIN: auto; WIDTH: 740px; POSITION: relative; TEXT-ALIGN: left; MARGIN-TOP: -168px; BACKGROUND: url(media/ban_top.jpg) #fff9ab no-repeat; HEIGHT: 155px
+}
+
+#container {
+	MARGIN: auto; WIDTH: 740px; POSITION: relative; TEXT-ALIGN: left; BACKGROUND: url(media/edges.png) #fff repeat-y; PADDING-BOTTOM: 20px
+}
+
+#footer {
+	MARGIN: auto; WIDTH: 740px; POSITION: relative; TEXT-ALIGN: left; FONT-SIZE: 0.9em; BACKGROUND: url(media/footer.png) no-repeat; COLOR: #71515e; PADDING-TOP: 30px; HEIGHT: 78px; TEXT-ALIGN: center
+}

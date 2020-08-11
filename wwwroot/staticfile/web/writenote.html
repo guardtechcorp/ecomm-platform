@@ -1,0 +1,51 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+<title>Insert Note Panel</title>
+</head>
+<script language="JavaScript" type="text/javascript">
+function onFormLoad(form)
+{
+  form.textnote.focus();
+}
+
+function insertNote(form) 
+{
+ if (window.dialogArguments)
+ {
+    var oMyObject = window.dialogArguments;
+    var parentWin = oMyObject.parentWin;
+    parentWin.insertNote(form.textnote.value);
+ }
+ else
+   window.opener.insertNote(form.textnote.value);
+//  alert("value=" + form.textnote.value);
+  
+  window.close();
+}
+</script>
+<body bgcolor="#EEEEEE" marginwidth="0" marginheight="0" topmargin="0" leftmargin="0" onLoad="onFormLoad(document.noteform)">
+<form name='noteform'>
+<table border="0" cellpadding="0" cellspacing="0" style="padding: 10px;">
+   <tr>
+    <td align="top">Please type your note:
+      <table  border="0" cellpadding="0" cellspacing="0" style="background-color: #F7F7F7; border: 2px solid #FFFFFF; padding: 2px;">
+        <tr> 
+          <td width="100%"> 
+            <textarea name="textnote" style="HEIGHT: 280px; WIDTH: 300px"></textarea>
+          </td>
+        </tr>
+      </table>  
+   </tr>
+   <tr>
+    <td align="center">
+		<input type="button" value=" Insert " onClick="insertNote(document.noteform);">
+        &nbsp;
+        <input type="button" value=" Cancel " onClick="window.close();">
+    </td>
+   </tr>
+</table>
+</form>
+</body>
+</html>

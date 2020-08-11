@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<title>Dynamic Drive DHTML Scripts- Ajax Tabs Content script</title>
+<link rel="stylesheet" type="text/css" href="../../css/ajaxtabs.css" />
+
+<script type="text/javascript" src="../../scripts/ajaxtabs.js">
+
+/***********************************************
+* Ajax Tabs Content script- © Dynamic Drive DHTML code library (www.dynamicdrive.com)
+* This notice MUST stay intact for legal use
+* Visit Dynamic Drive at http://www.dynamicdrive.com/ for full source code
+***********************************************/
+
+</script>
+</head>
+
+<body>
+<p><b>Documentation:</b> <a href="http://www.dynamicdrive.com/dynamicindex17/ajaxtabscontent/">http://www.dynamicdrive.com/dynamicindex17/ajaxtabscontent/</a></p>
+<br />
+
+
+<table>
+<tr>
+<td colspan=2><h1>This is a  empty row.</h1></td>
+<tr>
+
+<tr>
+<td width="200">This is a empty cell.</td>
+<td>
+<ul id="maintab" class="shadetabs">
+<li class="selected"><a href="#default" rel="ajaxcontentarea">Intro</a></li>
+<li><a href="external.htm" rel="ajaxcontentarea">Bird</a></li>
+<li><a href="external2.htm" rel="ajaxcontentarea">Dog</a></li>
+<li><a href="external3.htm" rel="ajaxcontentarea">Cat</a></li>
+<li><a href="external4.htm" rel="ajaxcontentarea">Sea Otter</a></li>
+<li><a href="external3.htm" rel="ajaxcontentarea">Cat2</a></li>
+</ul>
+<div id="ajaxcontentarea" class="contentstyle">
+<p>This is some default tab content, embedded directly inside this space and not via Ajax. It can be shown when no tabs are automatically selected, or associated with a certain tab, in this case, the first tab.</p>
+</div>
+<script type="text/javascript">
+//Start Ajax tabs script for UL with id="maintab" Separate multiple ids each with a comma.
+startajaxtabs("maintab")
+</script>
+</td>
+</tr>
+</table>
+
+<p>
+<p>
+
+
+<form>
+
+<script type="text/javascript" src="../../scripts/calendarDateInput.js"></script>
+<script>DateInput('orderdate', false, 'YYYY-MM-DD', '2001-07-21')</script>
+<input type="button" onClick="alert(this.form.orderdate.value)" value="Show date value passed">
+
+</form>
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,6 @@
+.drag-handle {
+	BACKGROUND-COLOR: #03277c
+}
+#interVeil {
+	Z-INDEX: 5; BACKGROUND: url(blackdot.gif) #000; FILTER: progid:DXImageTransform.Microsoft.alpha(opacity=50); LEFT: 0px; VISIBILITY: hidden; WIDTH: 10px; POSITION: absolute; TOP: 0px; opacity: 0.5
+}

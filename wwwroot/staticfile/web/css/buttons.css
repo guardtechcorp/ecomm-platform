@@ -1,0 +1,151 @@
+a.boldbuttons{
+background: transparent url('media/roundedge-gray-left.gif') no-repeat top left;
+display: block;
+float: left;
+font: bold 13px Arial; /* Change 13px as desired */
+line-height: 22px; /* This value + 4px + 4px (top and bottom padding of SPAN) must equal height of button background (default is 30px) */
+height: 30px; /* Height of button background height */
+padding-left: 8px; /* Width of left menu image */
+text-decoration: none;
+
+}
+
+a:link.boldbuttons, a:visited.boldbuttons, a:hover.boldbuttons, a:active.boldbuttons{
+color: white; /*button text color*/
+}
+
+a.boldbuttons span{
+background: transparent url('media/roundedge-gray-right.gif') no-repeat top right;
+display: block;
+padding: 4px 10px 4px 2px; /*Set 10px to be equal or greater than'padding-left' value above*/
+}
+
+
+a:hover.boldbuttons{ /* Hover state CSS */
+text-decoration: underline;
+}
+
+
+.buttonwrapper{ /* Container you can use to surround a CSS button to clear float */
+overflow: hidden; /*See: http://www.quirksmode.org/css/clearing.html */
+width: 100%;
+}
+
+
+/*
+<h4>Single button:</h4>
+
+<div class="buttonwrapper">
+<a class="boldbuttons" href="http://www.dynamicdrive.com/style/"><span>Dynamic Drive CSS Library</span></a>
+</div>
+
+
+<h4>Side by Side:</h4>
+
+<div class="buttonwrapper">
+<a class="boldbuttons" href="http://www.dynamicdrive.com/style/csslibrary/category/C7/"><span>Download Now</span></a> <a class="boldbuttons" href="http://www.dynamicdrive.com/style/csslibrary/category/C7/" style="margin-left: 6px"><span>CSS buttons</span></a>
+</div>
+*/
+
+
+
+
+a.squarebutton{
+background: transparent url('media/square-gray-left.gif') no-repeat top left;
+display: block;
+float: left;
+font: normal 12px Arial; /* Change 12px as desired */
+line-height: 15px; /* This value + 4px + 4px (top and bottom padding of SPAN) must equal height of button background (default is 23px) */
+height: 23px; /* Height of button background height */
+padding-left: 9px; /* Width of left menu image */
+text-decoration: none;
+}
+
+a:link.squarebutton, a:visited.squarebutton, a:active.squarebutton{
+color: #494949; /*button text color*/
+}
+
+a.squarebutton span{
+background: transparent url('media/square-gray-right.gif') no-repeat top right;
+display: block;
+padding: 4px 9px 4px 0; /*Set 9px below to match value of 'padding-left' value above*/
+}
+
+a.squarebutton:hover{ /* Hover state CSS */
+background-position: bottom left;
+}
+
+a.squarebutton:hover span{ /* Hover state CSS */
+background-position: bottom right;
+color: black;
+}
+
+.buttonwrapper{ /* Container you can use to surround a CSS button to clear float */
+overflow: hidden; /*See: http://www.quirksmode.org/css/clearing.html */
+width: 100%;
+}
+
+/*
+<h4>Single button:</h4>
+
+<div class="buttonwrapper">
+<a class="squarebutton" href="http://www.dynamicdrive.com/style/"><span>Dynamic Drive CSS Library</span></a>
+</div>
+
+<h4>Side by Side:</h4>
+
+<div class="buttonwrapper">
+<a class="squarebutton" href="#"><span>Submit</span></a> <a class="squarebutton" href="#" style="margin-left: 6px"><span>Reset</span></a>
+</div>
+*/
+
+a.ovalbutton{
+background: transparent url('media/oval-gray-left.gif') no-repeat top left;
+display: block;
+float: left;
+font: normal 13px Tahoma; /* Change 13px as desired */
+line-height: 16px; /* This value + 4px + 4px (top and bottom padding of SPAN) must equal height of button background (default is 24px) */
+height: 24px; /* Height of button background height */
+padding-left: 11px; /* Width of left menu image */
+text-decoration: none;
+}
+
+a:link.ovalbutton, a:visited.ovalbutton, a:active.ovalbutton{
+color: #494949; /*button text color*/
+}
+
+a.ovalbutton span{
+background: transparent url('media/oval-gray-right.gif') no-repeat top right;
+display: block;
+padding: 4px 11px 4px 0; /*Set 11px below to match value of 'padding-left' value above*/
+}
+
+a.ovalbutton:hover{ /* Hover state CSS */
+background-position: bottom left;
+}
+
+a.ovalbutton:hover span{ /* Hover state CSS */
+background-position: bottom right;
+color: black;
+}
+
+.buttonwrapper{ /* Container you can use to surround a CSS button to clear float */
+overflow: hidden; /*See: http://www.quirksmode.org/css/clearing.html */
+width: 100%;
+}
+
+
+/*
+<h4>Single button:</h4>
+
+<div class="buttonwrapper">
+<a class="ovalbutton" href="http://www.dynamicdrive.com/style/"><span>Dynamic Drive CSS Library</span></a>
+</div>
+
+<h4>Side by Side:</h4>
+
+<div class="buttonwrapper">
+<a class="ovalbutton" href="#"><span>Submit</span></a> <a class="ovalbutton" href="#" style="margin-left: 6px"><span>Reset</span></a>
+</div>
+
+*/

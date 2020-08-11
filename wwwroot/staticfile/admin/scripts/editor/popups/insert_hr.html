@@ -1,0 +1,110 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+
+<html>
+<head>
+<title>Create Horizontal Rule</title>
+</head>
+<script language="JavaScript" type="text/javascript">
+
+var qsParm = new Array();
+/* ---------------------------------------------------------------------- *\
+  Function    : retrieveWYSIWYG()
+  Description : Retrieves the textarea ID for which the link will be inserted into.
+\* ---------------------------------------------------------------------- */
+function retrieveWYSIWYG() {
+  var query = window.location.search.substring(1);
+  var parms = query.split('&');
+  for (var i=0; i<parms.length; i++) {
+    var pos = parms[i].indexOf('=');
+    if (pos > 0) {
+       var key = parms[i].substring(0,pos);
+       var val = parms[i].substring(pos+1);
+       qsParm[key] = val;
+    }
+  }
+}
+
+function createHR() {
+    if (document.hr_form.widthgroup.value == 1) {
+     var varWidth = '';
+      } else if (document.hr_form.widthgroup.value == 2) {
+      var varWidth = 'width="' + document.hr_form.width.value + '"';
+      } else if (document.hr_form.widthgroup.value == 3) {
+      var varWidth = 'width="' + document.hr_form.width.value + '%"';
+      } else {
+        var varWidth = '';
+      }
+
+     if (document.hr_form.height.value > 0) {
+        var varHeight = 'size="' + document.hr_form.height.value + '"';
+        } else {
+        var varHeight = '';
+        }
+
+   if (document.hr_form.shade.checked == true) {
+         var varShade = 'noshade=\"noshade\"';
+         } else if (document.hr_form.shade.checked == false) {
+         var varShade = '';
+         }
+
+   if (document.hr_form.widthgroup.value == 1) {
+        var varAlign = '';
+      } else if (document.hr_form.align.value == 1) {
+     var varAlign = 'align="center"';
+      } else if (document.hr_form.align.value == 2) {
+     var varAlign = 'align="left"';
+      } else if (document.hr_form.align.value == 3) {
+     var varAlign = 'align="right"';
+      }
+
+  var insertHR = '<hr ' + varWidth + ' ' + varHeight + ' ' + varShade + ' ' + varAlign + ' />';
+
+  if (window.dialogArguments)
+  {
+    var oMyObject = window.dialogArguments;
+    var parentWin = oMyObject.parentWin;
+    parentWin.insertHTML(insertHR, qsParm['wysiwyg']);
+  }
+  else
+    window.opener.insertHTML(insertHR, qsParm['wysiwyg']);
+  window.close();
+}
+
+</script>
+<body bgcolor="#EEEEEE" marginwidth="0" marginheight="0" topmargin="0" leftmargin="0" onLoad="retrieveWYSIWYG();">
+   <form name="hr_form" onSubmit="createHR();">
+      <table width="300" border="0" cellpadding="0" cellspacing="0" style="padding: 10px;">
+   <tr>
+      <td>
+         <span style="font-family: arial, verdana, helvetica; font-size: 11px; font-weight: bold;">Insert Horizontal Rule:</span>
+         <table width="100%" border="0" cellpadding="0" cellspacing="0" style="background-color: #F7F7F7; border: 2px solid #FFFFFF; padding: 5px;">
+            <tr>
+                 <td style="padding: 0 5 2 0; font-family: arial, verdana, helvetica; font-size: 11px;" valign="top" nowrap="nowrap" width="1%">Width:</td>
+               <td style="padding: 0 0 2 0; font-family: arial, verdana, helvetica; font-size: 11px;" valign="top" nowrap="nowrap"><input type="text" name="width" id="width" value="" style="font-size: 10px; width: 75;" size="10">&nbsp;&nbsp;&nbsp;<select name="widthgroup" id="widthgroup" size="1" style="font-size: 10px; width: 45;">
+                           <option value="1">Full</option>
+                           <option value="2">px</option>
+                           <option value="3">%</option>
+                        </select></td>
+            </tr>
+            <tr>
+               <td style="padding: 0 5 2 0; font-family: arial, verdana, helvetica; font-size: 11px;" valign="top" nowrap="nowrap" width="1%">Height:</td>
+               <td style="padding: 0 0 2 0;" valign="top" nowrap="nowrap"><input type="text" name="height" id="height" value="" style="font-size: 10px; width: 75;" size="10"></td>
+            </tr>
+            <tr>
+                 <td style="padding: 0 5 2 0; font-family: arial, verdana, helvetica; font-size: 11px;" valign="top" nowrap="nowrap" width="1%">Align:</td>
+               <td style="padding: 0 0 2 0; font-family: arial, verdana, helvetica; font-size: 11px;" valign="top" nowrap="nowrap"><select name="align" id="align" size="1" style="font-size: 10px; width: 75;">
+                           <option value="1">Center</option>
+                           <option value="2">Left</option>
+                           <option value="3">Right</option>
+                        </select></td>
+            </tr>
+             <tr>
+                 <td style="padding: 0 5 2 0; font-family: arial, verdana, helvetica; font-size: 11px;" valign="top" nowrap="nowrap" width="1%">No Shade:</td>
+               <td style="padding: 0 5 2 0; font-family: arial, verdana, helvetica; font-size: 11px;" valign="top" nowrap="nowrap"><input type="checkbox" name="shade" id="shade" value="1" /></td>
+            </tr>
+         </table>
+         <div align="right" style="padding-top: 5px;"><input type="submit" value="  Submit  " onClick="createHR();" style="font-size: 12px;" >&nbsp;<input type="button" value="  Cancel  " onClick="window.close();" style="font-size: 12px;" ></div>
+         </td></tr></table>
+         </form>
+   </body>
+</html>
