@@ -11,27 +11,15 @@
 
   String sCateName = product.getCategoryName(request);
 %>
-<table cellspacing=0 cellpadding=2 width="100%" height="100%" align="center" bgcolor="<%=product.getBgColor()%>">
-  <tr>
-    <td colspan=2 height=5></td>
-  </tr>
-  <tr>
-    <td colspan=2><%=product.getLabelText(cfInfo, "category-lab")%> <b><%=sCateName%></b></td>
-  </tr>
-  <tr>
-    <td colspan=2 align="right"><%=product.getListLinks(cfInfo)%>&nbsp;</td>
-  </tr>
+<div class="productList">
+    <div class="pageCategory"><%=product.getLabelText(cfInfo, "category-lab")%><%=sCateName%></div>
+
+    <div class="topPagination"><%=product.getListLinks(cfInfo)%></div>
 <% if (ltProduct.size()==0) { %>
-  <TR>
-   <td colspan=2>
-   <HR algin="left" width="100%" color="#4279bd" noShade SIZE=1><br><%=product.getLabelText(cfInfo, "categorylist-des")%></td>
-  </TR>
+  <div class="catDes"><%=product.getLabelText(cfInfo, "categorylist-des")%></div>
 <% } else { %>
-<tr>
-  <td colspan=2 height=2></td>
-</tr>
-<tr><td colspan=2 valign="top">
-<TABLE class="table-1" cellSpacing=2 cellPadding=0 width="100%" align="right">
+
+<div class="productGrid">
 <%
 //String sDomain = "&domainname=" + product.getDomainName();
 int nCol = 0;
@@ -41,9 +29,9 @@ for (int i=0; i<ltProduct.size(); i+=1) {
       nCol = 0;
    nCol++;
 %>
-<% if (nCol==1){ %><TR> <% } %>
-    <TD vAlign="top" align="center" width=84><br><%=product.getPhotoImage(cfInfo, pdInfo, 1)%></TD>
-    <TD vAlign="top" width=160 align="left"><br><a href="<%=product.encodedUrl("index.jsp?action=productdetail&productid="+pdInfo.ProductID)%>"><%=pdInfo.Name%></a>
+<div class="productWrap">
+    <div class="productThumb"><%=product.getPhotoImage(cfInfo, pdInfo, 2)%></div>
+    <div class="productTileInfo"><a href="<%=product.encodedUrl("index.jsp?action=productdetail&productid="+pdInfo.ProductID)%>"><%=pdInfo.Name%></a>
      <% if (Utilities.getValueLength(pdInfo.Code)>0) { %> <br>(<%=Utilities.getValue(pdInfo.Code)%>) <% } %>
 <% if (product.getLayoutID()==4) { %>
       <p><DEL><%=product.getLabelText(cfInfo, "originalprice-lab")%> <%=Utilities.getNumberFormat(product.getActualPrice(pdInfo, 1),'$',2)%></DEL>
@@ -63,31 +51,13 @@ for (int i=0; i<ltProduct.size(); i+=1) {
    <br><%=product.getLabelText(cfInfo, "author-lab")%> <b><%=pdInfo.Author%></b>
 <% } %>
 <% } %>
-     <br>&nbsp;<%=product.getBuyButton(cfInfo, pdInfo)%>
-    </TD>
-<% if (nCol==2){ %></TR> <% } %>
+     <br>
+       <%=product.getBuyButton(cfInfo, pdInfo)%>
+   </div>
+</div>
 <% } %>
-<% if (nCol==1){ %>
-   <TD vAlign="middle" align="center" width=100 height=120></TD>
-   <TD vAlign="top" width=150 height=110></TD>
-   </TR>
+</div>
+    <div class="bottomPagination"><%=product.getListLinks(cfInfo)%></div>
 <% } %>
-  <tr>
-    <td colspan=4 height=5></td>
-  </tr>
-</TABLE>
-</td></tr>
-<tr><td colspan=2>
-<table cellspacing=0 cellpadding=0 width="100%" align="center">
-  <tr>
-    <td colspan=2 height=5></td>
-  </tr>
-  <tr>
-    <td width="2%"></td>
-    <td width="98%" align="right"><%=product.getListLinks(cfInfo)%>&nbsp;</td>
-  </tr>
-</table>
-</td></tr>
-<% } %>
-</table>
+</div>
 <% } %>

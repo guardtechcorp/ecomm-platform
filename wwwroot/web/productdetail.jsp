@@ -113,7 +113,7 @@
       <tr>
        <td align="right" valign="top"><%=product.getLabelText(cfInfo, "cu-comment")%>:</td>
        <td align="left"><textarea rows="6" style="width:100%" wrap="virtual" name="emailcomment"><%=sComment%></textarea></td>
-       <td ></td>          
+       <td ></td>
       </tr>
       <tr>
        <td align="center" colspan="3" height="30"><INPUT type="button" name="senditembutton" value="<%=product.getLabelText(cfInfo, "cu-send")%>" style="width:110px" onclick="return submitSendEmail(document.sendemail, '<%=request.getHeader("x-forwarded-host")!=null?"/ctr":""%>', 'id_processmessage')"></td>

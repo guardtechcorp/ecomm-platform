@@ -30,38 +30,46 @@ try {
      sBackground = "background='/productimages/" + web1.getImageFileName(cfInfo1.BackImage) + "'";
 
   String sScreenWidth = cfInfo1.Width>0?("" + (cfInfo1.Width-22)):"100%";
+
+  //below span with hidden closing bracket is there just to properly line up the html as the Java has no closing bracket here, the whole span can be removed when finished
 %>
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html>
-<HEAD>
+<span style="display:none;">}</span>
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
 <%=web1.getHtmlTitleMeta(request, false)%>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name='GENERATOR' content='Web Online Management from KZ Company'>
-<META name="DISTRIBUTION" content="GLOBAL">
-<META name="COPYRIGHT" content="Copyright 1998-2007 webonlinemanage.com - Redistribution in part or in whole strictly prohibited.">
-<META name="DESCRIPTION" content="A place for your cyber life">
-<META name="ROBOTS" content="INDEX, FOLLOW">
-<META name="REVISIT-AFTER" content="1 DAYS">
-<META name="RATING" content="GENERAL">    
-<LINK href="/staticfile/web/css/common.css" type="text/css" rel="stylesheet">
-<LINK href="/staticfile/web/css/tabs.css" type="text/css" rel="stylesheet">
-<SCRIPT Language="JavaScript" src="/staticfile/web/scripts/languages/<%=cfInfo1.Language%>.js"  type="text/javascript"></SCRIPT>
-<SCRIPT Language="JavaScript" src="/staticfile/web/scripts/index.js" type="text/javascript"></SCRIPT>
-<SCRIPT Language="JavaScript" src="/staticfile/web/scripts/windows.js" type="text/javascript"></SCRIPT>
-<SCRIPT Language="JavaScript" src="/staticfile/web/scripts/customer.js" type="text/javascript"></SCRIPT>
-<SCRIPT Language="JavaScript" src="/staticfile/web/scripts/session.js" type="text/javascript"></SCRIPT>
-<SCRIPT Language="JavaScript" src="/staticfile/web/scripts/newsletter.js"  type="text/javascript"></SCRIPT>
-<SCRIPT Language="JavaScript" src="/staticfile/web/scripts/jquery_pack.js"  type="text/javascript"></SCRIPT>
+<meta name='generator' content='Web Online Management from KZ Company'>
+<meta name="distribution" content="GLOBAL">
+<meta name="copyright" content="Copyright 1998-2007 webonlinemanage.com - Redistribution in part or in whole strictly prohibited.">
+<meta name="description" content="A custom ecommerce solution">
+<meta name="robots" content="index, follow">
+<meta name="raiting" content="general">
+<link href="/staticfile/web/css/common.css" type="text/css" rel="stylesheet">
+<link href="/staticfile/web/css/tabs.css" type="text/css" rel="stylesheet">
+<link href="/staticfile/web/css/styles.css" type="text/css" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+<script Language="JavaScript" src="/staticfile/web/scripts/languages/<%=cfInfo1.Language%>.js"  type="text/javascript"></script>
+<script Language="JavaScript" src="/staticfile/web/scripts/index.js" type="text/javascript"></script>
+<script Language="JavaScript" src="/staticfile/web/scripts/windows.js" type="text/javascript"></script>
+<script Language="JavaScript" src="/staticfile/web/scripts/customer.js" type="text/javascript"></script>
+<script Language="JavaScript" src="/staticfile/web/scripts/session.js" type="text/javascript"></script>
+<script Language="JavaScript" src="/staticfile/web/scripts/newsletter.js"  type="text/javascript"></script>
+<script Language="JavaScript" src="/staticfile/web/scripts/jquery_pack.js"  type="text/javascript"></script>
+<script Language="JavaScript" src="/staticfile/web/scripts/scripts.js"  type="text/javascript"></script>
+<script src="https://use.fontawesome.com/1967144032.js"></script>
 <style type="text/css">
 </style>
-</HEAD>
+</head>
 <%@ include file="actioncheck.jsp"%>
-<BODY onLoad2="initjsDOMenu();" onUnload="onBrowserClose('logout.jsp');" LEFTMARGIN=1 TOPMARGIN=1 <%=sBackground%>>
-<SCRIPT language="JavaScript" type="text/javascript">
+<body onLoad2="initjsDOMenu();" onUnload="onBrowserClose('logout.jsp');" LEFTMARGIN=1 TOPMARGIN=1 <%=sBackground%>>
+<script language="JavaScript" type="text/javascript">
 function createjsDOMenu()
 {
 }
-</SCRIPT>
+</script>
+<div class="pageWrap">
 <% if (!"test.hongfaamerica.com".equalsIgnoreCase(sDomainName1)) { %>
 <%@ include file="floatingnews.jsp"%>
 <%@ include file="titlebar.jsp"%>
@@ -84,19 +92,23 @@ function createjsDOMenu()
 </table>
 <br>
 <% } %>
-<DIV>
-<TABLE width="<%=sScreenWidth%>" align="center" cellSpacing=0 cellPadding=0 border=0 bgcolor="<%=cfInfo1.BackColor%>">
-  <TR>
+<div class="mainContent">
+  <div class="topHero" style="background: url('/staticfile/web/images/hero-holder.jpg')">
+    <div class="heroContent">
+      <h1>Products you can trust</h1>
+      <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h2>
+    </div>
+  </div>
 <% if (cfInfo1.VerticalBarSide==0) { %>
-   <TD class="table-3" vAlign="top" width="180">
+   <div class="contentWithSidebar">
      <%@ include file="verticalbar.jsp"%>
-   </TD>
+   </div>
 <% } %>
 
 <% if (cfInfo1.VerticalBarSide!=2) { %>
-    <TD vAlign="top" width="598">
+    <div class="largeContentArea">
 <% } else { %>
-    <TD vAlign="top">
+    <div class="largeContentArea">
 <% } %>
 
 <% if ("productdetail".equalsIgnoreCase(sIndexAction)) { %>
@@ -145,20 +157,20 @@ function createjsDOMenu()
  <jsp:include page="productswitch.jsp" />
 <% } %>
 <% } %>
-   </TD>
+</div>
 <% if (cfInfo1.VerticalBarSide==1) { %>
-   <TD class="table-3" vAlign="top" width="180">
+   <div class="contentWithSidebar">
      <%@ include file="verticalbar.jsp"%>
-   </TD>
+   </div>
 <% } %>
-  </TR>
-</TABLE>
-</DIV>
+</div>
 <% if (!"test.hongfaamerica.com".equalsIgnoreCase(sDomainName1)) { %>
 <%@ include file="bottom.jsp"%>
 <% } %>
-</BODY>
-</HTML>
+</div>
+<script src="/staticfile/web/scripts/scripts.js" type="text/javascript"></script>
+</body>
+</html>
 <%  if ("Logout".equalsIgnoreCase(request.getParameter("final"))) {
     SessionWeb web = new SessionWeb(session, request);
     int nRet = web.sessionFinish(request);}
@@ -169,4 +181,3 @@ function createjsDOMenu()
      e.printStackTrace();
    }
 %>
-
