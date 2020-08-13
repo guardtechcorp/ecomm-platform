@@ -51,12 +51,13 @@
 
 <% } %>
 <% if (cfInfo.NewsArea==1) { %>
-  <h3><%=Utilities.getValue(cfInfo.NewsTitle)%></h3>
-        <div class="newscroll">
+  <!-- <h3><%=Utilities.getValue(cfInfo.NewsTitle)%></h3> -->
+        <div class="newsInnerWrap">
           <% if (cfInfo.NewsAreaScroll>0) { %>
-            <marquee onMouseOver=this.stop() onMouseOut=this.start() scrollamount=1 scrolldelay=50 direction=up height=100>
+            <!-- <marquee onMouseOver=this.stop() onMouseOut=this.start() scrollamount=1 scrolldelay=50 direction=up height=100>
             <%=web.getContent(cfInfo.NewsAreaID, "NewsAreaID")%>
-            </marquee>
+          </marquee> -->
+          <div class="newsTxt"><%=web.getContent(cfInfo.NewsAreaID, "NewsAreaID")%></div>
           <% } else { %>
             <%=web.getContent(cfInfo.NewsAreaID, "NewsAreaID")%>
           <% } %>
@@ -65,23 +66,25 @@
 
 <% } %>
 <% if (cfInfo.NewsLetter==1) { %>
+  <div class="newsLetterWrap">
        <form name="newsletter" action="#" method="post">
         <input type="hidden" name="domainname" value="<%=web.getDomainName()%>">
         <input type="hidden" name="action1" value="">
           <h3><%=web.getLabelText(cfInfo, "newsletter-til")%></h3>
-              <%=web.getLabelText(cfInfo, "subscribe-des")%>
-              <%=web.getLabelText(cfInfo, "name-lab")%>
-              <input maxlength=20 name="yourname" size="15">
-              <%=web.getLabelText(cfInfo, "email0-lab")%>
-              <input maxlength=50 name="email" size="15">
+              <p><%=web.getLabelText(cfInfo, "subscribe-des")%></p>
+              <!-- <%=web.getLabelText(cfInfo, "name-lab")%> -->
+              <input style='position: absolute; visibility: none; opacity: 0; height: 0; width: 0;' maxlength=20 name="yourname" size="15" value="Email Signup">
+              <!-- <%=web.getLabelText(cfInfo, "email0-lab")%> -->
+              <input class="newsEmail" name="email" placeholder="Enter email">
 
-            <input type="radio" checked value="1" name="what"><%=web.getLabelText(cfInfo, "subscribe-lab")%>
-            <input type="radio" value="0" name="what"><%=web.getLabelText(cfInfo, "unsubscribe-lab")%>
+            <span style='position: absolute; visibility: none; opacity: 0; height: 0; width: 0;'><input type="radio" checked value="1" name="what"><%=web.getLabelText(cfInfo, "subscribe-lab")%></span>
+            <!-- <input type="radio" value="0" name="what"><%=web.getLabelText(cfInfo, "unsubscribe-lab")%> -->
 
            <div id=response></div>
 
           <input type="button" value="<%=web.getLabelText(cfInfo, "submit-but")%> " name="submit" onclick="setAction(document.newsletter, 'Submit');submitNewsletter(document.newsletter, '<%=web.getHttpLink2("newsletter.jsp?action=subscriber")%>');">
        </form>
+     </div>
 <% } %>
 <% if (cfInfo.LinkPage==10000) { %>
    <%@ include file="linkwebpage.jsp"%>

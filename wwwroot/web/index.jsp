@@ -31,7 +31,7 @@ try {
 
   String sScreenWidth = cfInfo1.Width>0?("" + (cfInfo1.Width-22)):"100%";
 
-  //below span with hidden closing bracket is there just to properly line up the html as the Java has no closing bracket here, the whole span can be removed when finished
+//below span with display:none; and hidden closing bracket is there just to properly visually colorcode the html in the editor because the Java above has no closing bracket in this file. The whole span can be removed if needed.
 %>
 <span style="display:none;">}</span>
 
@@ -78,27 +78,10 @@ function createjsDOMenu()
     LayoutWeb web = new LayoutWeb(session, request);
     ConfigInfo cfInfo = web.getConfigInfo();
 %>
-<table width=778 border=0 cellpadding=0 cellspacing=0 align="center" style="border: 1px solid #cccccc">
-<form name="searchform" action="<%=web.getHttpLink("index.jsp")%>" method="post" onSubmit="return validateGoSearch(this);">
-    <input type="hidden" name="action1" value="Quick Search">
-    <input type="hidden" name="categoryid" value="-13">
-    <tr>
-        <td height="45"></td>
-        <td>
-           <div align="right"><%=web.getProductSearch(cfInfo)%></div>
-        </td>
-    </tr>
-</form>
-</table>
-<br>
 <% } %>
 <div class="mainContent">
-  <div class="topHero" style="background: url('/staticfile/web/images/hero-holder.jpg')">
-    <div class="heroContent">
-      <h1>Products you can trust</h1>
-      <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h2>
-    </div>
-  </div>
+
+
 <% if (cfInfo1.VerticalBarSide==0) { %>
    <div class="contentWithSidebar">
      <%@ include file="verticalbar.jsp"%>
@@ -154,6 +137,12 @@ function createjsDOMenu()
 %>
   <%@ include file="homepage.jsp"%>
 <% } else { %>
+<div class="topHero" style="background: url('/staticfile/web/images/hero-holder.jpg')">
+  <div class="heroContent">
+    <h1>Products you can trust</h1>
+    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h2>
+  </div>
+</div>
  <jsp:include page="productswitch.jsp" />
 <% } %>
 <% } %>
@@ -164,10 +153,14 @@ function createjsDOMenu()
    </div>
 <% } %>
 </div>
-<% if (!"test.hongfaamerica.com".equalsIgnoreCase(sDomainName1)) { %>
-<%@ include file="bottom.jsp"%>
-<% } %>
 </div>
+</div>
+<% if (!"test.hongfaamerica.com".equalsIgnoreCase(sDomainName1)) { %>
+<div class="footerWrap">
+<%@ include file="bottom.jsp"%>
+</div>
+<% } %>
+
 <script src="/staticfile/web/scripts/scripts.js" type="text/javascript"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-/*GLobal Styes*/
+/***** Main CSS *****/
 
 body {
   font-family: "Open Sans",Helvetica,Arial,sans-serif;
@@ -8,20 +8,76 @@ a {
   transition: all .2s;
 }
 a:hover {
+  text-decoration: none !important;
+  transition: all .2s;
+}
+input[type='text'], input[type='email'], input[type='password'], input[type='search'], input[type='tel'] {
+  float: left;
+  padding: 5px;
+  font-size: 15px;
+  height: 40px;
+  margin-bottom: 5px;
+  border: 1px solid #aaa;
+  -webkit-appearance: none;
+}
+input[type='text']:focus, input[type='email']:focus, input[type='password']:focus, input[type='search']:focus, input[type='tel']:focus {
+  border: 1px solid #000;
+  outline: none !important;
+  box-shadow: 0 0 15px -5px rgba(0, 0, 0, .4);
+}
+input[type='submit'] {
+  -webkit-appearance: none;
+  height: 40px;
+  padding: 5px 15px;
+  font-size: 12px;
+  border: none;
+  background: #000;
+  cursor: pointer;
+  color: #fff;
+  text-transform: uppercase;
+  transition: all .2s;
+}
+input[type='submit']:hover {
+  background: #777;
   transition: all .2s;
 }
 .pageWrap {
   max-width: 1400px;
   padding: 0 30px;
   margin: 0 auto;
+  padding-top: 80px;
+  min-height: 85vh;
 }
 div.header {
   font-weight: normal;
-  height: 85px;
+  height: 80px;
+  position: fixed;
+  width: calc(100% - 65px);
+  max-width: 1400px;
+  z-index: 99;
+  top: 0;
+}
+.header:after {
+  content: '';
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  height: 80px;
+  background: rgba(255,255,255,.97);
+  width: 100%;
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+  transition: all .2s;
+}
+.header.pageScrolled:after {
+  box-shadow: 0 5px 20px -8px rgba(0,0,0,.12);
+  transition: all .2s;
 }
 .logoWrap {
   float: left;
   text-align: left;
+  position: relative;
+  z-index: 9;
   width: 25%;
   height: 100%;
   display: flex;
@@ -32,10 +88,15 @@ div.header {
 }
 .logoWrap a font {
   color: #000;
+  font-family: "Open Sans",Helvetica,Arial,sans-serif;
+}
+#logo a {
+  display: block;
 }
 .topUtil {
   position: absolute;
-  width: calc(100% - 65px);
+  z-index: 9;
+  width: 100%;
   max-width: 1400px;
   text-align: right;
 }
@@ -48,6 +109,8 @@ div.header {
   text-align: right;
   width: 75%;
   padding-top: 40px;
+  position: relative;
+  z-index: 9;
 }
 ul.nav {
   text-align: right;
@@ -74,7 +137,7 @@ ul.nav li a {
 }
 ul.nav li a:after {
   content: '';
-  height: 2px;
+  height: 1px;
   width: 0;
   opacity: 0;
   background: #ff3333;
@@ -132,6 +195,8 @@ ul.nav li a:hover:after {
 .memberLoginWrap input:not([type='submit']) {
   height: 40px;
   width: 100%;
+  padding: 5px;
+  font-size: 15px;
   margin-bottom: 8px;
   border: 1px solid #aaa;
   -webkit-appearance: none;
@@ -232,6 +297,8 @@ ul.nav li.searchNav, ul.nav li.cartNav {
 }
 .searchBar input[name='productname'] {
   float: left;
+  padding: 5px;
+  font-size: 15px;
   width: 78%;
   height: 40px;
   margin-bottom: 5px;
@@ -308,15 +375,16 @@ ul.nav li.searchNav, ul.nav li.cartNav {
 }
 .sideBarContent{
   float: left;
-  width: 15%;
-  margin-right: 2%;
+  width: 17%;
+  margin-right: 3%;
 }
 .sideBarContent h3 {
   margin-top: 0;
+  text-transform: uppercase;
 }
 .largeContentArea {
   float: left;
-  width: 83%;
+  width: 80%;
 }
 .pageCategory {
   float: left;
@@ -327,6 +395,53 @@ ul.nav li.searchNav, ul.nav li.cartNav {
 .bottomPagination {
   float: right;
   clear: both;
+}
+.topPagination a, .bottomPagination a {
+  text-decoration: none !important;
+}
+.topPagination a[title="Go to Next Page"] img, .bottomPagination a[title="Go to Next Page"] img, .topPagination a[title="Go to Previous Page"] img, .bottomPagination a[title="Go to Previous Page"] img {
+  display: none;
+}
+.topPagination a[title="Go to Next Page"], .bottomPagination a[title="Go to Next Page"] {
+  padding-left: 20px;
+}
+.topPagination a[title="Go to Next Page"]:after, .bottomPagination a[title="Go to Next Page"]:after {
+  content: "\f0da";
+  font-family: FontAwesome;
+  color: #000;
+  font-size: 40px;
+  margin-left: -15px;
+  position: absolute;
+  margin-top: -11px;
+  transition: color .2s;
+}
+.topPagination a[title="Go to Previous Page"], .bottomPagination a[title="Go to Previous Page"] {
+  padding-right: 20px;
+}
+.topPagination a[title="Go to Previous Page"]:before, .bottomPagination a[title="Go to Previous Page"]:before {
+  content: "\f0d9";
+  font-family: FontAwesome;
+  color: #000;
+  font-size: 40px;
+  margin-right: -15px;
+  position: absolute;
+  margin-top: -11px;
+  transition: color .2s;
+}
+.topPagination a[title*="Go to Page"], .bottomPagination a[title*="Go to Page"] {
+  color: #000;
+  text-decoration: none !important;
+}
+.topPagination a.currentpage, .bottomPagination a.currentpage {
+  color: #fff !important;
+  background: #000 !important;
+  display: inline-block;
+  padding: 0 3px;
+}
+.topPagination a[title="Go to Next Page"]:hover:after, .bottomPagination a[title="Go to Next Page"]:hover:after, .topPagination a[title="Go to Previous Page"]:hover:before, .bottomPagination a[title="Go to Previous Page"]:hover:before {
+  color: #ff3333 !important;
+  text-decoration: none !important;
+  transition: color .2s ;
 }
 .productGrid {
   clear: both;
@@ -346,9 +461,187 @@ ul.nav li.searchNav, ul.nav li.cartNav {
   margin-bottom: 40px;
   /*box-shadow: 0 8px 25px -10px rgba(0,0,0,.15);*/
 }
+.productThumb {
+  overflow: hidden;
+}
 .productThumb img {
   width: 100%;
-  height: auto;
+  height: 20vw;
   object-fit: cover;
-  max-height: 230px;
+  max-height: 350px;
+  transition: transform .3s;
+}
+.productThumb:hover img {
+  transform: scale(1.12);
+  transition: all .3s;
+}
+.productThumb:hover + .productTileInfo a {
+  color: #ff3333;
+  transition: all .3s;
+}
+.productTileInfo a {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 600;
+}
+.sideBarContent .parent {
+  font-size: 15px;
+  padding-bottom: 10px;
+}
+.sidebarContent .parent a img, .sidebarContent .parent img, .sidebarContent .child img {
+  display: none;
+}
+.sidebarContent .parent a:first-child:before {
+  content: "\f067";
+  font-family: FontAwesome;
+  color: #000;
+  font-size: 18px;
+  margin-right: 5px;
+  transition: color .2s;
+}
+.sidebarContent .parent a.exp:first-child:before {
+  content: "\f068";
+}
+.sidebarContent .parent a:hover, .sidebarContent .parent a:hover:before {
+  color: #ff3333;
+  text-decoration: none !important;
+  transition: color .2s;
+}
+.sidebarContent .child a {
+  padding-left: 20px;
+  padding-bottom: 5px;
+  display: block;
+  text-decoration: none !important;
+}
+.sidebarContent .child br {
+  display: none;
+}
+.newsLetterWrap {
+  margin-top: 40px;
+}
+input.newsEmail {
+  float: left;
+  padding: 5px;
+  font-size: 15px;
+  width: 100%;
+  height: 40px;
+  margin-bottom: 7px;
+  border: 1px solid #aaa;
+  -webkit-appearance: none;
+}
+input.newsEmail:focus {
+  border: 1px solid #000;
+  outline: none !important;
+  box-shadow: 0 0 15px -5px rgba(0, 0, 0, .4);
+}
+.newsLetterWrap input[type='button'] {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 40px;
+  border: none;
+  background: #000;
+  cursor: pointer;
+  color: #fff;
+  text-transform: uppercase;
+  transition: all .2s;
+}
+.newsLetterWrap h3 {
+  margin-bottom: 5px;
+}
+.newsLetterWrap p {
+  margin-top: 0;
+}
+.footerWrap {
+  padding: 10px 0;
+  background: #f4f4f4;
+  width: 100%;
+}
+.footerWrap{
+  background: #f4f4f4;
+  width: 100%;
+  margin-top: 20px;
+  float: left;
+  clear: both;
+}
+.footerInsideWrap {
+  max-width: 1400px;
+  padding: 0 30px;
+  margin: 0 auto;
+  width: calc(100% - 60px);
+}
+.copyTxt {
+  float: left;
+  font-size: 11px;
+  opacity: .65;
+  margin-top: 10px;
+}
+.rightFootLinks {
+  float: right;
+  text-align: right;
+  margin-top: -25px;
+}
+.footerLinksWrap {
+  margin-bottom: 8px;
+}
+a.footLink {
+  margin-right: 20px;
+  color: #777;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: .25px;
+  font-weight: 600;
+}
+a.footLink:hover, .legalLinks a:hover {
+    color: #ff3333;
+}
+.footerSocial {
+    margin-bottom: 15px;
+}
+.footerSocial a {
+  font-size: 22px;
+  margin-right: 15px;
+}
+.legalLinks a {
+  margin-right: 15px;
+  color: #888;
+}
+.footerSocial a:last-child, .legalLinks a:last-child {
+  margin-right: 0;
+}
+.announcement {
+  position: relative;
+  z-index: 999;
+  top: 0;
+  margin-left: -35px;
+  overflow: hidden;
+  color: #fff;
+  background: #000;
+  min-height: 0;
+  width: calc(100% + 70px);
+}
+.newsInnerWrap {
+  padding: 5px;
+}
+.newsInnerWrap:before {
+  content: '';
+  position: fixed;
+  left: 0;
+  background: #000;
+  height: 30px;
+  width: 100%;
+  top: 0;
+  z-index: 0;
+}
+.newsTxt {
+  position: relative;
+}
+.newsTxt p {
+  margin: 0;
+}
+
+
+/***** Responsive CSS *****/
+@media only screen and (max-width: 1000px) {
+
+
 }
