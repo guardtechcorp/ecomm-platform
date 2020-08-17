@@ -31,9 +31,12 @@ try {
 
   String sScreenWidth = cfInfo1.Width>0?("" + (cfInfo1.Width-22)):"100%";
 
-//below span with display:none; and hidden closing bracket is there just to properly visually colorcode the html in the editor because the Java above has no closing bracket in this file. The whole span can be removed if needed.
+
 %>
-<span style="display:none;">}</span>
+<!--
+//this commented out span with hidden closing bracket is just there to properly visually colorcode the html in the editor. The try{ Java above has no closing bracket above, the closing bracket for it is toward the bottom of the file so the color coding gets medssesd up and this is a way around it
+ <span style="display:none">}</span>
+ -->
 
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -48,6 +51,8 @@ try {
 <meta name="raiting" content="general">
 <link href="/staticfile/web/css/common.css" type="text/css" rel="stylesheet">
 <link href="/staticfile/web/css/tabs.css" type="text/css" rel="stylesheet">
+<link href="/staticfile/web/css/lightslider.css" type="text/css" rel="stylesheet" />
+<link href="/staticfile/web/css/magnific-popup.css" type="text/css" rel="stylesheet" />
 <link href="/staticfile/web/css/styles.css" type="text/css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
 <script Language="JavaScript" src="/staticfile/web/scripts/languages/<%=cfInfo1.Language%>.js"  type="text/javascript"></script>
@@ -56,12 +61,14 @@ try {
 <script Language="JavaScript" src="/staticfile/web/scripts/customer.js" type="text/javascript"></script>
 <script Language="JavaScript" src="/staticfile/web/scripts/session.js" type="text/javascript"></script>
 <script Language="JavaScript" src="/staticfile/web/scripts/newsletter.js"  type="text/javascript"></script>
-<script Language="JavaScript" src="/staticfile/web/scripts/jquery_pack.js"  type="text/javascript"></script>
-<script Language="JavaScript" src="/staticfile/web/scripts/scripts.js"  type="text/javascript"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script Language="JavaScript" src="/staticfile/web/scripts/lightslider.js"></script>
+<script Language="JavaScript" src="/staticfile/web/scripts/jquery.magnific-popup.js"></script>
 <script src="https://use.fontawesome.com/1967144032.js"></script>
 <style type="text/css">
 </style>
 </head>
+
 <%@ include file="actioncheck.jsp"%>
 <body onLoad2="initjsDOMenu();" onUnload="onBrowserClose('logout.jsp');" LEFTMARGIN=1 TOPMARGIN=1 <%=sBackground%>>
 <script language="JavaScript" type="text/javascript">

@@ -30,7 +30,7 @@
 //System.out.println ("After sendredirect.");
 //      response.sendRedirect("index.jsp?action=ordertracklist&type=afterlogin");
     }
-*/    
+*/
   }
   else if ("forgotpassword".equalsIgnoreCase(sAction))
   {
@@ -68,7 +68,7 @@
     {
         response.sendRedirect(web.encodedUrl("index.jsp?action=ordertracklist&type=afterlogin"));
         return;
-    }    
+    }
   }
 */
 /*
@@ -85,56 +85,30 @@ at org.apache.coyote.tomcat5.CoyoteResponseFacade.sendRedirect(CoyoteResponseFac
 }
 */
 %>
-<table cellspacing=2 cellpadding=2 width="100%" height="530" align="center"><tr><td valign="top">
-<FORM name="shoplogon" action="index.jsp" method="post">
-  <INPUT type="hidden" name="shipmethod" value="<%=request.getParameter("shipmethod")%>">
-  <INPUT type="hidden" name="action1" value="">
-  &nbsp;&nbsp;<img src="/staticfile/web/images/tp06.gif" align="CENTER"><font color="#FF0000"><%=web.getLabelText(cfInfo, "logon-lab")%></font> > <%=web.getLabelText(cfInfo, "vieworder-link")%>
-  <table class="table-shang" cellspacing=0 cellpadding=5 width="100%" align="right">
-    <TR>
-      <TD height=20></TD>
-    </TR>
-    <TR>
-      <TD height=20 align="center"><b><font size="3" Color="#4279bd" face="Verdana, Arial, Helvetica, sans-serif"><%=web.getLabelText(cfInfo, "logon-lab")%></font></b></TD>
-    </TR>
+<!-- <font color="#FF0000"><%=web.getLabelText(cfInfo, "logon-lab")%></font> <%=web.getLabelText(cfInfo, "vieworder-link")%>
+-->
+<div class="acctLogOuter">
+<div class="acctLoginWrap">
+<form name="shoplogon" action="index.jsp" method="post">
+  <input type="hidden" name="shipmethod" value="<%=request.getParameter("shipmethod")%>">
+  <input type="hidden" name="action1" value="">
+
+      <h5>Account Login<!-- <%=web.getLabelText(cfInfo, "logon-lab")%> --></h5>
 <% if (sDisplayMessage!=null) { %>
-    <TR>
-      <TD height=20 align="center"><b><span class="<%=sClass%>"><%=sDisplayMessage%></span></b></TD>
-    </TR>
+<span class="<%=sClass%>"><%=sDisplayMessage%></span>
 <% } %>
-    <TR>
-      <TD>
-        <script>createTableOpen();</script>
-        <table width="400" height="150" border="0" cellspacing="1" cellpadding="1" bgcolor="<%=cfInfo.BackColor%>">
-          <tr>
-            <td width="40%" align="right"><%=web.getLabelText(cfInfo, "email-lab")%></td>
-            <td width="60%">
-              <input type="text" maxlength=50 size=36 name="email" value="<%=Utilities.getValue(request.getParameter("email"))%>">
-            </td>
-          </tr>
-          <tr>
-            <td width="40%" align="right"><%=web.getLabelText(cfInfo, "password-lab")%></td>
-            <td width="60%">
-              <input type="password" maxlength=20 size=36 name="password" value="<%=Utilities.getValue(request.getParameter("password"))%>">
-            </td>
-          </tr>
-          <tr>
-            <td width="40%" align="right">
-              <a onClick="return hasEmailAccount(document.shoplogon);" href="javascript:submitForgotPassword(document.shoplogon)"><%=web.getLabelText(cfInfo, "forgot-password")%></a>
-            </td>
-            <td width="60%">
-              <input type="submit" value="<%=web.getLabelText(cfInfo, "login-account")%>" name="sumbit" onClick="return validateLogon(document.shoplogon, 'Login Account');">
-            </td>
-          </tr>
-        </table>
-        <script>createTableClose();</script>
-      </TD>
-    </TR>
-    <TR vAlign=center>
-      <TD height=6>&nbsp;</TD>
-    </TR>
-  </TABLE>
-</FORM>
-</td></tr></table>
-<SCRIPT>OnLogonLoad(document.shoplogon);</SCRIPT>
+
+
+      <label>Email <!-- <%=web.getLabelText(cfInfo, "email-lab")%> --></label>
+      <input type="text" maxlength=50 size=36 name="email" value="<%=Utilities.getValue(request.getParameter("email"))%>">
+      <label>Password<!-- <%=web.getLabelText(cfInfo, "password-lab")%> --></label>
+      <input type="password" maxlength=20 size=36 name="password" value="<%=Utilities.getValue(request.getParameter("password"))%>">
+      <input type="submit" value="<%=web.getLabelText(cfInfo, "login-account")%>" name="sumbit" onClick="return validateLogon(document.shoplogon, 'Login Account');">
+      <a class="forgotPW" onClick="return hasEmailAccount(document.shoplogon);" href="javascript:submitForgotPassword(document.shoplogon)"><%=web.getLabelText(cfInfo, "forgot-password")%></a>
+
+
+</form>
+</div>
+</div>
+<script>OnLogonLoad(document.shoplogon);</script>
 <% } %>

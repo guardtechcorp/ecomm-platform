@@ -15,31 +15,30 @@
     sMemberConditionPrice = Utilities.getNumberFormat(shopcart.getMemberCondtionPrice(), '$', 2);
   }
 %>
-<FORM name="shopcart" action="<%=shopcart.getHttpLink("index.jsp")%>" method="post">
-<INPUT type="hidden" name="action1" value="">
-  <TABLE width="100%" align="right" cellspacing=2 cellpadding=2 border=0>
-    <TR>
-      <TD colSpan=5><img src="/staticfile/web/images/tp06.gif" align="CENTER"><a href="<%=shopcart.getContinueShop()%>"><%=shopcart.getLabelText(cfInfo, "shopping-link")%></a> > <font color="#FF0000"><%=shopcart.getLabelText(cfInfo, "cart-link")%></font> >
-       <%=shopcart.getLogonLink(cfInfo)%> <%=shopcart.getLabelText(cfInfo, "confirm-link")%> > <%=shopcart.getLabelText(cfInfo, "finish-link")%></TD>
-    </TR>
-    <TR vAlign="middle" bgColor="#4279bd">
-      <TD width="56%" height=20 align="center"><FONT color="#ffffff"><%=shopcart.getLabelText(cfInfo, "item-col")%></FONT></TD>
-      <TD width="9%" height=20 align="center"><FONT color="#ffffff"><%=shopcart.getLabelText(cfInfo, "quantity-col")%></FONT></TD>
-      <TD width="8%" height=20 align="center"><FONT color="#ffffff"><%=shopcart.getLabelText(cfInfo, "delete-col")%></FONT></TD>
-      <TD width="13%" height=20 align="center"><FONT color="#ffffff"><%=shopcart.getLabelText(cfInfo, "price-col")%></FONT></TD>
-      <TD width="14%" height=20 align="center"><font color="#ffffff"><%=shopcart.getLabelText(cfInfo, "total-col")%></font></TD>
-    </TR>
+<div class="breadcrumbWrap"><a href="<%=shopcart.getContinueShop()%>"><%=shopcart.getLabelText(cfInfo, "shopping-link")%></a> &gt; <font color="#FF0000"><%=shopcart.getLabelText(cfInfo, "cart-link")%></font> &gt;
+ <%=shopcart.getLogonLink(cfInfo)%> <%=shopcart.getLabelText(cfInfo, "confirm-link")%> &gt; <%=shopcart.getLabelText(cfInfo, "finish-link")%>
+</div>
+<div class="cartWrap">
+<form name="shopcart" action="<%=shopcart.getHttpLink("index.jsp")%>" method="post">
+<input type="hidden" name="action1" value="">
+  <table class="cartTable" width="100%" align="right" cellspacing=2 cellpadding=2 border=0>
+    <thead>
+    <tr>
+      <th width="56%" height=20 align="center"><%=shopcart.getLabelText(cfInfo, "item-col")%></th>
+      <th width="9%" height=20 align="center"><%=shopcart.getLabelText(cfInfo, "quantity-col")%></th>
+      <th width="8%" height=20 align="center"><%=shopcart.getLabelText(cfInfo, "delete-col")%></th>
+      <th width="13%" height=20 align="center"><%=shopcart.getLabelText(cfInfo, "price-col")%></th>
+      <th width="14%" height=20 align="center"><%=shopcart.getLabelText(cfInfo, "total-col")%></th>
+    </tr>
+  </thead>
+  <tbody>
 <% if (ltShopCart==null||ltShopCart.size()==0) {%>
-    <TR>
-      <TD colSpan=5 align="center"><IMG src="/staticfile/web/images/<%=cfInfo.Language%>/cart-empty.gif"></TD>
-    </TR>
-    <TR vAlign="middle">
-     <TD colSpan=5 align="center">
-      <script>createLeftButton();</script>
-      <a class="button" href="<%=shopcart.getContinueShop()%>"><%=shopcart.getLabelText(cfInfo, "continueshop-link")%></a>
-      <script>createRightButton();</script>
-     </TD>
-    </TR>
+        <tr vAlign="middle">
+         <td colSpan=5 align="center">
+           <h3 class="emptyCart">Your cart is currently empty</h3>
+          <a class="button continueShopBtn" href="<%=shopcart.getContinueShop()%>"><%=shopcart.getLabelText(cfInfo, "continueshop-link")%></a>
+        </td>
+       </tr>
 <% } else {
    for (int i=0; i<ltShopCart.size(); i++) {
      ShopCartInfo scInfo = (ShopCartInfo) ltShopCart.get(i);
@@ -112,36 +111,33 @@
       <TD width="15%" align="right" height="10"><%=shopcart.getLabelText(cfInfo, "grant-col")%></TD>
       <TD width="15%" align="right" height="10"><b><%=Utilities.getNumberFormat(shopcart.getSummary(4),'$',2)%></b></TD>
     </TR>
-    <TR vAlign="middle" bgColor="#f7f7f7">
-     <TD colspan="3" align="center"  height="20">&nbsp;
-     <input type="submit" value="<%=shopcart.getLabelText(cfInfo, "updatecart-but")%>" name="updatecart" onClick="setAction(document.shopcart, 'Update Cart');">&nbsp;
-     <input type="submit" value="<%=shopcart.getLabelText(cfInfo, "clearcart-but")%>" name="clearcart" onClick="setAction(document.shopcart, 'Clear Cart');return confirm('Are you sure you want to clear your shopping cart?');">&nbsp;
+    <tr>
+     <td colspan="3" height="20">
+       <div class="continueShopWithCartItms">
+        <a class="button continueShopBtn" href="<%=shopcart.getContinueShop()%>"><%=shopcart.getLabelText(cfInfo, "continueshop-link")%></a>
+      </div>
+     <input type="submit" value="<%=shopcart.getLabelText(cfInfo, "updatecart-but")%>" name="updatecart" onClick="setAction(document.shopcart, 'Update Cart');">
+     <input type="submit" value="<%=shopcart.getLabelText(cfInfo, "clearcart-but")%>" name="clearcart" onClick="setAction(document.shopcart, 'Clear Cart');return confirm('Are you sure you want to clear your shopping cart?');">
      <!--input type="submit" value="<%=shopcart.getLabelText(cfInfo, "checkout-but")%>" name="checkout" onClick="setAction(document.shopcart, 'Check Out');"-->
-     <input type="submit" value="<%=shopcart.getLabelText(cfInfo, "checkout-but")%>" name="checkout" onClick="return validateCheckOut(document.shopcart, 'Check Out', '<%=sMemberConditionPrice%>');">
-     </TD>
-     <TD colSpan=2 align="center" height="20">
-      <script>createLeftButton();</script>
-      <a class="button" href="<%=shopcart.getContinueShop()%>"><%=shopcart.getLabelText(cfInfo, "continueshop-link")%></a>
-      <script>createRightButton();</script>
-     </TD>
-    </TR>
-    <TR vAlign="middle">
-      <TD colSpan=5 height=10></TD>
-    </TR>
-    <TR vAlign="middle">
-      <TD colSpan=5 height=25><IMG src="/staticfile/web/images/tp06.gif" align="CENTER"> <%=shopcart.getLabelText(cfInfo, "shop-des1")%></TD>
-    </TR>
-    <TR vAlign="middle">
-      <TD colSpan=5 height=25><IMG src="/staticfile/web/images/tp06.gif" align="CENTER"> <%=shopcart.getLabelText(cfInfo, "shop-des2")%></TD>
-    </TR>
-    <TR vAlign="middle">
-      <TD colSpan=5 height=25><IMG src="/staticfile/web/images/tp06.gif" align="CENTER"> <%=shopcart.getLabelText(cfInfo, "shop-des3")%></TD>
-    </TR>
-    <TR vAlign="middle">
-      <TD colSpan=5 height=25><IMG src="/staticfile/web/images/tp06.gif" align="CENTER"> <%=shopcart.getLabelText(cfInfo, "shop-des4")%></TD>
-    </TR>
+   </td>
+     <td colspan="2">
+       <input type="submit" value="<%=shopcart.getLabelText(cfInfo, "checkout-but")%>" name="checkout" onClick="return validateCheckOut(document.shopcart, 'Check Out', '<%=sMemberConditionPrice%>');">
+     </td>
+   </tr>
+   <tr>
+     <td colspan="5">
+       <div class="cartInstruction">
+       <p><%=shopcart.getLabelText(cfInfo, "shop-des1")%></p>
+       <p><%=shopcart.getLabelText(cfInfo, "shop-des2")%></p>
+       <p> <%=shopcart.getLabelText(cfInfo, "shop-des3")%></p>
+       <p> <%=shopcart.getLabelText(cfInfo, "shop-des4")%></p>
+     </div>
+     </td>
+   </tr>
 <% } %>
-  </TABLE>
-</FORM>
-<SCRIPT>writeDataOnId("totalshopitems", "<%=shopcart.getTotalItems(request, response)%>");</SCRIPT>
+    </tbody>
+  </table>
+</form>
+</div>
+<script>writeDataOnId("totalshopitems", "<%=shopcart.getTotalItems(request, response)%>");</script>
 <% } %>

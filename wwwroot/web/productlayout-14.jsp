@@ -30,29 +30,48 @@ for (int i=0; i<ltProduct.size(); i+=1) {
    nCol++;
 %>
 <div class="productWrap">
-    <div class="productThumb"><%=product.getPhotoImage(cfInfo, pdInfo, 2)%></div>
-    <div class="productTileInfo"><a href="<%=product.encodedUrl("index.jsp?action=productdetail&productid="+pdInfo.ProductID)%>"><%=pdInfo.Name%></a>
-     <% if (Utilities.getValueLength(pdInfo.Code)>0) { %> <br>(<%=Utilities.getValue(pdInfo.Code)%>) <% } %>
+    <div class="productThumb">
+      <!-- Remove Start --><a href="<%=product.encodedUrl("index.jsp?action=productdetail&productid="+pdInfo.ProductID)%>">
+      <img src="/staticfile/web/images/product-thumb-holder.jpg"></a><!-- Remove End -->
+      <!-- <%=product.getPhotoImage(cfInfo, pdInfo, 1)%> -->
+    </div>
+    <div class="productTileInfo">
+      <h3><a href="<%=product.encodedUrl("index.jsp?action=productdetail&productid="+pdInfo.ProductID)%>">
+        <%=pdInfo.Name%>
+      </a></h3>
+     <!-- <% if (Utilities.getValueLength(pdInfo.Code)>0) { %> <br>(<%=Utilities.getValue(pdInfo.Code)%>) <% } %> -->
 <% if (product.getLayoutID()==4) { %>
-      <p><DEL><%=product.getLabelText(cfInfo, "originalprice-lab")%> <%=Utilities.getNumberFormat(product.getActualPrice(pdInfo, 1),'$',2)%></DEL>
-      <BR><FONT color="#ff3333"><%=product.getLabelText(cfInfo, "saleprice-lab")%> <%=Utilities.getNumberFormat(product.getActualPrice(pdInfo, 2),'$',2)%> <%=product.getRetailPrice(pdInfo, 1)%></FONT>
+      <p class="tilePrice"><del>
+        <!-- <%=product.getLabelText(cfInfo, "originalprice-lab")%> -->
+      <%=Utilities.getNumberFormat(product.getActualPrice(pdInfo, 1),'$',2)%>
+    </del>
+      <span style="color: #ff3333;">
+        <!-- <%=product.getLabelText(cfInfo, "saleprice-lab")%> -->
+        <%=Utilities.getNumberFormat(product.getActualPrice(pdInfo, 2),'$',2)%> <%=product.getRetailPrice(pdInfo, 1)%>
+      </span>
+    </p>
 <% } else { %>
     <% if (product.getRealPrice(pdInfo)>0) { %>
-      <p><%=product.getLabelText(cfInfo, "productprice2-lab")%> <%=Utilities.getNumberFormat(product.getRealPrice(pdInfo),'$',2)%>
+      <p class="tilePrice">
+        <!-- <%=product.getLabelText(cfInfo, "productprice2-lab")%> -->
+        <%=Utilities.getNumberFormat(product.getRealPrice(pdInfo),'$',2)%>
     <% } %>
  <% if (product.getLayoutID()==1) { %>
-      <BR><!--<%=product.getLabelText(cfInfo, "adddate-lab")%> <b><%=Utilities.getDateValue(pdInfo.CreateDate, 10)%></b>-->
+      <!--<%=product.getLabelText(cfInfo, "adddate-lab")%> <b><%=Utilities.getDateValue(pdInfo.CreateDate, 10)%></b>-->
  <% } else if (product.getLayoutID()==2) { %>
-      <BR><%=product.getLabelText(cfInfo, "watchvisitor-lab")%> <b><%=pdInfo.VisitTime%></b>
+      <!-- <BR><%=product.getLabelText(cfInfo, "watchvisitor-lab")%> <b><%=pdInfo.VisitTime%></b> -->
  <% } else { %>
-      <BR><%=product.getLabelText(cfInfo, "totalsold-lab")%> <b><%=pdInfo.SoldCount%></b>
+      <!-- <%=product.getLabelText(cfInfo, "totalsold-lab")%> <b><%=pdInfo.SoldCount%></b> -->
  <% } %>
+ <!-- Remove Start --> <p class="tilePrice">$149.99</p> <!-- Remove End -->
 <% if (Utilities.getValueLength(pdInfo.Author)>0) { %>
-   <br><%=product.getLabelText(cfInfo, "author-lab")%> <b><%=pdInfo.Author%></b>
+  <!-- <%=product.getLabelText(cfInfo, "author-lab")%> <b><%=pdInfo.Author%></b> -->
 <% } %>
 <% } %>
-     <br>
+       <div class="buyBtnWrap">
+         <!-- Remove Start --><a onfocus="this.blur()" href="#"><img src="/staticfile/web/images/iso-8859-1/mycart.gif" width="90" height="20" align="top" border="0"></a><!-- Remove End -->
        <%=product.getBuyButton(cfInfo, pdInfo)%>
+      </div>
    </div>
 </div>
 <% } %>

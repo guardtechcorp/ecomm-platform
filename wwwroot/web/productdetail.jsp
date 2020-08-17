@@ -15,75 +15,120 @@
   String sCategoryName = product.getCategoryName(request);
   int nCategoryId = product.getCategoryId();
 %>
-<table cellspacing=2 cellpadding=2 width="100%" height="100%" align="center" bgcolor="<%=product.getBgColor()%>"><tr><td valign="top">
-  <tr>
-    <td height="24" valign="top" style="border-bottom: 1px solid #4279bd">
+<div class="detailCategory">
 <% if (nCategoryId>0) { %>
         <%=product.getLabelText(cfInfo, "category-lab")%> <%=category.getProductLink(nCategoryId, sCategoryName)%> >
 <% } %>
-       <b><%=pdInfo.Name.replaceAll("\\<br\\>", " ")%></b>
-    </td>
-  </tr>
-  <tr>
-    <td>
-     <TABLE cellSpacing=0 cellPadding=1 width="100%">
-       <TR>
-         <TD valign="top" align="center" width="204"><%=product.getPhotoImage(cfInfo, pdInfo, 2)%></TD>
-         <TD width="4"></TD>
-         <TD vAlign="top">
-           <table width="100%" cellpadding="0" cellspacing="2">
-            <tr>
-             <td>
-                <font color='#000000' size='<%=nSize%>'><!-- product.getLabelText(cfInfo, "productname-lab") --><b><%=Utilities.getValue(pdInfo.Name)%></b>
-                <BR>
+       <strong><%=pdInfo.Name.replaceAll("\\<br\\>", " ")%></strong>
+     </div>
+  <div class="productDetailWrap">
+    <div class="productImageInfo">
+<div class="productImageWrap">
+  <!-- <div class="mainImg"><%=product.getPhotoImage(cfInfo, pdInfo, 2)%></div> -->
+
+          <ul id="lightslider" class="productSlider">
+              <li data-thumb="/staticfile/web/images/product-thumb-holder.jpg">
+                <a href="/staticfile/web/images/product-thumb-holder.jpg" class="imageLightbox">
+                  <img src="/staticfile/web/images/product-thumb-holder.jpg" />
+                </a>
+              </li>
+              <li data-thumb="/staticfile/web/images/product-thumb-holder2.jpg">
+                <a href="/staticfile/web/images/product-thumb-holder2.jpg" class="imageLightbox">
+                  <img src="/staticfile/web/images/product-thumb-holder2.jpg" />
+                </a>
+               </li>
+              <li data-thumb="/staticfile/web/images/product-thumb-holder3.jpg">
+                <a href="/staticfile/web/images/product-thumb-holder3.jpg" class="imageLightbox">
+                  <img src="/staticfile/web/images/product-thumb-holder3.jpg" />
+                </a>
+              </li>
+              <li data-thumb="/staticfile/web/images/product-thumb-holder4.jpg">
+                <a href="/staticfile/web/images/product-thumb-holder4.jpg" class="imageLightbox">
+                  <img src="/staticfile/web/images/product-thumb-holder4.jpg" />
+                </a>
+              </li>
+          </ul>
+
+
+  <%
+    String[] arMoreFile = product.getMoreFileList(pdInfo, ProductWeb.MOREFILE_MEDIUM);
+    StringBuffer sbFile = new StringBuffer();
+    if (arMoreFile!=null && arMoreFile.length>0)
+    {
+       for (int i=1; i<arMoreFile.length; i++)
+       {
+          String sPhotoLink =  product.getPhotoImageLink(pdInfo.ProductID, i, product.getImageTag(arMoreFile[i], 80, 1));
+          sbFile.append(" " + sPhotoLink);
+       }
+    }
+
+    if (sbFile.length()>0) {
+  %>
+
+<!--  <div class="smallThumbs"><%=sbFile.toString()%></div> -->
+
+                <% } %>
+
+</div>
+<div class="productInfoWrap">
+
+                <h2 class="productName">
+                  <!-- product.getLabelText(cfInfo, "productname-lab") -->
+                  <%=Utilities.getValue(pdInfo.Name)%>
+                </h2>
+
 <% if (Utilities.getValueLength(pdInfo.Code)>0) { %>
-                 <%=product.getLabelText(cfInfo, "productno-lab")%> <b><%=Utilities.getValue(pdInfo.Code)%></b> (<%=pdInfo.ProductID%>)
+                <div class="productSKU"> <!-- <%=product.getLabelText(cfInfo, "productno-lab")%> -->
+                  <%=Utilities.getValue(pdInfo.Code)%>
+                  <span>(<%=pdInfo.ProductID%>)</span>
+                </div>
 <% } %>
                  <!--
                  <BR><%=product.getLabelText(cfInfo, "visitor-lab")%> <b><%=pdInfo.VisitTime%></b>
                  <BR><%=product.getLabelText(cfInfo, "adddate-lab")%> <b><%=Utilities.getDateValue(pdInfo.CreateDate, 16)%></b>
                  -->
-                 <%=product.getPrices(cfInfo, pdInfo, 2)%> <%=product.getRetailPrice(pdInfo, 2)%></font>
+                 <p class="tilePrice">
+                   <!-- Remove Start -->$149.99<!-- Remove End -->
+                 <%=product.getPrices(cfInfo, pdInfo, 2)%> <%=product.getRetailPrice(pdInfo, 2)%>
+                </p>
                  <% if (Utilities.getValueLength(pdInfo.Author)>0) { %>
-                    <p><font size="2"><%=product.getLabelText(cfInfo, "author-lab")%> <b><%=pdInfo.Author%></b></font>
+                    <!-- <p class="author"><%=product.getLabelText(cfInfo, "author-lab")%> <span><%=pdInfo.Author%></span></p> -->
                  <% } %>
-                 <p>&nbsp;<%=product.getBuyButton(cfInfo, pdInfo)%>
-             </td>
-            </tr>
-<%
-  String[] arMoreFile = product.getMoreFileList(pdInfo, ProductWeb.MOREFILE_MEDIUM);
-  StringBuffer sbFile = new StringBuffer();
-  if (arMoreFile!=null && arMoreFile.length>0)
-  {
-     for (int i=1; i<arMoreFile.length; i++)
-     {
-        String sPhotoLink =  product.getPhotoImageLink(pdInfo.ProductID, i, product.getImageTag(arMoreFile[i], 80, 1));
-        sbFile.append(" " + sPhotoLink);
-     }
-  }
 
-  if (sbFile.length()>0) {
-%>
-              <tr><td height="2"></td></tr>
-               <tr>
-                 <td align="right" valign="bottom"><%=sbFile.toString()%></td>
-               </tr>
-              <% } %>
-           </table>
-         </TD>
-        </TR>
-    </TABLE>
-    <TABLE width="100%">
-    <tr>
-      <td width="204" align="center" height="24">
+                 <div class="productDesWrap">
+                  <h6><%=product.getLabelText(cfInfo, "product-des")%></h6>
+                 <p><%=product.getIntroduction(pdInfo, -1)%></p>
+                 </div>
+
+                 <%  if (Utilities.getValueLength(pdInfo.Options)>0) {
+                     CustomerWeb web = new CustomerWeb(session, request, 0);
+                     if (web.getInfo(request)!=null) { %>
+
+
+                       <div class="productOptions"><%=product.getOptions(pdInfo, -1)%></div>
+
+                 <% } %>
+                 <% } %>
+                 <% if (false && pdInfo.ExternalUrl!=null && pdInfo.ExternalUrl.trim().length()>0) {%>
+
+                           <a class="esternalURL" href="<%=pdInfo.ExternalUrl%>" target="_blank"><%=product.getLabelText(cfInfo, "seedetail-link")%></a>
+                 <% } %>
+
+
+                 <div class="buyBtnWrap">
+                <!-- Remove Start --><a onfocus="this.blur()" href="#"><img src="/staticfile/web/images/iso-8859-1/mycart.gif" width="90" height="20" align="top" border="0"></a><!-- Remove End -->
+                   <%=product.getBuyButton(cfInfo, pdInfo)%>
+                 </div>
+
+        </div>
+</div>
+
+
 <% if (Utilities.getValueLength(pdInfo.LargeImage)>0) { %>
-      <a href='<%=product.encodedUrl("index.jsp?action=productphoto&productid="+pdInfo.ProductID)%>'><%=product.getLabelText(cfInfo, "detailedpic-link")%></a>
+      <!-- <a href='<%=product.encodedUrl("index.jsp?action=productphoto&productid="+pdInfo.ProductID)%>'><%=product.getLabelText(cfInfo, "detailedpic-link")%></a> -->
 <% } %>
-      </td>
-      <td align="right" valign="bottom"><a href="#" onclick="return showSendEmail(document.sendemail, 'id_emailarea')"> <%=product.getLabelText(cfInfo, "cu-emailto")%></a></td>
-    </tr>
-   <tr>
-     <td colspan="2">
+<a class="emailFriend" href="#" onclick="return showSendEmail(document.sendemail, 'id_emailarea')"> <%=product.getLabelText(cfInfo, "cu-emailto")%></a>
+
 <%
      String sTtile = product.getLabelText(cfInfo, "cu-subcontent").replaceFirst("\\{0\\}", Utilities.replaceContent(pdInfo.Name, "<br>", " ", false));
      String sLink = "<a href='http://" + product.getDomainName() + "/'>" + pdInfo.Name + "</a>";
@@ -110,6 +155,7 @@
        <td align="right"><%=product.getLabelText(cfInfo, "cu-subject")%>: </td>
        <td align="left"><INPUT type="text" name="emailsubject" value="<%=sTtile%>" maxlength="1023" style="width:100%"></td>
        <td ></td>
+      </tr>
       <tr>
        <td align="right" valign="top"><%=product.getLabelText(cfInfo, "cu-comment")%>:</td>
        <td align="left"><textarea rows="6" style="width:100%" wrap="virtual" name="emailcomment"><%=sComment%></textarea></td>
@@ -121,35 +167,6 @@
       </table>
       </form>
      </div>
-     </td>
-   </tr>
-    </TABLE>
-    <TABLE cellSpacing=0 cellPadding=2 width="100%">
-      <TR>
-        <TD>
-         <HR algin="left" width="100%" color="#cccccc" noShade SIZE=2><font size="3"><b><%=product.getLabelText(cfInfo, "product-des")%></b></font>
-         <BR><BR><font size="2"><%=product.getIntroduction(pdInfo, -1)%></font></TD>
-      </TR>
-<%  if (Utilities.getValueLength(pdInfo.Options)>0) {
-    CustomerWeb web = new CustomerWeb(session, request, 0);
-    if (web.getInfo(request)!=null) { %>
-    <TR>
-      <TD height="24"><hr></TD>
-    </TR>
-    <TR>
-      <TD><font size="2"><%=product.getOptions(pdInfo, -1)%></font></TD>
-    </TR>
-<% } %>
-<% } %>
-<% if (false && pdInfo.ExternalUrl!=null && pdInfo.ExternalUrl.trim().length()>0) {%>
-      <TR>
-        <TD><br>
-          <a href="<%=pdInfo.ExternalUrl%>" target="_blank"><%=product.getLabelText(cfInfo, "seedetail-link")%></a>
-        </TD>
-      </TR>
-<% } %>
-    </TABLE>
-    </td>
-  </tr>
-</table>
+
+</div>
 <% } %>

@@ -36,7 +36,7 @@
     { //. Should remove
       response.sendRedirect(web.encodedUrl("index.jsp?action=orderconfirm&shipmethod="+request.getParameter("shipmethod")));
     }
-*/    
+*/
   }
   else if ("forgotpassword".equalsIgnoreCase(sAction))
   {
@@ -68,74 +68,49 @@
      {
         response.sendRedirect(web.encodedUrl("index.jsp?action=orderconfirm&shipmethod="+request.getParameter("shipmethod")));
         return;
-     }    
+     }
   }
 */
 %>
-<table cellspacing=2 cellpadding=2 width="100%" height="530" align="center"><tr><td valign="top">
-&nbsp;&nbsp;<img src="/staticfile/web/images/tp06.gif" align="CENTER"><a href="<%=web.getContinueShop()%>"><%=web.getLabelText(cfInfo, "shopping-link")%></a> > <a href="<%=web.encodedUrl("index.jsp?action=shopcart")%>"><%=web.getLabelText(cfInfo, "cart-link")%></a> >
-<font color="#FF0000"><%=web.getLabelText(cfInfo, "logon-link")%></font> > <%=web.getLabelText(cfInfo, "confirm-link")%> > <%=web.getLabelText(cfInfo, "finish-link")%>
-<TABLE class="table-shang" cellspacing=0 cellpadding=5 width="100%" align="right">
-  <TR>
-    <TD height=20>
-     <table align="center" border="0" cellpadding="10" cellspacing="0" width="100%" class="infobox">
-      <tr>
-       <td><img src="/staticfile/web/images/info.gif" height=14 width=14>
-       <font size="2" face="Verdana, Arial, Helvetica, sans-serif"><font color="#FF6633"><%=web.getLabelText(cfInfo, "info-lab")%></font>
-       <%=web.getLabelText(cfInfo, "info-des")%></font>
-       </td>
-      </tr>
-     </table>
-   </TD>
-  </TR>
-<% if (sDisplayMessage!=null) { %>
-  <TR>
-    <TD height=20 align="center"><b><span class="<%=sClass%>"><%=sDisplayMessage%></span></b></TD>
-  </TR>
-<% } %>
-  <TR>
-    <TD>
-     <FORM name="shoplogon" action="index.jsp" method="post">
-     <INPUT type="hidden" name="shipmethod" value="<%=request.getParameter("shipmethod")%>">
-     <INPUT type="hidden" name="action1" value="">
-      <script>createTableOpen();</script>
-      <table width="100%" border="0" cellspacing="1" cellpadding="1" bgcolor="<%=cfInfo.BackColor%>">
-        <tr>
-          <td colspan="2">
-            <div align="center"><b><%=web.getLabelText(cfInfo, "exist-lab")%></b></div>
-          </td>
-          <td width="49%">
-            <div align="center"><b><%=web.getLabelText(cfInfo, "newcust-lab")%></b></div>
-          </td>
-        </tr>
-        <tr>
-          <td colspan="2"><%=web.getLabelText(cfInfo, "exist-des")%></td>
-          <td width="49%"><%=web.getLabelText(cfInfo, "newcust-des")%></td>
-        </tr>
-        <tr>
-          <td width="23%" align="right"><%=web.getLabelText(cfInfo, "email-lab")%></td>
-          <td width="28%"><input type="text" maxlength=50 size=24 name="email" value="<%=Utilities.getValue(request.getParameter("email"))%>"></td>
-          <td width="49%">&nbsp;</td>
-        </tr>
-        <tr>
-          <td width="23%" align="right"><%=web.getLabelText(cfInfo, "password-lab")%></td>
-          <td width="28%"><input type="password" maxlength=20 size=24 name="password" value="<%=Utilities.getValue(request.getParameter("password"))%>"></td>
-          <td width="49%">&nbsp;</td>
-        </tr>
-        <tr>
-          <td width="23%" align="center"><a onClick="return hasEmailAccount(document.shoplogon);" href="javascript:submitForgotPassword(document.shoplogon)"><%=web.getLabelText(cfInfo, "forgot-password")%></a></td>
-          <td width="28%"><input type="submit" value="<%=web.getLabelText(cfInfo, "login-account")%>" name="loginaccount" onClick="return validateLogon(document.shoplogon, 'Login My Account');"></td>
-          <td width="49%" align="center"><input type="submit" value="<%=web.getLabelText(cfInfo, "newcust-lab")%>" name="newcustomer" onClick="setAction(document.shoplogon, 'New Customer');"></td>
-        </tr>
-      </table>
-      <script>createTableClose();</script>
-      </FORM>
-      <SCRIPT>OnLogonLoad(document.shoplogon);</SCRIPT>
-    </TD>
-  </TR>
-  <TR>
-    <TD align="center"><%=web.getTestInfo(dmInfo, cfInfo)%></TD>
-  </TR>
-</TABLE>
-</td></tr></table>
+<div class="shopLogonWrap">
+  <div class="breadcrumbWrap">
+    <a href="<%=web.getContinueShop()%>"><%=web.getLabelText(cfInfo, "shopping-link")%></a> &gt; <a href="<%=web.encodedUrl("index.jsp?action=shopcart")%>"><%=web.getLabelText(cfInfo, "cart-link")%></a>
+    &gt; <font color="#FF0000"><%=web.getLabelText(cfInfo, "logon-link")%></font> &gt; <%=web.getLabelText(cfInfo, "confirm-link")%> &gt; <%=web.getLabelText(cfInfo, "finish-link")%>
+</div>
+<div class="shopLogFormWrap">
+     <form name="shoplogon" action="index.jsp" method="post">
+     <input type="hidden" name="shipmethod" value="<%=request.getParameter("shipmethod")%>">
+     <input type="hidden" name="action1" value="">
+
+       <% if (sDisplayMessage!=null) { %>
+           <div class="<%=sClass%>"><%=sDisplayMessage%></span></div>
+       <% } %>
+
+    <div class="existingForm">
+            <h5><%=web.getLabelText(cfInfo, "exist-lab")%></h5>
+            <p><%=web.getLabelText(cfInfo, "exist-des")%></p>
+
+        <label>Email<!-- <%=web.getLabelText(cfInfo, "email-lab")%> --></label>
+      <input type="text" maxlength=50 size=24 name="email" value="<%=Utilities.getValue(request.getParameter("email"))%>">
+        <label>Password<!-- <%=web.getLabelText(cfInfo, "password-lab") %> --></label>
+        <input type="password" maxlength=20 size=24 name="password" value="<%=Utilities.getValue(request.getParameter("password"))%>">
+        <input type="submit" value="<%=web.getLabelText(cfInfo, "login-account")%>" name="loginaccount" onClick="return validateLogon(document.shoplogon, 'Login My Account');">
+        <a class="forgotPW" onClick="return hasEmailAccount(document.shoplogon);" href="javascript:submitForgotPassword(document.shoplogon)"><%=web.getLabelText(cfInfo, "forgot-password")%></a>
+
+      </div>
+        <div class="newcustForm">
+            <h5><%=web.getLabelText(cfInfo, "newcust-lab")%></h5>
+            <p><%=web.getLabelText(cfInfo, "newcust-des")%></p>
+            <input type="submit" value="<%=web.getLabelText(cfInfo, "newcust-lab")%>" name="newcustomer" onClick="setAction(document.shoplogon, 'New Customer');">
+        </div>
+
+
+    </form>
+  </div>
+      <script>OnLogonLoad(document.shoplogon);</script>
+    <div class="botInfoshoplog"><%=web.getTestInfo(dmInfo, cfInfo)%></div>
+<div class="disclaimerBox">
+  <%=web.getLabelText(cfInfo, "info-des")%>
+</div>
+</div>
 <% } %>

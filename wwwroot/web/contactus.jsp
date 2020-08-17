@@ -15,18 +15,17 @@
   ConfigInfo cfInfo = web.getConfigInfo();
   List ltService = web.getServiceList();
 %>
-<TABLE cellspacing=4 cellpadding=4 width="100%">
-  <TR>
-    <TD>
-      <font face=arial size=2><b><%=web.getLabelText(cfInfo, "companyaddress-lab")%></b></font><br>
-      <font face=arial size=2><%=Utilities.getValue(info.CompanyName)%><br>
-      <%=Utilities.getValue(info.Address)%><br>
-      <%=Utilities.getValue(info.City)%>, <%=Utilities.getValue(info.State)%> <%=Utilities.getValue(info.ZipCode)%></font><br>
-      <font face=arial size=2><%=web.getLabelText(cfInfo, "phone2-lab")%><%=Utilities.getValue(info.Phone)%>
-      <%if (info.Fax!=null&&info.Fax.length()>0){%> <%=web.getLabelText(cfInfo, "fax-lab")%> <%=Utilities.getValue(info.Fax)%> <%}%>
-      </font><br><br>
-      <font face=arial size=2><b><%=Utilities.getValue(info.CompanyDesc)%></b></font><br>
-      <br>
+<div class="contactWrap">
+
+<h3>Contact Info</h3>
+<div class="phoneWrap">
+<strong><%=web.getLabelText(cfInfo, "phone2-lab")%></strong> <%=Utilities.getValue(info.Phone)%><br>
+<%if (info.Fax!=null&&info.Fax.length()>0){%><strong><%=web.getLabelText(cfInfo, "fax-lab")%></strong> <%=Utilities.getValue(info.Fax)%> <%}%><br>
+</div>
+<br>
+<div class="companyDescWrap">
+<%=Utilities.getValue(info.CompanyDesc)%>
+</div>
 <% for (int i=0; i<ltService.size(); i++) {
   ContactServiceInfo csInfo = (ContactServiceInfo) ltService.get(i);
 //  if (csInfo.Email.equalsIgnoreCase("customerservice")||csInfo.Email.equalsIgnoreCase("rma"))
@@ -38,10 +37,10 @@
          csInfo.Email = "service";
   }
 %>
-      <font face=arial size=2><b><%=csInfo.Name%></b></font><br>
-      <font face=arial size=2><%=Utilities.getValue(csInfo.Description)%></font>
+      <h4><%=csInfo.Name%></h4>
+<%=Utilities.getValue(csInfo.Description)%>
 <% if (csInfo.Email!=null && csInfo.Email.trim().length()>0) {%>
-      <br>E-Mail: <b><%=web.getEmailLink(csInfo)%></b>
+      <br>Email: <b><%=web.getEmailLink(csInfo)%></b>
 <% } %>
 <% if (csInfo.Phone!=null && csInfo.Phone.trim().length()>0) {%>
       <br>Phone: <b><%=csInfo.Phone%></b>
@@ -51,17 +50,21 @@
 <% } %>
      <br><br>
 <% } %>
-    </TD>
-  </TR>
+
+<div class="addressInfoWrap">
+
+<h6><%=web.getLabelText(cfInfo, "companyaddress-lab")%></h6>
+<%=Utilities.getValue(info.Address)%><br>
+<%=Utilities.getValue(info.City)%>, <%=Utilities.getValue(info.State)%> <%=Utilities.getValue(info.ZipCode)%><br>
+
+</div>
+
 <% if (sMapImage!=null) { %>
-  <TR>
-    <TD align="center"><font class='pagetitle'>Location Map</font></TD>
-  </TR>
-  <TR>
-    <TD align="center">
+
+    <div class="mapWrap">
     <%=sMapImage%>
-    </TD>
-  </TR>
+</div>
 <% } %>
-</TABLE>
+
+</div>
 <% } %>

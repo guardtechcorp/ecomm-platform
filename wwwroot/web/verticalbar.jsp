@@ -34,14 +34,14 @@
         Hi, <%=web.getCustomerName()%> <a href="<%=web.getHttpLink("index.jsp?action=signout")%>">Logout</a>
            <br><%=web.getLabelText(cfInfo, "welcome-shop")%>
 <% } else { %>
-          <label><%=web.getLabelText(cfInfo, "email0-lab")%></label>
+          <label>Email<!-- <%=web.getLabelText(cfInfo, "email0-lab")%> --></label>
               <input maxLength=50 name="email">
-            <label><%=web.getLabelText(cfInfo, "password-lab")%></label>
+            <label>Password<!-- <%=web.getLabelText(cfInfo, "password-lab")%> --></label>
             <input type="password" maxLength=20 name="password">
          <!--<input type=checkbox value=ON name=remember>
             <div style="CURSOR: default" onclick=this.parentNode.firstChild.firstChild.click(); vAlign=center align=left width="117">Remember User</div> -->
-         <a onClick="return hasEmailAccount(document.memberlogin);" href="javascript:submitForgotPassword(document.memberlogin)"><%=web.getLabelText(cfInfo, "forgot-password")%></a>
             <input type="submit" value="<%=web.getLabelText(cfInfo, "login-but")%>" name="Login">
+             <a class="forgotPW" onClick="return hasEmailAccount(document.memberlogin);" href="javascript:submitForgotPassword(document.memberlogin)"><%=web.getLabelText(cfInfo, "forgot-password")%></a>
 <% } %>
        </form>
 <% } %>

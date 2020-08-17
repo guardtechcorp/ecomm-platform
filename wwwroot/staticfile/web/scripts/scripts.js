@@ -6,7 +6,7 @@ $(".searchBar").html(function (i, html) {
 });
 
 //remove html spaces from sidebar child categories
-$(".sidebarContent .child").html(function (i, html) {
+$(".sideBarContent .child").html(function (i, html) {
     return html.replace(/&nbsp;/g, '');
 });
 
@@ -48,4 +48,16 @@ $(window).scroll(function(){
 //add class when sidebar sub categories are showing
 $( ".sideBarContent .parent a:first-child" ).click(function() {
   $(this).toggleClass('exp');
+});
+
+//initialize product image slider on product detail page
+$(document).ready(function() {
+     $('#lightslider').lightSlider({
+       gallery:true,
+       item:1
+     });
+});
+//product detail photo lightbox
+$('.imageLightbox').magnificPopup({
+  type: 'image'
 });
