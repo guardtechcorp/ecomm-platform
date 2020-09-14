@@ -31,9 +31,9 @@ for (int i=0; i<ltProduct.size(); i+=1) {
 %>
 <div class="productWrap">
     <div class="productThumb">
-      <!-- Remove Start --><a href="<%=product.encodedUrl("index.jsp?action=productdetail&productid="+pdInfo.ProductID)%>">
-      <img src="/staticfile/web/images/product-thumb-holder.jpg"></a><!-- Remove End -->
-      <!-- <%=product.getPhotoImage(cfInfo, pdInfo, 1)%> -->
+      <!-- Remove Start <a href="<%=product.encodedUrl("index.jsp?action=productdetail&productid="+pdInfo.ProductID)%>">
+      <img src="/staticfile/web/images/product-thumb-holder.jpg"></a>Remove End -->
+      <%=product.getPhotoImage(cfInfo, pdInfo, 1)%>
     </div>
     <div class="productTileInfo">
       <h3><a href="<%=product.encodedUrl("index.jsp?action=productdetail&productid="+pdInfo.ProductID)%>">
@@ -63,13 +63,13 @@ for (int i=0; i<ltProduct.size(); i+=1) {
  <% } else { %>
       <!-- <%=product.getLabelText(cfInfo, "totalsold-lab")%> <b><%=pdInfo.SoldCount%></b> -->
  <% } %>
- <!-- Remove Start --> <p class="tilePrice">$149.99</p> <!-- Remove End -->
+ <!-- Remove Start <p class="tilePrice">$149.99</p> Remove End -->
 <% if (Utilities.getValueLength(pdInfo.Author)>0) { %>
   <!-- <%=product.getLabelText(cfInfo, "author-lab")%> <b><%=pdInfo.Author%></b> -->
 <% } %>
 <% } %>
        <div class="buyBtnWrap">
-         <!-- Remove Start --><a onfocus="this.blur()" href="#"><img src="/staticfile/web/images/iso-8859-1/mycart.gif" width="90" height="20" align="top" border="0"></a><!-- Remove End -->
+         <!-- Remove Start <a onfocus="this.blur()" href="#"><img src="/staticfile/web/images/iso-8859-1/mycart.gif" width="90" height="20" align="top" border="0"></a> Remove End -->
        <%=product.getBuyButton(cfInfo, pdInfo)%>
       </div>
    </div>

@@ -8,10 +8,15 @@
   ConfigInfo cfInfo = web.getConfigInfo();
 //web.showAllParameters(request, out);
 %>
+<div class="mobileSidebarTrig">
+  <i class="fa fa-list" aria-hidden="true"></i>
+</div>
 <div class="sideBarContent">
 <% if (cfInfo.CategoryShow!=0) {%>
 <h3><%=web.getLabelText(cfInfo, "category-til")%></h3>
+      <div class="categoryWrap">
             <%@ include file="category.jsp"%>
+      </div>
 
 <% } %>
 <% if (cfInfo.Membership==1) { %>
@@ -31,8 +36,9 @@
 <% } %>
 
 <% if (web.isCustomerLogin()) { %>
-        Hi, <%=web.getCustomerName()%> <a href="<%=web.getHttpLink("index.jsp?action=signout")%>">Logout</a>
-           <br><%=web.getLabelText(cfInfo, "welcome-shop")%>
+        <h5>Hi, <%=web.getCustomerName()%></h5>
+          <p class="welcomeTxt"><%=web.getLabelText(cfInfo, "welcome-shop")%></p>
+           <a class="logoutBtn" href="<%=web.getHttpLink("index.jsp?action=signout")%>">Logout</a>
 <% } else { %>
           <label>Email<!-- <%=web.getLabelText(cfInfo, "email0-lab")%> --></label>
               <input maxLength=50 name="email">
@@ -42,6 +48,7 @@
             <div style="CURSOR: default" onclick=this.parentNode.firstChild.firstChild.click(); vAlign=center align=left width="117">Remember User</div> -->
             <input type="submit" value="<%=web.getLabelText(cfInfo, "login-but")%>" name="Login">
              <a class="forgotPW" onClick="return hasEmailAccount(document.memberlogin);" href="javascript:submitForgotPassword(document.memberlogin)"><%=web.getLabelText(cfInfo, "forgot-password")%></a>
+
 <% } %>
        </form>
 <% } %>

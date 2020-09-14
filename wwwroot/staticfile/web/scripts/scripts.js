@@ -61,3 +61,14 @@ $(document).ready(function() {
 $('.imageLightbox').magnificPopup({
   type: 'image'
 });
+
+
+//mobile nav trigger
+$( ".mobileTrig" ).click(function() {
+  $('.mainNav').toggleClass('navOut');
+});
+
+//mobile sidebar trigger
+$( ".mobileSidebarTrig" ).click(function() {
+  $('.sideBarContent').toggleClass('sideOut');
+});

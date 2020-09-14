@@ -49,6 +49,7 @@ try {
 <meta name="description" content="A custom ecommerce solution">
 <meta name="robots" content="index, follow">
 <meta name="raiting" content="general">
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
 <link href="/staticfile/web/css/common.css" type="text/css" rel="stylesheet">
 <link href="/staticfile/web/css/tabs.css" type="text/css" rel="stylesheet">
 <link href="/staticfile/web/css/lightslider.css" type="text/css" rel="stylesheet" />
@@ -144,12 +145,7 @@ function createjsDOMenu()
 %>
   <%@ include file="homepage.jsp"%>
 <% } else { %>
-<div class="topHero" style="background: url('/staticfile/web/images/hero-holder.jpg')">
-  <div class="heroContent">
-    <h1>Products you can trust</h1>
-    <h2>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</h2>
-  </div>
-</div>
+<%@ include file="hero.jsp"%>
  <jsp:include page="productswitch.jsp" />
 <% } %>
 <% } %>

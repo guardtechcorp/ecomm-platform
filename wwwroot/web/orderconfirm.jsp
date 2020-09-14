@@ -131,12 +131,12 @@
     sMemberConditionPrice = Utilities.getNumberFormat(shopcart.getMemberCondtionPrice(), '$', 2);
   }
 %>
+<div class="checkoutWrap">
+<div class="breadcrumbWrap">
+  <a href="<%=shopcart.getContinueShop()%>"><%=shopcart.getLabelText(cfInfo, "shopping-link")%></a> &gt; <a href="<%=shopcart.encodedUrl("index.jsp?action=shopcart")%>"><%=shopcart.getLabelText(cfInfo, "cart-link")%> </a> &gt;
+   <font color="#FF0000"><%=shopcart.getLabelText(cfInfo, "confirm-link")%> </font> &gt; <%=shopcart.getLabelText(cfInfo, "bill-link")%> &gt; <%=shopcart.getLabelText(cfInfo, "finish-link")%>
+</div>
 <table cellspacing=0 cellpadding=0 width="99%" height="230" align="right" bgcolor="<%=cfInfo.BackColor%>">
-<tr vAlign="middle">
-  <td ><img src="/staticfile/web/images/tp06.gif" align="CENTER"><a href="<%=shopcart.getContinueShop()%>"><%=shopcart.getLabelText(cfInfo, "shopping-link")%></a> > <a href="<%=shopcart.encodedUrl("index.jsp?action=shopcart")%>"><%=shopcart.getLabelText(cfInfo, "cart-link")%> </a> >
-   <font color="#FF0000"><%=shopcart.getLabelText(cfInfo, "confirm-link")%> </font> > <%=shopcart.getLabelText(cfInfo, "bill-link")%> > <%=shopcart.getLabelText(cfInfo, "finish-link")%>
-  </td>
-</tr>
 <tr>
  <td valign="top">
  <TABLE class="table-1" width="100%" align="right" border=0>
@@ -181,7 +181,7 @@
 </tr>
 <% if (ltShopCart==null||ltShopCart.size()==0) {%>
 <tr>
-  <td align="center"><IMG src="/staticfile/web/images/<%=cfInfo.Language%>/cart-empty.gif"></td>
+  <td align="center"><h3 class="emptyCart">Your cart is currently empty</h3><!-- <IMG src="/staticfile/web/images/<%=cfInfo.Language%>/cart-empty.gif"> --></td>
 </tr>
 <% } else {%>
 <tr>
@@ -554,4 +554,5 @@
   </td>
 </tr>
 </TABLE>
+</div>
 <% } %>

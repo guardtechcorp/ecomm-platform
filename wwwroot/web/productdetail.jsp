@@ -67,7 +67,7 @@
 
 <!--  <div class="smallThumbs"><%=sbFile.toString()%></div> -->
 
-                <% } %>
+<% } %>
 
 </div>
 <div class="productInfoWrap">
@@ -88,7 +88,7 @@
                  <BR><%=product.getLabelText(cfInfo, "adddate-lab")%> <b><%=Utilities.getDateValue(pdInfo.CreateDate, 16)%></b>
                  -->
                  <p class="tilePrice">
-                   <!-- Remove Start -->$149.99<!-- Remove End -->
+                   <!-- Remove Start $149.99 Remove End -->
                  <%=product.getPrices(cfInfo, pdInfo, 2)%> <%=product.getRetailPrice(pdInfo, 2)%>
                 </p>
                  <% if (Utilities.getValueLength(pdInfo.Author)>0) { %>
@@ -116,7 +116,7 @@
 
 
                  <div class="buyBtnWrap">
-                <!-- Remove Start --><a onfocus="this.blur()" href="#"><img src="/staticfile/web/images/iso-8859-1/mycart.gif" width="90" height="20" align="top" border="0"></a><!-- Remove End -->
+                <!-- Remove Start <a onfocus="this.blur()" href="#"><img src="/staticfile/web/images/iso-8859-1/mycart.gif" width="90" height="20" align="top" border="0"></a> Remove End -->
                    <%=product.getBuyButton(cfInfo, pdInfo)%>
                  </div>
 

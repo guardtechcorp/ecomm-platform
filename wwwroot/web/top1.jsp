@@ -18,12 +18,13 @@
   </div>
   <div class="topUtil"><%=web.getDomainText(cfInfo)%></div>
   <div class="topNav">
+    <div class="mobileTrig">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
     <%=web.getNavigationLinks(cfInfo, "button")%>
-    <ul class="nav">
-      <li><a href="<%=web.getHomeLink(cfInfo)%>">Home</a></li>
-      <li><a href="<%=web.getHttpLink("index.jsp?action=contactus")%>">Contact Us</a></li>
-      <li><a href="<%=web.getHttpLink("index.jsp?action=checkout")%>">Check Out</a></li>
-      <li><a href="<%=web.getHttpLink("index.jsp?action=ordertrack")%>">Track Order</a></li>
+    <ul class="nav rightNav">
       <li class="loginNav"><i class="fa fa-user-circle-o" aria-hidden="true"></i>
         <div class="navLoginWrap">
 
@@ -43,6 +44,12 @@
             </form>
           </div>
       </li>
+    </ul>
+    <ul class="nav mainNav">
+      <li><a href="<%=web.getHomeLink(cfInfo)%>">Home</a></li>
+      <li><a href="<%=web.getHttpLink("index.jsp?action=contactus")%>">Contact Us</a></li>
+      <li><a href="<%=web.getHttpsLink("index.jsp?action=checkout")%>">Check Out</a></li>
+      <li><a href="<%=web.getHttpsLink("index.jsp?action=ordertrack")%>">Track Order</a></li>
     </ul>
   </div>
 </div>

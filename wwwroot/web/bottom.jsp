@@ -19,8 +19,8 @@
      <a class="footLink" href="<%=web.getHomeLink(cfInfo)%>"><%=web.getLabelText(cfInfo, "home-page")%></a>
      <a class="footLink" href="<%=web.getHttpLink("index.jsp?action=contactus")%>"><%=web.getLabelText(cfInfo, "contact-us")%></a>
      <a class="footLink" href="<%=web.getHttpLink("index.jsp?action=shopcart")%>"><%=web.getLabelText(cfInfo, "shop-cart")%></a>
-     <a class="footLink" href="<%=web.getHttpLink("index.jsp?action=checkout")%>"><%=web.getLabelText(cfInfo, "check-out")%></a>
-     <a class="footLink" href="<%=web.getHttpLink("index.jsp?action=ordertrack")%>"><%=web.getLabelText(cfInfo, "order-track")%></a>
+     <a class="footLink" href="<%=web.getHttpsLink("index.jsp?action=checkout")%>"><%=web.getLabelText(cfInfo, "check-out")%></a>
+     <a class="footLink" href="<%=web.getHttpsLink("index.jsp?action=ordertrack")%>"><%=web.getLabelText(cfInfo, "order-track")%></a>
      <!--a class="footLink" href="#top">TOP</a-->
 <% } else { %>
      <a class="footLink" href="<%=web.getHomeLink(cfInfo)%>"><%=web.getLabelText(cfInfo, "home-page")%></a>

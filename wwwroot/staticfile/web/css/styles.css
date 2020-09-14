@@ -93,6 +93,31 @@ input[type='submit']:hover, .button:hover {
   color: #fff !important;
   transition: all .2s;
 }
+table {
+  border: none !important;
+  width: 100%;
+}
+th {
+  border-bottom: 1px solid #000;
+  font-size: 13px;
+  text-transform: uppercase;
+  color: #000;
+  text-align: left;
+  padding: 0;
+}
+h2 {
+  margin-top: 0;
+}
+td[bgcolor="#f7f7f7"] {
+  padding: 10px;
+}
+[bgcolor="#4959A7"], [bgcolor="#4279bd"] {
+  background: #000 !important;
+  padding: 10px;
+}
+font[color="#4279bd"] {
+  color: #000 !important;
+}
 form h5 {
   margin-bottom: 5px;
   margin-top: 0;
@@ -179,11 +204,18 @@ div.header {
   position: relative;
   z-index: 9;
 }
+.mobileTrig {
+  display: none;
+}
 ul.nav {
   text-align: right;
+  float: right;
   list-style-type: none;
   margin: 0;
   padding: 0;
+}
+.rightNav {
+  margin-left: 25px !important;
 }
 ul.nav li {
   text-align: right;
@@ -411,17 +443,26 @@ ul.nav li.searchNav, ul.nav li.cartNav {
   width: 100%;
   height: 600px;
   margin-bottom: 30px;
-  background-size: contain !important;
-  background-repeat: no-repeat !important;
-  background-position: right !IMPORTANT;
   position: relative;
   display: flex;
   align-items: center;
+}
+.topHero .heroBackground {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: right !IMPORTANT;
 }
 .topHero .heroContent {
   width: 50%;
   max-width: 600px;
   margin-top: -40px;
+  position: relative;
+  z-index: 10;
 }
 .topHero h1 {
   font-size: 64px;
@@ -436,6 +477,9 @@ ul.nav li.searchNav, ul.nav li.cartNav {
   line-height: 28px;
   color: #777;
   font-weight: 500;
+}
+.mobileSidebarTrig {
+  display: none;
 }
 .sideBarContent{
   float: left;
@@ -529,6 +573,7 @@ ul.nav li.searchNav, ul.nav li.cartNav {
   /*box-shadow: 0 8px 25px -10px rgba(0,0,0,.15);*/
 }
 .productThumb {
+  height: 20vw;
   overflow: hidden;
 }
 .productThumb img {
@@ -554,8 +599,13 @@ ul.nav li.searchNav, ul.nav li.cartNav {
 .productTileInfo h3 {
   margin: 0;
   margin-bottom: 10px;
+  margin-top: 5px;
 }
-.sideBarContent .parent {
+.sideBarContent img[src*="plus"] {
+  width: 19px;
+  opacity: 0;
+}
+.sideBarContent .parent, .sideBarContent a {
   font-size: 15px;
   padding-bottom: 7px;
 }
@@ -912,6 +962,10 @@ p.tilePrice del {
   clear: both;
   margin-top: 20px;
 }
+#id_emailarea table {
+  background: #f7f7f7;
+  padding: 20px;
+}
 .advancedFormWrap {
   float: left;
   width: calc(44% - 80px);
@@ -1055,8 +1109,8 @@ li.lslide img {
   border-color: #000;
 }
 .lSSlideOuter .lSPager.lSGallery li:hover {
-    border-color: #777;
-    transition: all .2s;
+  border-color: #777;
+  transition: all .2s;
 }
 .continueShopBtn {
   width: 200px;
@@ -1071,14 +1125,6 @@ h3.emptyCart {
   color: #000;
   text-transform: uppercase;
   margin-top: 60px;
-}
-.cartWrap th {
-  border-bottom: 1px solid #000;
-  font-size: 13px;
-  text-transform: uppercase;
-  color: #000;
-  text-align: left;
-  padding: 0;
 }
 .continueShopWithCartItms {
     float: left;
@@ -1116,9 +1162,228 @@ input[name="updatecart"] {
   font-size: 13px;
   line-height: 18px;
 }
+p.welcomeTxt {
+  margin-top: 0;
+}
+.logoutBtn {
+  border: 2px solid #000;
+  padding: 5px 25px;
+  transition: all .2s;
+}
+.logoutBtn:hover {
+  background: #000;
+  color: #fff;
+  transition: all .2s;
+}
+.trackignWrap [bgcolor="#4959A7"] > td, .trackignWrap [bgcolor="#4279bd"] > td {
+  padding: 5px;
+}
+.trackignWrap h2 {
+  margin-bottom: 0;
+}
+
 
 /***** Responsive CSS *****/
 @media only screen and (max-width: 1000px) {
-
+  .pageWrap {
+    max-width: 100%;
+    padding: 0 15px;
+    padding-top: 60px;
+  }
+  div.header, .header:after {
+    height: 60px;
+  }
+  .logoWrap {
+    width: 50%;
+  }
+  .logoWrap a, .logoWrap a font {
+    font-size: 10px;
+  }
+  .topNav {
+    position: fixed;
+    right: 5px;
+    top: 20px;
+    width: 50%
+  }
+  .mainNav {
+    position: fixed;
+    right: -100%;
+    background: #fff;
+    padding: 20px !important;
+    box-shadow: -10px 20px 25px -12px rgba(0,0,0, .15);
+    transition: right .3s;
+  }
+  .mainNav.navOut {
+    right: 0;
+    transition: right .3s;
+  }
+  .nav.mainNav li {
+    margin-right: 0;
+    display: block;
+    padding-bottom: 20px;
+  }
+  .nav.mainNav li:last-child {
+    padding-bottom: 0;
+  }
+  ul.nav li a:after {
+    display: none;
+  }
+  .nav.mainNav li a {
+    font-size: 16px;
+  }
+  .rightNav {
+    position: fixed;
+    top: 30px;
+    right: 70px;
+  }
+  .mobileTrig {
+    display: flex;
+    position: absolute;
+    height: 30px;
+    width: 30px;
+    top: 5px;
+    right: 10px;
+    flex-direction: column;
+    justify-content: space-evenly;
+  }
+  .mobileTrig span {
+    width: 100%;
+    height: 2px;
+    background: #000;
+    right: 5px;
+    display: block;
+  }
+  .mobileTrig span:last-child {
+    width: 70%;
+  }
+  .topUtil {
+    width: 100% !important;
+    position: fixed;
+    left: 0px;
+  }
+  .topUtil font {
+    margin-right: 15px;
+    font-size: 13px;
+  }
+  .searchWrap {
+    right: 0 !important;
+    position: fixed;
+  }
+  .navLoginWrap {
+    position: fixed;
+  }
+  .sideBarContent {
+    width: 100%;
+    margin-bottom: 20px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .3s;
+  }
+  .sideBarContent.sideOut {
+    height: auto;
+    transition: max-height .3s;
+    max-height: 1000px;
+    overflow: auto;
+  }
+  .largeContentArea {
+    width: 100%;
+  }
+  .topHero {
+    height: auto;
+    display: block;
+  }
+  .topHero .heroBackground {
+    position: relative;
+    height: 200px;
+  }
+  .topHero h1 {
+    font-size: 40px;
+    line-height: 48px;
+  }
+  .topHero .heroContent {
+    width: 100%;
+    margin-top: 0;
+  }
+  .rightFootLinks {
+    float: none;
+    margin-top: 0;
+    text-align: center;
+  }
+  .footerInsideWrap {
+    max-width: 100%;
+    padding: 0 15px;
+    width: calc(100% - 30px);
+  }
+  .footerLinksWrap {
+    text-align: center;
+  }
+  a.footLink {
+    display: inline-block;
+    margin: 10px;
+  }
+  .copyTxt {
+    text-align: center;
+    margin-left: -15px;
+    width: calc(100% + 30px);
+    margin-top: 20px;
+  }
+  .mobileSidebarTrig {
+    font-size: 20px;
+    color: #fff;
+    background: #000;
+    float: left;
+    height: 40px;
+    width: 40px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50px;
+  }
+  .topPagination, .bottomPagination {
+    float: left;
+    clear: both;
+    margin-top: 5px;
+    width: 100%;
+  }
+  .productWrap {
+    width: 47%;
+  }
+  .productImageWrap {
+    width: 100%;
+  }
+  .productInfoWrap {
+    width: 100%;
+    max-width: 100%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+  .acctLoginWrap {
+    width: 250px;
+  }
+  .existingForm {
+    width: 100%;
+    margin-right: 0;
+  }
+  .newcustForm {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 80px;
+  }
+  .newCustBillWrap {
+    width: 100%;
+    margin-right: 0;
+  }
+  .newCustShipWrap {
+    width: 100%;
+    margin-left: 0;
+    margin-top: 40px;
+  }
+  .newCustEmailWrap input, .newCustEmailWrap select, .newCustPwWrap input {
+    width: 100% !important;
+  }
+  .submitWrap {
+    width: 100%;
+  }
 
 }

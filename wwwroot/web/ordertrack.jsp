@@ -24,11 +24,10 @@
   List ltArray = web.getPageList(request);
 //web.showAllParameters(request, out);
 %>
+<div class="trackignWrap">
+<h2>Order Tracking</h2>
 <table cellspacing=2 cellpadding=2 width="100%" height="530" align="center"><tr><td valign="top">
 <table width="100%" align="right" border="0">
-  <TR>
-    <TD height=20 align="center" colspan=9><b><font class='pagetitle'>Order Tracking</font></b></TD>
-  </TR>
   <TR vAlign="middle" bgColor="#4959A7">
     <td width="5%" align="center" height=25><FONT color="#ffffff"><b><%=web.getLabelText(cfInfo, "no-col")%></b></FONT></td>
     <td width="12%" align="center" height=25><%=web.getSortNameLink("OrderNo", web.encodedUrl("index.jsp?action=ordertracklist"), web.getLabelText(cfInfo, "orderno-col"), true)%></td>
@@ -66,4 +65,5 @@
 <% } %>
 </table>
 </td></tr></table>
+</div>
 <% } %>
