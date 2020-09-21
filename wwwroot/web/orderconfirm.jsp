@@ -303,7 +303,7 @@
    <TD width="73%"><img src="/staticfile/web/images/tp06.gif" align="CENTER"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">
      <%=shopcart.getLabelText(cfInfo, "creditcard-des")%></font>
    </TD>
-   <TD width="27%" align="right"><input type="submit" value="<%=shopcart.getLabelText(cfInfo, "orderbycard-but")%>" name="orderbycard" onClick="setAction(document.creditcard, 'Order By Credit Card');" style="WIDTH:144px;HEIGHT:25px"></TD>
+   <TD width="27%" align="right"><input type="submit" value="<%=shopcart.getLabelText(cfInfo, "orderbycard-but")%>" name="orderbycard" onClick="setAction(document.creditcard, 'Order By Credit Card');" style="WIDTH:190px;HEIGHT:28px"></TD>
   </TR>
   </table>
   </FORM>
@@ -368,7 +368,7 @@
    <TD width="73%"><img src="/staticfile/web/images/tp06.gif" align="CENTER"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">
      <%=shopcart.getLabelText(cfInfo, "check-des")%></font>
    </TD>
-    <TD width="27%" align="right"><input type="submit" value="<%=shopcart.getLabelText(cfInfo, "orderbycheck-but")%>" name="orderbycheck" onClick="setAction(document.check, 'Order By Check');" style="WIDTH:144px;HEIGHT:25px"></TD>
+    <TD width="27%" align="right"><input type="submit" value="<%=shopcart.getLabelText(cfInfo, "orderbycheck-but")%>" name="orderbycheck" onClick="setAction(document.check, 'Order By Check');" style="WIDTH:190px;HEIGHT:28px"></TD>
   </TR>
   </table>
 </FORM>

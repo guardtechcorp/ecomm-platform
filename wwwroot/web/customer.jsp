@@ -31,19 +31,9 @@
       sCancelValue = "Cancel";
       sSubmitValue = "Submit Information";
     }
-/*Neil00
-    else
-    {//. Should remove
-//      sDisplayMessage = DisplayMessage.getMessage(DisplayMessage.DM_ADDINFO_SUCCESS, null).replaceAll("%s", "account");
-//      ctInfo = (CustomerInfo)ret.getUpdateInfo();
-      response.sendRedirect(web.encodedUrl("index.jsp?action=orderconfirm"));
-    }
-*/
   }
-//  else if ("Update My Account".equalsIgnoreCase(sAction))
   else if ("Submit Update".equalsIgnoreCase(sAction))
   {
-//    CustomerWeb.Result ret = web.update(request, false);
     BasicBean.Result ret = BasicBean.getRequestResult(session);
     ctInfo = (CustomerInfo)ret.getUpdateInfo();
     if (!ret.isSuccess())
@@ -52,13 +42,6 @@
       sDisplayMessage = errObj.getError();
       sClass = "failed";
     }
-/*Neil00
-    else
-    {// Should remove
-//      sDisplayMessage = DisplayMessage.getMessage(DisplayMessage.DM_UPDATEINFO_SUCCESS, null).replaceAll("%s", "customer");
-      response.sendRedirect(web.encodedUrl("index.jsp?action=orderconfirm"));
-    }
-*/
   }
   else
   {
@@ -100,7 +83,7 @@
       <% if (sDisplayMessage!=null) { %>
         <div class="<%=sClass%>"><%=sDisplayMessage%></div>
       <% } %>
-<h2 class="pageHead">Create New Account</h2>
+<h2 class="pageHead">Account Information</h2>
       <div class="newCustBillWrap">
         <h5>Billing Address <!-- <%=web.getLabelText(cfInfo, "billaddress-lab")%> --></h5>
         <p class="headInfo">Fill in billing address for your payment method</p>
@@ -144,17 +127,17 @@
     <p class="headInfo">Enter <strong>ONLY</strong> if different from billing address</p>
 
       <label><%=web.getLabelText(cfInfo, "shipname-lab")%></label>
-        <input maxlength=30 size=40 value="<%=ctInfo.Ship_Yourname%>" name="ship_yourname">
+        <input maxlength=30 size=40 value="<%=Utilities.getValue(ctInfo.Ship_Yourname)%>" name="ship_yourname">
         <!-- <br><%=web.getLabelText(cfInfo, "firstname-des")%> -->
 
       <label><%=web.getLabelText(cfInfo, "companyname-lab")%> <span class="optionalLabel"><%=web.getLabelText(cfInfo, "optional-des")%></span></label>
         <input maxlength=30 size=40 value="<%=Utilities.getValue(ctInfo.Ship_CompanyName)%>" name="ship_companyname">
 
       <label><%=web.getLabelText(cfInfo, "shipaddress-lab")%></label>
-        <input maxlength=60 size=40 value="<%=ctInfo.Ship_Address%>" name="ship_address">
+        <input maxlength=60 size=40 value="<%=Utilities.getValue(ctInfo.Ship_Address)%>" name="ship_address">
 
       <label><%=web.getLabelText(cfInfo, "city-lab")%></label>
-      <input maxlength=25 size=40 value="<%=ctInfo.Ship_City%>" name="ship_city">
+      <input maxlength=25 size=40 value="<%=Utilities.getValue(ctInfo.Ship_City)%>" name="ship_city">
 
       <div class="stateDropWrap">
           <label><%=web.getLabelText(cfInfo, "state-lab")%></label>
@@ -168,7 +151,7 @@
         </div>
 
       <label><%=web.getLabelText(cfInfo, "zippostal-lab")%></label>
-      <input maxlength=10 size=20 value="<%=ctInfo.Ship_ZipCode%>" name="ship_zipcode">
+      <input maxlength=10 size=20 value="<%=Utilities.getValue(ctInfo.Ship_ZipCode)%>" name="ship_zipcode">
 
       <label><%=web.getLabelText(cfInfo, "country-lab")%></label>
           <select name="ship_country" size="1" onChange="OnSelectShipCountryChange(document.customer)">
@@ -176,14 +159,14 @@
           </select>
 
       <label><%=web.getLabelText(cfInfo, "phone-lab")%> <span class="optionalLabel"><%=web.getLabelText(cfInfo, "optional-des")%></span></label>
-      <input maxlength=20 size=40 value="<%=ctInfo.Ship_Phone%>" name="ship_phone">
+      <input maxlength=20 size=40 value="<%=Utilities.getValue(ctInfo.Ship_Phone)%>" name="ship_phone">
   </div>
   <div class="newCustEmailWrap">
       <h5>Email info <!-- <%=web.getLabelText(cfInfo, "emailinfo-lab")%> --></h5>
       <p class="headInfo">Order confirmations will be sent here</p>
 
       <label><%=web.getLabelText(cfInfo, "email-lab")%></label>
-        <input maxlength=50 size=40 value="<%=ctInfo.EMail%>" name="email">
+        <input maxlength=50 size=40 value="<%=Utilities.getValue(ctInfo.EMail)%>" name="email">
 
         <label><%=web.getLabelText(cfInfo, "acceptnews-lab")%></label>
           <select name="subscribe">

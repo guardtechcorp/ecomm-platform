@@ -3,6 +3,7 @@
 <%@ page import="com.zyzit.weboffice.model.UserInfo"%>
 <%@ page import="com.zyzit.weboffice.bean.BasicBean"%>
 <%@ page import="com.zyzit.weboffice.model.CompanyInfo"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
@@ -148,6 +149,9 @@
 <% } %>
 <% if (bean.hasAccessRole(AccessRole.ROLE_SEARCHPAGE)) { %>
   <li><a href='../link/searchpagelist.jsp?action=Load&rootlink=yes' target='main'>Search Page List</a></li>
+<% } %>
+<% if (bean.hasAccessRole(AccessRole.ROLE_PORTAL_VIEW|AccessRole.ROLE_PORTAL_UPDATE)) {%>
+  <li><a href='../portal/requisitionlist.jsp?action=RequisitionList' target='main'>Requisition</a></li>
 <% } %>
  </ul>
 <% } %>

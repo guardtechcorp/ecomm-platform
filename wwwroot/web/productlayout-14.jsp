@@ -33,17 +33,20 @@ for (int i=0; i<ltProduct.size(); i+=1) {
     <div class="productThumb">
       <!-- Remove Start <a href="<%=product.encodedUrl("index.jsp?action=productdetail&productid="+pdInfo.ProductID)%>">
       <img src="/staticfile/web/images/product-thumb-holder.jpg"></a>Remove End -->
-      <%=product.getPhotoImage(cfInfo, pdInfo, 1)%>
+      <%=product.getPhotoImage(cfInfo, pdInfo, 0)%>
     </div>
     <div class="productTileInfo">
       <h3><a href="<%=product.encodedUrl("index.jsp?action=productdetail&productid="+pdInfo.ProductID)%>">
         <%=pdInfo.Name%>
+       <% if (Utilities.getValueLength(pdInfo.Code)>0) { %>
+        <font size=2>(<%=Utilities.getValue(pdInfo.Code)%>)</font>
+       <% } %>
       </a></h3>
-     <!-- <% if (Utilities.getValueLength(pdInfo.Code)>0) { %> <br>(<%=Utilities.getValue(pdInfo.Code)%>) <% } %> -->
+
 <% if (product.getLayoutID()==4) { %>
       <p class="tilePrice"><del>
         <!-- <%=product.getLabelText(cfInfo, "originalprice-lab")%> -->
-      <%=Utilities.getNumberFormat(product.getActualPrice(pdInfo, 1),'$',2)%>
+      <%=Utilities.getNumberFormat(product.getActualPrice(pdInfo, 0),'$',2)%>
     </del>
       <span style="color: #ff3333;">
         <!-- <%=product.getLabelText(cfInfo, "saleprice-lab")%> -->

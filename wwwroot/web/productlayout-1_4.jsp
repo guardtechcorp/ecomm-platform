@@ -92,5 +92,5 @@ for (int i=0; i<ltProduct.size(); i+=1) {
 </td></tr>
 <% } %>
 </table>
-</td></tr></table
+</td></tr></table>
 <% } %>

@@ -102,7 +102,7 @@ From this page, you can get a quick view of all products and you can re-order th
 %>
   <tr class="normal_row" onmouseup="selrow(this, 2)" onmouseover="selrow(this, 0)" onmouseout="selrow(this, 1)">
     <td width="6%"><%=(nStartNo+i)%></td>
-    <td width="22%"><a href="product.jsp?action=Edit Product&productid=<%=info.ProductID%>"><b><%=info.Name%></b></a></td>
+    <td width="22%"><a href="product.jsp?action=Edit Product&productid=<%=info.ProductID%>"><b><%=info.Name%></b> (<%=info.ProductID%>)</a></td>
 <% if ("art.webonlinemanage.com".equalsIgnoreCase(sDomainName)) { %>
    <td width="9%"><a href="product.jsp?action=Edit Product&productid=<%=info.ProductID%>"><b><%=Utilities.getValue(info.Author)%></b></a></td>
 <% } %>      

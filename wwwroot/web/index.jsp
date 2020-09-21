@@ -1,17 +1,15 @@
 <%@ page import="com.zyzit.weboffice.web.SessionWeb"%>
 <%@ page import="com.zyzit.weboffice.model.ConfigInfo"%>
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%
 try {
-//System.setProperty("client.encoding.override", "iso-8859-1");
-//Field charset = Charset.class.getDeclaredField("defaultCharset");
-//charset.setAccessible(true);
-//charset.set(null,null);
-//. http://localhost:8080/web/index.jsp?domainname=test.hongfaamerica.com
-//. http://localhost:8080/web/index.jsp?domainname=www.hepahealth.com
+//. set JAVA_OPTS=-Djavax.servlet.request.encoding=Cp1252 -Dfile.encoding=Cp1252
+//. <Connector port="8080" URIEncoding="Cp1252"/>, response.setCharacterEncoding("Cp1252");
+//. http://localhost:8080/web/index.jsp?domainname=design.webonlinemanage.com
 
     SessionWeb web1 = new SessionWeb(session, request);
 //web1.showAllParameters(request, out);
-//web1.showSessionInfo(request, application, session, out);
+//.web1.showSessionInfo(request, application, session, out);
   if (!web1.setDomainName(request, response, application.getRealPath("/")))
      return;
 
@@ -52,24 +50,25 @@ try {
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
 <link href="/staticfile/web/css/common.css" type="text/css" rel="stylesheet">
 <link href="/staticfile/web/css/tabs.css" type="text/css" rel="stylesheet">
+
 <link href="/staticfile/web/css/lightslider.css" type="text/css" rel="stylesheet" />
 <link href="/staticfile/web/css/magnific-popup.css" type="text/css" rel="stylesheet" />
 <link href="/staticfile/web/css/styles.css" type="text/css" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap" rel="stylesheet">
+
 <script Language="JavaScript" src="/staticfile/web/scripts/languages/<%=cfInfo1.Language%>.js"  type="text/javascript"></script>
 <script Language="JavaScript" src="/staticfile/web/scripts/index.js" type="text/javascript"></script>
 <script Language="JavaScript" src="/staticfile/web/scripts/windows.js" type="text/javascript"></script>
 <script Language="JavaScript" src="/staticfile/web/scripts/customer.js" type="text/javascript"></script>
 <script Language="JavaScript" src="/staticfile/web/scripts/session.js" type="text/javascript"></script>
 <script Language="JavaScript" src="/staticfile/web/scripts/newsletter.js"  type="text/javascript"></script>
+
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
 <script Language="JavaScript" src="/staticfile/web/scripts/lightslider.js"></script>
 <script Language="JavaScript" src="/staticfile/web/scripts/jquery.magnific-popup.js"></script>
 <script src="https://use.fontawesome.com/1967144032.js"></script>
-<style type="text/css">
-</style>
-</head>
 
+</head>
 <%@ include file="actioncheck.jsp"%>
 <body onLoad2="initjsDOMenu();" onUnload="onBrowserClose('logout.jsp');" LEFTMARGIN=1 TOPMARGIN=1 <%=sBackground%>>
 <script language="JavaScript" type="text/javascript">
@@ -88,20 +87,16 @@ function createjsDOMenu()
 %>
 <% } %>
 <div class="mainContent">
-
-
 <% if (cfInfo1.VerticalBarSide==0) { %>
    <div class="contentWithSidebar">
      <%@ include file="verticalbar.jsp"%>
    </div>
 <% } %>
-
 <% if (cfInfo1.VerticalBarSide!=2) { %>
     <div class="largeContentArea">
 <% } else { %>
     <div class="largeContentArea">
 <% } %>
-
 <% if ("productdetail".equalsIgnoreCase(sIndexAction)) { %>
     <%@ include file="productdetail.jsp"%>
 <% } else if ("productphoto".equalsIgnoreCase(sIndexAction)) { %>
@@ -145,7 +140,7 @@ function createjsDOMenu()
 %>
   <%@ include file="homepage.jsp"%>
 <% } else { %>
-<%@ include file="hero.jsp"%>
+<!-- %@ include file="hero.jsp"% -->
  <jsp:include page="productswitch.jsp" />
 <% } %>
 <% } %>
