@@ -78,7 +78,7 @@ input[type='submit'], .button {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 40px;
+  height: 40px !important;
   padding: 5px 15px;
   font-size: 12px !important;
   border: none;
@@ -115,6 +115,20 @@ td[bgcolor="#f7f7f7"] {
   background: #000 !important;
   padding: 10px;
 }
+td [bgcolor="#4959A7"], td [bgcolor="#4279bd"] {
+  background: transparent !important;
+  color: #000 !important;
+  border-bottom: 1px solid #000;
+  text-align: left;
+  padding: 0;
+  font-size: 13px;
+  font-weight: bold;
+  text-transform: uppercase;
+  line-height: 19px;
+}
+td [bgcolor="#4959A7"] font[color="#FFFFFF"], td [bgcolor="#4279bd"] font[color="#FFFFFF"] {
+  color: #000 !important;
+}
 font[color="#4279bd"] {
   color: #000 !important;
 }
@@ -128,6 +142,12 @@ form h5 {
 }
 p.headInfo {
   margin-top: 0;
+}
+.infobox {
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid #000 !important;
+  padding: 5px;
 }
 .failed {
   display: block;
@@ -496,6 +516,7 @@ ul.nav li.searchNav, ul.nav li.cartNav {
 .largeContentArea {
   float: left;
   width: 80%;
+  padding-bottom: 40px;
 }
 .pageCategory {
   float: left;
@@ -575,12 +596,13 @@ ul.nav li.searchNav, ul.nav li.cartNav {
 .productThumb {
   height: 20vw;
   overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 .productThumb img {
   width: 100%;
-  height: 20vw;
+  min-height: 20vw;
   object-fit: cover;
-  max-height: 350px;
   transition: transform .3s;
 }
 .productThumb:hover img {
@@ -595,6 +617,10 @@ ul.nav li.searchNav, ul.nav li.cartNav {
   text-decoration: none;
   font-size: 18px;
   font-weight: 600;
+}
+
+.productTileInfo h3 a font {
+    display: block;
 }
 .productTileInfo h3 {
   margin: 0;
@@ -1112,6 +1138,11 @@ li.lslide img {
   border-color: #777;
   transition: all .2s;
 }
+.lSSlideOuter .lSPager.lSGallery img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
 .continueShopBtn {
   width: 200px;
 }
@@ -1158,9 +1189,67 @@ input[name="updatecart"] {
 .cartTable > tbody > tr > td:last-child {
   font-size: 15px;
 }
+.cartTable th:nth-of-type(2), .cartTable th:nth-of-type(3) {
+  text-align: center;
+}
+.cartTable th:nth-of-type(4), .cartTable th:nth-of-type(5) {
+  text-align: right;
+}
+.cartTable td {
+  padding: 5px;
+}
 .cartInstruction p {
   font-size: 13px;
   line-height: 18px;
+}
+.verifyBillAlert {
+  color: #f70000;
+  padding-bottom: 40px;
+  padding-top: 10px;
+  text-transform: uppercase;
+}
+.editBillBtn a {
+  border: 2px solid #000;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  width: 250px;
+  justify-content: center;
+  margin: 10px 0;
+}
+.editBillBtn a:hover {
+  color: #fff !important;
+  background: #000;
+}
+form[name='orderconfirm'] table tr td {
+    padding: 10px;
+}
+form[name='orderconfirm'] > table tr:first-child td:first-child {
+  text-align: left;
+}
+form[name='orderconfirm'] table tr td textarea {
+  margin-top: -18px;
+  width: 70%;
+}
+form[name="orderconfirm"] th:nth-of-type(2) {
+  text-align: center;
+}
+form[name="orderconfirm"] th:nth-of-type(3), form[name="orderconfirm"] th:nth-of-type(4) {
+  text-align: right;
+}
+.billingTable .infobox {
+  background: transparent;
+  border: 1px solid #000 !important;
+}
+.ccInfoTable {
+  max-width: 400px;
+  padding: 40px;
+  box-shadow: 0 0 30px -10px rgba(0,0,0,.2);
+  margin-top: 40px;
+}
+#SubmitPanel .button {
+  width: 280px;
+  margin: 0 auto;
 }
 p.welcomeTxt {
   margin-top: 0;
@@ -1181,9 +1270,76 @@ p.welcomeTxt {
 .trackignWrap h2 {
   margin-bottom: 0;
 }
+.trackItm td {
+  padding: 15px;
+}
+.trackTable th:nth-of-type(1), tr.trackItm td:nth-of-type(1) {
+  text-align: left;
+  padding-left: 15px;
+}
+.trackTable th:nth-of-type(3), .trackTable th:nth-of-type(4), .trackTable th:nth-of-type(5), .trackTable th:nth-of-type(6) {
+  text-align: right;
+}
+.trackTable th:nth-of-type(7), .trackTable th:nth-of-type(8) {
+  text-align: center;
+}
+.trackItm label {
+  display: none;
+}
+.invoiceWrap {
+  max-width: 1000px;
+  padding: 0 60px;
+  margin: 0 auto;
+  padding-bottom: 40px !important;
+}
+.invoiceWrap a.button {
+  width: 250px;
+}
+.invoiceUtil {
+  float: right;
+}
+.invoiceUtil a {
+  color: #000 !important;
+}
+.invoiceBillTable {
+  margin: 20px 0;
+}
+.trackignWrap th .button {
+  height: auto;
+  background: transparent;
+  display: inline;
+  color: #000;
+}
+.trackignWrap th .button:hover {
+  color: #999;
+}
+td.pageNumLinks {
+  background: #fff;
+}
+table.trackTable td {
+    padding: 15px;
+}
+.cartItmRow td label {
+  display: none;
+}
+.gTotalRow b {
+  font-size: 18px;
+}
+.ccInfoTable td, .ccInfoTable td input {
+  display: block;
+  width: 100%;
+}
+.orderTable label {
+  display: none;
+}
+.quantityCell {
+    text-align: center;
+}
+.unitPriceCell, .totalPriceCell {
+  text-align: right;
+}
 
-
-/***** Responsive CSS *****/
+/******************* Responsive CSS ********************/
 @media only screen and (max-width: 1000px) {
   .pageWrap {
     max-width: 100%;
@@ -1347,7 +1503,10 @@ p.welcomeTxt {
     width: 100%;
   }
   .productWrap {
-    width: 47%;
+    width: 100%;
+  }
+  .productThumb {
+  height: auto;
   }
   .productImageWrap {
     width: 100%;
@@ -1384,6 +1543,222 @@ p.welcomeTxt {
   }
   .submitWrap {
     width: 100%;
+  }
+  .cartTable {
+    float: left;
+  }
+  .cartTable  tr {
+    display: block;
+    clear: both;
+  }
+  .cartTable td {
+    width: 100%;
+  }
+  .cartTable thead {
+    display: none;
+  }
+  form[name="shopcart"] .cartTable .deleteCell {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+  .cartItmRow {
+    position: relative;
+    display: block;
+    clear: both;
+    float: left;
+    width: calc(100% - 20px) !important;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  .cartItmRow td {
+    display: block;
+    width: auto !important;
+    text-align: left;
+  }
+  .cartItmRow td label {
+    display: block;
+  }
+  .cartProdName {
+      font-size: 16px;
+  }
+  td.quantityCell {
+    float: left;
+  }
+  td.deleteCell {
+    float: right;
+    text-align: right;
+  }
+  td.unitPriceCell {
+    float: left;
+    clear: both;
+    text-align: left;
+  }
+  td.totalPriceCell {
+    float: right;
+    text-align: right;
+  }
+  td.zipShipTd {
+    display: block;
+    height: 160px;
+  }
+  .updateTxt {
+    text-align: center;
+    display: block;
+  }
+  .zipShipRow, .taxRow, .shipCostRow, .gTotalRow, .discountRow {
+    padding-right: 10px;
+    padding-bottom: 5px;
+  }
+  .gTotalRow b {
+    font-size: 22px;
+  }
+  .cartBtns {
+    margin-top: 10px;
+  }
+  .cartBtns td {
+    display: block;
+    height: auto;
+    width: calc(100% - 10px);
+  }
+  input[name="updatecart"] {
+    float: right;
+    margin-right: 0;
+  }
+  input[name="clearcart"] {
+    margin-top: 10px;
+    float: left;
+    border: 2px solid #000;
+    background: transparent;
+    color: #000;
+    margin-bottom: 20px;
+  }
+  .cardRow td, .paypalRow td, .checkRow td, .monthlyRow td, .itransactRow td, .authorizeRow td {
+    display: block;
+    width: 100%;
+  }
+  .cardRow td input, .checkRow td input, .monthlyRow td input, .itransactRow td input, .authorizeRow td input {
+    width: 100% !important;
+    margin-top: 10px;
+  }
+  #SubmitPanel .button {
+    width: 180px;
+  }
+  .submitTd {
+    display: flex;
+    justify-content: center;
+  }
+  .ccInfoTable tr {
+    margin-bottom: 5px !important;
+    display: block;
+  }
+  .ccInfoTable td, .ccInfoTable td input{
+    width: 100%;
+    display: block;
+  }
+  .orderTable {
+    margin-bottom: 40px;
+  }
+  .orderTable thead {
+    display: none;
+  }
+  .orderTable label {
+    display: block;
+  }
+  .orderTable tr {
+    display: block;
+    float: left;
+    clear: both;
+    width: 100%;
+  }
+  .orderTable tr.lineItm {
+    margin-bottom: 10px;
+  }
+  .orderTable tr td {
+    display: inline-block;
+    width: auto;
+    height: auto;
+  }
+  .orderTable .cartProdName {
+    float: left;
+  }
+  .orderTable .quantityCell {
+    float: right;
+    text-align: right;
+  }
+  .commentRow td:first-child {
+    display: block !important;
+    margin-left: -5px;
+  }
+  .commentRow textarea {
+    width: calc(100% - 5px) !important;
+  }
+  .orderTable .zipShipRow, .orderTable .taxRow, .orderTable .shipCostRow, .orderTable .gTotalRow, .orderTable .discountRow {
+    padding: 0;
+    padding-left: 5px;
+  }
+  .taxRow td, .shipCostRow td, .gTotalRow td {
+    padding-top: 0 !important;
+  }
+  .invoiceWrap a.button {
+    width: auto;
+  }
+  .invoiceWrap a.button:first-child {
+    margin-right: 5px;
+  }
+  .invoiceWrap {
+    padding: 0 15px;
+  }
+  .invoiceWrap .orderTable tr.lineItm {
+    padding: 8px;
+    width: calc(100% - 16px);
+  }
+  .cartProdName span {
+    font-size: 12px;
+  }
+  .invoiceWrap .cartProdName {
+    margin-bottom: 10px;
+  }
+  .botComments {
+    display: block !important;
+    margin-bottom: 20px;
+  }
+  .invoiceUtil {
+    float: left;
+    margin-bottom: 10px;
+  }
+  .invOrderNum {
+    clear: both;
+  }
+  .trackItm {
+    background: #eee !important;
+    display: block;
+    position: relative;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  .trackTable thead, tr.trackItm td:nth-of-type(1) {
+    display: none;
+  }
+  .trackItm label {
+    display: block;
+  }
+  .trackItm td {
+    display: inline-block;
+    width: auto;
+    text-align: left;
+    padding: 15px 10px !important;
+  }
+  .trackItm td:nth-of-type(2) {
+    display: block;
+    font-size: 16px;
+    margin-bottom: -15px;
+  }
+  .trackItm td:nth-of-type(7) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    text-align: right;
   }
 
 }

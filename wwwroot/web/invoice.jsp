@@ -18,7 +18,7 @@
     return;
   }
 
-//shopcart.showAllParameters(request, out);    
+//shopcart.showAllParameters(request, out);
 //. https://www.hepahealth.com/ctr/web/invoice.jsp?customerid=5363&preorderno=1364179947
 
   DomainInfo dmInfo = shopcart.getDomainInfo();
@@ -55,14 +55,17 @@
 <head>
 <title>The Invoice of <%=shopcart.getDomainName()%> (Invoice No: <%=orInfo.OrderNo%>)</title>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
 <LINK href="/staticfile/web/css/common.css" type="text/css" rel="stylesheet">
 <link media=print  rel="stylesheet" href="/staticfile/web/css/print.css" type="text/css">
+<link href="/staticfile/web/css/styles.css" type="text/css" rel="stylesheet">
 <SCRIPT Language="JavaScript" src="/staticfile/web/scripts/index.js" type="text/javascript"></SCRIPT>
 </head>
 <body bgcolor="#ffffff">
 <%
     if (!"get".equalsIgnoreCase(sAction)) {%>
 <br>
+  <div class='invoiceWrap'>
 <table cellspacing=0 cellpadding=0 border=0 width=95% align="center">
   <tr>
     <td align="center" class="ten"><%=shopcart.getLabelText(cfInfo, "orderdone-des")%> <%=shopcart.getLabelText(cfInfo, "thankorder-des")%></td>
@@ -70,24 +73,20 @@
 </table>
 <br>
 <% } %>
-<table id=hidediv cellpadding=0 border=0 cellspacing=0 align="center" width=95% bgcolor="#666666">
-  <tr bgcolor="#ffffff">
-    <td class="ten" align="right" height="20">
+<div class="invoiceUtil">
      <a class="hightlight" href="javascript:window.print();"><%=shopcart.getLabelText(cfInfo, "print-des")%></a> |
      <a class="hightlight" href="<%="invoice.jsp?action=Export&filetype=pdf"%>"><%=shopcart.getLabelText(cfInfo, "exportpdf-des")%></a> |
      <a class="hightlight" href="<%="invoice.jsp?action=Export&filetype=rtf"%>"><%=shopcart.getLabelText(cfInfo, "exportrtf-des")%></a>
-   </td>
+</div>
+<div class="ten invOrderNum"><%=shopcart.getLabelText(cfInfo, "orderno-des")%> <b><%=orInfo.OrderNo%></b></div>
+<div class="ten"><%=shopcart.getLabelText(cfInfo, "orderdate-des")%> <b><%=Utilities.getDateValue(orInfo.CreateDate, 16)%></b></div>
+<table cellpadding=2 border=0 cellspacing=1 align="center" width=95% class="invoiceBillTable">
+  <thead>
+  <tr height="24">
+    <th align="center" width=50%><b><%=shopcart.getLabelText(cfInfo, "billinfo-des")%></b></th>
+    <th align="center" width=50%><b><%=shopcart.getLabelText(cfInfo, "billaddress-des")%></b></th>
   </tr>
-</table>
-<table cellpadding=2 border=0 cellspacing=1 align="center" width=95% bgcolor="#666666">
-  <tr bgcolor="#ffffff">
-    <td class="ten"  height="24"><%=shopcart.getLabelText(cfInfo, "orderno-des")%> <b><%=orInfo.OrderNo%></b></td>
-    <td class="ten"><%=shopcart.getLabelText(cfInfo, "orderdate-des")%> <b><%=Utilities.getDateValue(orInfo.CreateDate, 16)%></b></td>
-  </tr>
-  <tr bgcolor="#4279bd"  height="24">
-    <td class="WB10" align="center" width=50%><b><%=shopcart.getLabelText(cfInfo, "billinfo-des")%></b></td>
-    <td class="WB10" align="center" width=50%><b><%=shopcart.getLabelText(cfInfo, "billaddress-des")%></b></td>
-  </tr>
+  <thead>
   <tr bgcolor="#ffffff">
     <td class="ten" valign="top"><b><%=orInfo.Yourname%><br>
       <%=orInfo.Address%><br>
@@ -101,24 +100,31 @@
   </tr>
 </table>
 <br>
-<table cellspacing=1 border=0 cellpadding=1 width=95% align="center" bgcolor="#666666">
-  <tr bgcolor="#9999cc">
-    <td class="WB10" width=50% align="center" height="24"><%=shopcart.getLabelText(cfInfo, "productname-col")%></td>
-    <td class="WB10" width=13% align="center"><%=shopcart.getLabelText(cfInfo, "productcode-col")%></td>
-    <td class="WB10" width=8% align="center"><%=shopcart.getLabelText(cfInfo, "quantity-col")%></td>
-    <td class="WB10" width=14% align="center"><%=shopcart.getLabelText(cfInfo, "price-col")%></td>
-    <td class="WB10" width=15% align="center"><%=shopcart.getLabelText(cfInfo, "total-col")%></td>
+<table cellspacing=1 border=0 cellpadding=1 width=95% align="center" class="orderTable">
+  <thead>
+  <tr>
+    <th width=50% align="center" height="24"><%=shopcart.getLabelText(cfInfo, "productname-col")%></th>
+    <th width=13% align="center"><%=shopcart.getLabelText(cfInfo, "productcode-col")%></th>
+    <th width=8% align="center"><%=shopcart.getLabelText(cfInfo, "quantity-col")%></th>
+    <th width=14% align="center"><%=shopcart.getLabelText(cfInfo, "price-col")%></th>
+    <th width=15% align="center"><%=shopcart.getLabelText(cfInfo, "total-col")%></th>
   </tr>
+</thead>
 <% //if (!"get".equalsIgnoreCase(sAction)) {
   for (int i=0; i<ltOrderItem.size(); i++) {
      OrderItemInfo oiInfo = (OrderItemInfo) ltOrderItem.get(i);
 %>
-  <tr bgcolor="#eeeeee">
-    <td class="ten" align=center width="50%" height="22"><A  href="index.jsp?action=productdetail&productid=<%=oiInfo.ProductID%>" target="Shopping-Item"><%=oiInfo.Name%></a></td>
-    <td class="ten" align="center" width="13%"><%=oiInfo.Code%></td>
-    <td class="ten" align="center" width="8%"><%=oiInfo.Quantity%></td>
-    <td class="ten" align="right" width="14%"><%=Utilities.getNumberFormat(oiInfo.Price,'$',2)%></td>
-    <td class="ten" align="right" width="15%"><%=Utilities.getNumberFormat(oiInfo.Quantity*oiInfo.Price,'$',2)%></td>
+  <tr bgcolor="#eeeeee" class="lineItm">
+    <td width="50%" class="cartProdName"><a href="index.jsp?action=productdetail&productid=<%=oiInfo.ProductID%>" target="Shopping-Item"><%=oiInfo.Name%></a><br><span><%=oiInfo.Code%></span></td>
+    <td width="8%" class="quantityCell">
+      <label>Qty</label>
+      <%=oiInfo.Quantity%></td>
+    <td align="right" width="14%" class="unitPriceCell">
+      <label>Unit Price</label>
+      <%=Utilities.getNumberFormat(oiInfo.Price,'$',2)%></td>
+    <td align="right" width="15%" class="totalPriceCell">
+      <label>Qty Price</label>
+      <%=Utilities.getNumberFormat(oiInfo.Quantity*oiInfo.Price,'$',2)%></td>
   </tr>
 <% } %>
   <tr bgcolor="#ffffff">
@@ -126,7 +132,7 @@
     if (orInfo.Discount>0) { %>
    <td class="ten" colspan=2 rowspan=5>
 <% } else { %>
-   <td class="ten" colspan=2 rowspan=4>
+   <td colspan=2 rowspan=4 class="botComments">
 <% } %>
     <table width="100%" border="0">
       <tr>
@@ -200,31 +206,24 @@
     if (!"Get Inovice".equalsIgnoreCase(sAction)){ %>
   <tr>
     <td class="ten" align="center">
-    <script>createLeftButton();</script>
     <a class="button" href="http://<%=shopcart.getDomainName()%>"><%=shopcart.getLabelText(cfInfo, "gohome-link")%></a>
-    <script>createRightButton();</script>
     </td>
     <!-- td class="ten" align="center">
-    <script>createLeftButton();</script>
     <a class="button" href="<shopcart.getContinueShop()>"><%=shopcart.getLabelText(cfInfo, "continueshop-link")%></a>
-    <script>createRightButton();</script>
    </td -->
     <td class="ten" align="center">
-    <script>createLeftButton();</script>
     <a class="button" href="javascript:window.close()"><%=shopcart.getLabelText(cfInfo, "closeexit-link")%></a>
-    <script>createRightButton();</script>
    </td>
   </tr>
 <% } else { %>
   <tr>
     <td class="ten" align="center" colspan="3">
-    <script>createLeftButton();</script>
     <a class="button" href="javascript:window.close()"><%=shopcart.getLabelText(cfInfo, "closeexit-link")%></a>
-    <script>createRightButton();</script>
    </td>
   </tr>
 <% } %>
 </table>
 <% } %>
+</div>
 </body>
 </html>

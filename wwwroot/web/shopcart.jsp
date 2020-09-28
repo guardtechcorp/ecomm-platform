@@ -43,20 +43,22 @@
    for (int i=0; i<ltShopCart.size(); i++) {
      ShopCartInfo scInfo = (ShopCartInfo) ltShopCart.get(i);
 %>
-    <TR vAlign="middle" bgColor="#f7f7f7">
-      <TD width="56%"><A  href="<%=shopcart.encodedUrl("index.jsp?action=productdetail&productid=" + scInfo.ProductID + "&name=" + scInfo.Name)%>"><%=scInfo.Name%></a></TD>
-      <TD width="9%" align="center">
+    <TR vAlign="middle" bgColor="#f7f7f7" class="cartItmRow">
+      <TD width="56%" class="cartProdName"><A  href="<%=shopcart.encodedUrl("index.jsp?action=productdetail&productid=" + scInfo.ProductID + "&name=" + scInfo.Name)%>"><%=scInfo.Name%></a></TD>
+      <TD width="9%" align="center" class="quantityCell">
+        <label>Qty</label>
         <INPUT type="text" maxLength=5 size=4 value="<%=scInfo.Quantity%>" name="qty_<%=scInfo.ProductID%>">
       </TD>
-      <TD width="8%" align="center">
+      <TD width="8%" align="center" class="deleteCell">
+        <label>Delete</label>
         <INPUT onfocus="this.blur()" type="checkbox" value="1" name="check_<%=scInfo.ProductID%>">
       </TD>
-      <TD width="13%" nowrap align="right"><%=shopcart.getUnitPrice(scInfo)%></TD>
-      <TD width="14%" align="right"><%=Utilities.getNumberFormat(shopcart.getPrice(scInfo)*scInfo.Quantity,'$',2)%></TD>
+      <TD width="13%" nowrap align="right" class="unitPriceCell"><label>Unit Price</label><%=shopcart.getUnitPrice(scInfo)%></TD>
+      <TD width="14%" align="right" class="totalPriceCell"> <label>Qty Price</label><%=Utilities.getNumberFormat(shopcart.getPrice(scInfo)*scInfo.Quantity,'$',2)%></TD>
     </TR>
 <% } %>
-    <TR vAlign="middle" bgColor="#f7f7f7">
-      <TD height=46 colspan="3" rowspan="<%=(shopcart.hasDiscount()&&!shopcart.isMember())?5:4%>">
+    <TR vAlign="middle" bgColor="#f7f7f7" class="zipShipRow">
+      <TD class="zipShipTd"height=46 colspan="3" rowspan="<%=(shopcart.hasDiscount()&&!shopcart.isMember())?5:4%>">
         <table width="100%" border="0">
           <tr>
             <td colspan=2><font color="#CC6600"><%=shopcart.getShippingNote()%></font></td>
@@ -86,7 +88,7 @@
           </tr>
 <% } %>
           <tr>
-            <td colspan="2"><%=shopcart.getLabelText(cfInfo, "clear-des")%></td>
+            <td colspan="2" class="updateTxt"><%=shopcart.getLabelText(cfInfo, "clear-des")%></td>
           </tr>
         </table>
       </TD>
@@ -94,24 +96,24 @@
       <TD width="15%" align="right" height="10"><%=Utilities.getNumberFormat(shopcart.getSummary(1),'$',2)%></TD>
     </TR>
 <% if (shopcart.hasDiscount()&&!shopcart.isMember()) {%>
-    <TR vAlign="middle" bgColor="#f7f7f7">
+    <TR vAlign="middle" bgColor="#f7f7f7" class="discountRow">
       <TD width="15%" align="right" height="10"><%=shopcart.getLabelText(cfInfo, "discount-col")%></TD>
       <TD width="15%" align="right" height="10">-<%=Utilities.getNumberFormat(shopcart.getSummary(5),'$',2)%></TD>
     </TR>
 <% } %>
-    <TR vAlign="middle" bgColor="#f7f7f7">
+    <TR vAlign="middle" bgColor="#f7f7f7" class="taxRow">
       <TD width="15%" align="right" height="10"><%=shopcart.getLabelText(cfInfo, "tax-col")%></TD>
       <TD width="15%" align="right" height="10"><%=Utilities.getNumberFormat(shopcart.getSummary(2),'$',2)%></TD>
     </TR>
-    <TR vAlign="middle" bgColor="#f7f7f7">
+    <TR vAlign="middle" bgColor="#f7f7f7" class="shipCostRow">
       <TD width="15%" align="right" height="10"><%=shopcart.getLabelText(cfInfo, "ship-col")%></TD>
       <TD width="15%" align="right" height="10"><%=Utilities.getNumberFormat(shopcart.getSummary(3),'$',2)%></TD>
     </TR>
-    <TR vAlign="middle" bgColor="#f7f7f7">
+    <TR vAlign="middle" bgColor="#f7f7f7" class="gTotalRow">
       <TD width="15%" align="right" height="10"><%=shopcart.getLabelText(cfInfo, "grant-col")%></TD>
       <TD width="15%" align="right" height="10"><b><%=Utilities.getNumberFormat(shopcart.getSummary(4),'$',2)%></b></TD>
     </TR>
-    <tr>
+    <tr class="cartBtns">
      <td colspan="3" height="20">
        <div class="continueShopWithCartItms">
         <a class="button continueShopBtn" href="<%=shopcart.getContinueShop()%>"><%=shopcart.getLabelText(cfInfo, "continueshop-link")%></a>

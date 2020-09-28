@@ -19,7 +19,7 @@
   CompanyInfo info = web.getCompanyInfo();
 
 //. 01/17/16 18:55:18^57867234^www.hepahealth.com^Website^10^nzhao@cybeye.com made a order (1357867242) from null
-    
+
   if ("Place Order".equalsIgnoreCase(sAction))
   {//. Update credit card information first
 /*Neil00
@@ -69,9 +69,9 @@
 <input type="hidden" name="customerid" value="<%=ctInfo.CustomerID%>">
 <input type="hidden" name="preorderno" value="<%=Utilities.getValue(request.getParameter("preorderno"))%>">
 <input type="hidden" name="custom" value="<%=Utilities.getValue(request.getParameter("custom"))%>">
-<TABLE width="99%" border=0 height="300" align="right"  bgcolor="<%=cfInfo.BackColor%>">
+<TABLE width="99%" border=0 height="300" align="right"  bgcolor="<%=cfInfo.BackColor%>" class="billingTable">
   <TR vAlign="middle">
-    <TD height=20><img src="/staticfile/web/images/tp06.gif" align=CENTER><a href='<%=web.encodedUrl("index.jsp")%>'><%=web.getLabelText(cfInfo, "shopping-link")%></a> > <a href='<%=web.encodedUrl("index.jsp?action=shopcart")%>'><%=web.getLabelText(cfInfo, "cart-link")%></a> > <a href='<%=web.encodedUrl("index.jsp?action=orderconfirm")%>'><%=web.getLabelText(cfInfo, "confirm-link")%></a> >
+    <TD height=20><a href='<%=web.encodedUrl("index.jsp")%>'><%=web.getLabelText(cfInfo, "shopping-link")%></a> > <a href='<%=web.encodedUrl("index.jsp?action=shopcart")%>'><%=web.getLabelText(cfInfo, "cart-link")%></a> > <a href='<%=web.encodedUrl("index.jsp?action=orderconfirm")%>'><%=web.getLabelText(cfInfo, "confirm-link")%></a> >
      <font color="#FF0000"><%=web.getLabelText(cfInfo, "bill-link")%></font> > <%=web.getLabelText(cfInfo, "finish-link")%>
     </TD>
   </TR>
@@ -79,7 +79,7 @@
     <TD valign="top">
      <table align="center" border="0" cellpadding="10" cellspacing="0" width="100%" class="infobox">
       <tr>
-       <td><img src="/staticfile/web/images/info.gif" height=14 width=14 alt="Payment Information">
+       <td>
        <font size="2" face="Verdana, Arial, Helvetica, sans-serif"><font color="#FF6633"><%=web.getLabelText(cfInfo, "note-lab")%></font>
        <%=web.getLabelText(cfInfo, "note-des")%></font>
        </td>
@@ -89,45 +89,41 @@
   </TR>
   <TR>
    <TD valign="top">
-    <table class="table-1" width="100%" align="center" border=0>
+    <table class="table-1 ccInfoTable" width="100%" align="center" border=0>
       <tr bgColor="#4279bd" valign="middle">
-       <td colspan="3" height=20><font color="#FFFFFF"><%=web.getLabelText(cfInfo, "fillbill-lab")%></font></td>
+       <td colspan="3"><font color="#FFFFFF"><%=web.getLabelText(cfInfo, "fillbill-lab")%></font></td>
       </tr>
 <% if (sDisplayMessage!=null) { %>
       <tr>
-        <td colspan="3" height="12" align="center"><span class="<%=sClass%>"><%=sDisplayMessage%></span></td>
+        <td colspan="3" align="center"><span class="<%=sClass%>"><%=sDisplayMessage%></span></td>
       </tr>
 <% } %>
       <tr>
-        <td colspan="3" height="12" align="center"></td>
+        <td colspan="3" align="center"></td>
       </tr>
       <tr>
-        <td width="30%" align="right"><%=web.getLabelText(cfInfo, "nameoncard-lab")%></td>
-        <td width="2%">&nbsp;</td>
-        <td width="68%">
-          <input maxlength=30 size=40 value="<%=Utilities.getValue(request.getParameter("creditname"))%>" name="creditname">
+        <td>
+          <label>Name on Credit Card</label>
+          <input maxlength=30 value="<%=Utilities.getValue(request.getParameter("creditname"))%>" name="creditname">
         </td>
       </tr>
       <tr>
-        <td width="30%" align="right"><%=web.getLabelText(cfInfo, "cardtype-lab")%></td>
-        <td width="2%">&nbsp; </td>
-        <td width="68%">
+        <td>
+          <label>Credit Card Type</label>
           <select name="credittype">
             <%=web.getCreditCardList(ctInfo)%>
           </select>&nbsp;&nbsp;<%=web.getCardLinks()%>
         </td>
       </tr>
       <tr>
-        <td width="30%" align="right"><%=web.getLabelText(cfInfo, "cardno-lab")%></td>
-        <td width="2%">&nbsp;</td>
-        <td width="68%">
-          <input maxlength=20 size=40 value="<%=Utilities.getValue(request.getParameter("creditno"))%>" name="creditno">
+        <td>
+          <label>Credit Card Number</label>
+          <input maxlength=20 value="<%=Utilities.getValue(request.getParameter("creditno"))%>" name="creditno">
         </td>
       </tr>
       <tr>
-        <td width="30%" align="right"><%=web.getLabelText(cfInfo, "expireddate-lab")%></td>
-        <td width="2%">&nbsp;</td>
-        <td width="68%">
+        <td>
+          <label>Exp Date</label>
           <select name="expiredmonth">
             <option value="None" selected><%=web.getLabelText(cfInfo, "month-lab")%></option>
             <option value=01>01</option>
@@ -150,10 +146,9 @@
         </td>
       </tr>
       <tr>
-        <td width="30%" align="right"><%=web.getLabelText(cfInfo, "cardvn-lab")%></td>
-        <td width="2%">&nbsp;</td>
-        <td width="68%">
-          <input maxlength=8 size=10 value="<%=Utilities.getValue(request.getParameter("csid"))%>" name="csid" type="text" onBlur='autoFormat(this,"N");' onKeyUp='autoFormat(this,"N");'>
+        <td>
+          <label>Card Verification Number</label>
+          <input maxlength=8 value="<%=Utilities.getValue(request.getParameter("csid"))%>" name="csid" type="text" onBlur='autoFormat(this,"N");' onKeyUp='autoFormat(this,"N");'>
           <font size=1>(<%=web.getLabelText(cfInfo, "seehelp-lab")%> <a href="javascript:ChildWin=window.open('/staticfile/web/cards-help.html','cards_help','resizable=yes,scrollbars=no,width=460,height=680');ChildWin.focus()"><%=web.getLabelText(cfInfo, "help-lab")%></a>.)</font>
         </td>
       </tr>
@@ -185,11 +180,8 @@ I further declare that I have read, understand and accept ZYZ IT Company's busin
 <SPAN id="SubmitPanel">
 <table width="100%" border=0>
       <tr>
-        <td class="row1" colspan=2 align="center">&nbsp;</td>
-        <td class="row1" width="60%" align="left">
-          <script>createLeftButton();</script>
+        <td class="submitTd">
            <a class="button" onClick="return validateCustomerBilling(document.customer);" href="javascript:document.customer.submit();showHide('close','SubmitPanel');showHide('open','Processing');"><%=web.getLabelText(cfInfo, "order-but")%></a>
-          <script>createRightButton();</script>
         </td>
       </tr>
       <tr>

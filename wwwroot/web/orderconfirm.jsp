@@ -139,16 +139,18 @@
 <table cellspacing=0 cellpadding=0 width="99%" height="230" align="right" bgcolor="<%=cfInfo.BackColor%>">
 <tr>
  <td valign="top">
- <TABLE class="table-1" width="100%" align="right" border=0>
-<% if (sDisplayMessage!=null) { %>
-  <TR>
-    <TD height=20 colspan="2" align="center"><b><span class="failed"><%=sDisplayMessage%></span></b></TD>
-  </TR>
-<% } %>
+ <TABLE class="table-1 acctInfoTable" width="100%" align="right" border=0>
+   <thead>
   <tr vAlign="middle">
-    <td align="center" width="50%" bgcolor="#4279bd"><font color="#FFFFFF"><%=shopcart.getLabelText(cfInfo, "billing-lab")%></font></td>
-    <td align="center" width="50%" bgcolor="#4279bd"><font color="#FFFFFF"><%=shopcart.getLabelText(cfInfo, "shipaddress-lab")%></font></td>
+    <th align="center" width="50%" bgcolor="#4279bd"><font color="#FFFFFF"><%=shopcart.getLabelText(cfInfo, "billing-lab")%></font></th>
+    <th align="center" width="50%" bgcolor="#4279bd"><font color="#FFFFFF"><%=shopcart.getLabelText(cfInfo, "shipaddress-lab")%></font></th>
   </tr>
+</thead>
+  <% if (sDisplayMessage!=null) { %>
+    <TR>
+      <TD height=20 colspan="2" align="center"><b><span class="failed"><%=sDisplayMessage%></span></b></TD>
+    </TR>
+  <% } %>
   <tr vAlign="top">
     <td bgcolor="#f7f7f7">
       <table cellSpacing=0 cellPadding=0 width="100%" border=0>
@@ -174,7 +176,7 @@
     </td>
   </tr>
   <tr vAlign="middle">
-    <td align="center" colspan="2" bgcolor="#f7f7f7" valign="top" height="15"><a href="<%=shopcart.encodedUrl("index.jsp?action=editaccount")%>"><%=shopcart.getLabelText(cfInfo, "billship-des")%></a></td>
+    <td align="center" colspan="2" bgcolor="#f7f7f7" valign="top" height="15" class="editBillBtn"><a href="<%=shopcart.encodedUrl("index.jsp?action=editaccount")%>"><%=shopcart.getLabelText(cfInfo, "billship-des")%></a></td>
   </tr>
  </table>
  </td>
@@ -185,31 +187,39 @@
 </tr>
 <% } else {%>
 <tr>
-  <td align="center" height="20" valign="bottom"><font color="#0000FF"><%=shopcart.getLabelText(cfInfo, "billship2-des")%></font></td>
+  <td align="center" height="20" valign="bottom" class="verifyBillAlert"><%=shopcart.getLabelText(cfInfo, "billship2-des")%></td>
 </tr>
 <tr>
  <td>
  <FORM name="orderconfirm" action="index.jsp" method="post">
-  <table width="100%" align="right" border=0>
-    <TR vAlign="middle" bgColor="#4279bd">
-      <TD width="62%" height=20 align="center"><FONT color="#ffffff"><%=shopcart.getLabelText(cfInfo, "item-col")%></FONT></TD>
-      <TD width="10%" height=20 align="center"><FONT color="#ffffff"><%=shopcart.getLabelText(cfInfo, "quantity-col")%></FONT></TD>
-      <TD width="14%" height=20 align="center"><FONT color="#ffffff"><%=shopcart.getLabelText(cfInfo, "price-col")%></FONT></TD>
-      <TD width="14%" height=20 align="center"><font color="#ffffff"><%=shopcart.getLabelText(cfInfo, "total-col")%></font></TD>
-    </TR>
+  <table width="100%" align="right" border=0 class="orderTable">
+    <thead>
+    <tr vAlign="middle">
+      <th width="62%" height=20 align="center"><%=shopcart.getLabelText(cfInfo, "item-col")%></th>
+      <th width="10%" height=20 align="center"><%=shopcart.getLabelText(cfInfo, "quantity-col")%></th>
+      <th width="14%" height=20 align="center"><%=shopcart.getLabelText(cfInfo, "price-col")%></th>
+      <th width="14%" height=20 align="center"><%=shopcart.getLabelText(cfInfo, "total-col")%></th>
+    </tr>
+  </thead>
 <%
    for (int i=0; i<ltShopCart.size(); i++) {
      ShopCartInfo scInfo = (ShopCartInfo) ltShopCart.get(i);
 %>
-    <TR vAlign="middle" bgColor="#f7f7f7">
+    <tr vAlign="middle" bgColor="#f7f7f7" class="lineItm">
       <!--TD width="62%"><A href="index.jsp?action=productdetail&productid=<%=scInfo.ProductID%>"><%=scInfo.Name%></a></TD-->
-      <TD width="62%"><%=scInfo.Name%></TD>
-      <TD width="10%" align="center"><%=scInfo.Quantity%></TD>
-      <TD width="14%" align="right"><%=Utilities.getNumberFormat(shopcart.getPrice(scInfo),'$',2)%></TD>
-      <TD width="14%" align="right"><%=Utilities.getNumberFormat(shopcart.getPrice(scInfo)*scInfo.Quantity,'$',2)%></TD>
-    </TR>
+      <td width="62%" class="cartProdName"><%=scInfo.Name%></td>
+      <td width="10%" class="quantityCell">
+        <label>Qty</label>
+        <%=scInfo.Quantity%></td>
+      <td width="14%" class="unitPriceCell">
+        <label>Unit Price</label>
+        <%=Utilities.getNumberFormat(shopcart.getPrice(scInfo),'$',2)%></td>
+      <td width="14%" class="totalPriceCell">
+        <label>Qty Price</label>
+        <%=Utilities.getNumberFormat(shopcart.getPrice(scInfo)*scInfo.Quantity,'$',2)%></td>
+    </tr>
 <% } %>
-    <TR vAlign="middle" bgColor="#f7f7f7">
+    <TR vAlign="middle" bgColor="#f7f7f7" class="commentRow zipShipRow">
 <% if (shopcart.hasDiscount()&&!shopcart.isMember()) {%>
      <TD height=46 colspan="2" rowspan="5">
 <% } else { %>
@@ -256,7 +266,7 @@
           <td><%=shopcart.getLabelText(cfInfo, "ordercomment-lab")%></td>
         </tr>
         <tr>
-          <td><textarea rows="3" cols="50" wrap="virtual" name="comment"></textarea></td>
+          <td><textarea rows="3" wrap="virtual" name="comment"></textarea></td>
         </tr>
       </table>
     </TD>
@@ -264,20 +274,20 @@
     <TD width="14%" align="right"><%=Utilities.getNumberFormat(shopcart.getSummary(1),'$',2)%></TD>
    </TR>
 <% if (shopcart.hasDiscount()&&!shopcart.isMember()) {%>
-    <TR vAlign="middle" bgColor="#f7f7f7">
+    <TR vAlign="middle" bgColor="#f7f7f7" class="discountRow">
       <TD width="14%" align="right"><%=shopcart.getLabelText(cfInfo, "discount-col")%></TD>
       <TD width="14%" align="right">-<%=Utilities.getNumberFormat(shopcart.getSummary(5),'$',2)%></TD>
     </TR>
 <% } %>
-    <TR vAlign="middle" bgColor="#f7f7f7">
+    <TR vAlign="middle" bgColor="#f7f7f7" class="taxRow">
       <TD width="14%" align="right"><%=shopcart.getLabelText(cfInfo, "tax-col")%></TD>
       <TD width="14%" align="right"><%=Utilities.getNumberFormat(shopcart.getSummary(2),'$',2)%></TD>
     </TR>
-    <TR vAlign="middle" bgColor="#f7f7f7">
+    <TR vAlign="middle" bgColor="#f7f7f7" class="shipCostRow">
       <TD width="14%" align="right"><%=shopcart.getLabelText(cfInfo, "ship-col")%></TD>
       <TD width="14%" align="right"><%=Utilities.getNumberFormat(shopcart.getSummary(3),'$',2)%></TD>
     </TR>
-    <TR vAlign="middle" bgColor="#f7f7f7">
+    <TR vAlign="middle" bgColor="#f7f7f7" class="gTotalRow">
       <!--TD height=10 colspan="2" align="center">&nbsp; &nbsp; &nbsp;</TD-->
       <TD width="14%" align="right"><%=shopcart.getLabelText(cfInfo, "grant-col")%></TD>
       <TD width="14%" align="right"><b><%=Utilities.getNumberFormat(shopcart.getSummary(4),'$',2)%></b></TD>
@@ -292,7 +302,7 @@
   </td>
 </tr>
 <% if (shopcart.isPayOptionOn("creditcard")) {%>
-<tr>
+<tr class="cardRow">
  <td>
   <FORM name="creditcard" action="<%=shopcart.encodedUrl("index.jsp")%>" method="post" onSubmit="return validatePayByCreditCard(document.orderconfirm, document.creditcard, '<%=sMemberConditionPrice%>');">
   <input type="hidden" name="preorderno" value="<%=shopcart.getPreOrderNo()%>">
@@ -300,7 +310,7 @@
   <input type="hidden" name="action1" value="">
   <table width="100%" align="right" border=0>
   <TR vAlign="middle">
-   <TD width="73%"><img src="/staticfile/web/images/tp06.gif" align="CENTER"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+   <TD width="73%"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">
      <%=shopcart.getLabelText(cfInfo, "creditcard-des")%></font>
    </TD>
    <TD width="27%" align="right"><input type="submit" value="<%=shopcart.getLabelText(cfInfo, "orderbycard-but")%>" name="orderbycard" onClick="setAction(document.creditcard, 'Order By Credit Card');" style="WIDTH:190px;HEIGHT:28px"></TD>
@@ -311,7 +321,7 @@
 </tr>
 <% } %>
 <% if (shopcart.isPayOptionOn("paypal", ctInfo)) {%>
-<tr>
+<tr class="paypalRow">
  <td>
   <form name="paypal" action="https://www.paypal.com/cgi-bin/webscr" method="post" onSubmit="return validatePayPal(document.orderconfirm, document.paypal, '<%=sMemberConditionPrice%>');">
   <input type="hidden" name="charset" value="utf8">
@@ -342,7 +352,7 @@
   <table width="100%" align="right" border="0">
   <TR>
     <td width="73%">
-      <p><img src="/staticfile/web/images/tp06.gif" align="CENTER"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+      <p><font size="2" face="Verdana, Arial, Helvetica, sans-serif">
         <%=shopcart.getLabelText(cfInfo, "paypal-des")%></font>
       </td>
       <td width="27%" align="right">
@@ -357,7 +367,7 @@
 </tr>
 <% } %>
 <% if (shopcart.isPayOptionOn("check", ctInfo)) {%>
-<tr>
+<tr class="checkRow">
  <td>
 <FORM name="check" action="index.jsp" method="post" onClick="return validatePayCheck(document.orderconfirm, document.check, '<%=sMemberConditionPrice%>');">
 <input type="hidden" name="preorderno" value="<%=shopcart.getPreOrderNo()%>">
@@ -365,7 +375,7 @@
 <input type="hidden" name="action1" value="">
   <table width="100%" align="right" border=0>
   <TR vAlign="middle">
-   <TD width="73%"><img src="/staticfile/web/images/tp06.gif" align="CENTER"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+   <TD width="73%"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">
      <%=shopcart.getLabelText(cfInfo, "check-des")%></font>
    </TD>
     <TD width="27%" align="right"><input type="submit" value="<%=shopcart.getLabelText(cfInfo, "orderbycheck-but")%>" name="orderbycheck" onClick="setAction(document.check, 'Order By Check');" style="WIDTH:190px;HEIGHT:28px"></TD>
@@ -376,7 +386,7 @@
 </tr>
 <% } %>
 <% if (shopcart.isPayOptionOn("monthlycharge", ctInfo)) {%>
-<tr>
+<tr class="monthlyRow">
  <td>
 <FORM name="monthlycharge" action="index.jsp" method="post" onClick="return validateMonthlyCharge(document.orderconfirm, document.monthlycharge, '<%=sMemberConditionPrice%>');">
 <input type="hidden" name="preorderno" value="<%=shopcart.getPreOrderNo()%>">
@@ -384,7 +394,7 @@
 <input type="hidden" name="action1" value="">
   <table width="100%" align="right" border=0>
   <TR vAlign="middle">
-   <TD width="73%"><img src="/staticfile/web/images/tp06.gif" align="CENTER"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+   <TD width="73%"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">
      <%=shopcart.getLabelText(cfInfo, "monthlycharge-des")%></font>
    </TD>
     <TD width="27%" align="right"><input type="submit" value="<%=shopcart.getLabelText(cfInfo, "monthlycharge-but")%>" name="monthlycharge" onClick="setAction(document.monthlycharge, 'Monthly Charge');" style="WIDTH:144px;HEIGHT:25px"></TD>
@@ -395,7 +405,7 @@
 </tr>
 <% } %>
 <% if (shopcart.isPayOptionOn("itransact", ctInfo)) {%>
-<tr>
+<tr class="itransactRow">
  <td>
   <form name="itransact" method="POST" action="https://secure.itransact.com/cgi-bin/buynow/buynow.cgi" onSubmit="return validateiTransact(document.orderconfirm, document.itransact, '<%=sMemberConditionPrice%>');">
       <input type="hidden" name="mername" value="Shopping Items to Check out at <%=bean.getDomainName()%>">
@@ -455,7 +465,7 @@
   <table width="100%" align="right" border="0">
   <TR>
     <td width="73%">
-      <p><img src="/staticfile/web/images/tp06.gif" align="CENTER"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+      <p><font size="2" face="Verdana, Arial, Helvetica, sans-serif">
         Pay by Credit Cards or Checks -- You can pay securely using your credit card or personal or business check to complete this purchase in real time.</font>
       </td>
       <td width="27%" align="right"><input type="submit" value="Order By Credit Card" name="action" style="WIDTH:144px;HEIGHT:25px">
@@ -469,7 +479,7 @@
 </tr>
 <% } %>
 <% if (shopcart.isPayOptionOn("authorize", ctInfo)) {%>
-<tr>
+<tr class="authorizeRow">
  <td>
   <FORM name="authorize" action="index.jsp" method="post" onSubmit="return validatePayByCreditCard(document.orderconfirm, this, '<%=sMemberConditionPrice%>');">
       <input type="hidden" name="preorderno" value="<%=shopcart.getPreOrderNo()%>">
@@ -504,7 +514,7 @@
       <input type="hidden" name="x_invoice_num" value="<%=shopcart.getPreOrderNo()%>">
   <table width="100%" align="right" border=0>
   <TR vAlign="middle">
-   <TD width="73%"><img src="/staticfile/web/images/tp06.gif" align="CENTER"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">
+   <TD width="73%"><font size="2" face="Verdana, Arial, Helvetica, sans-serif">
      Pay by your credit card -- You have to provide your credit card information. Please
      <a href="javascript:toggleShow('DM_CREDITCARD');">VIEW</a> or <a href="<%=shopcart.encodedUrl("index.jsp?action=editbillinginfo")%>">EDIT</a> it to make sure it is correct.</font>
    </TD>
@@ -516,31 +526,31 @@
 </tr>
 <tr>
   <td colspan="2"><DIV id="DM_CREDITCARD" style="display: none">
-  <table class="table-1" width="73%" align="left" border=0>
+  <table class="table-1 ccInfoTable" width="73%" align="left" border=0>
   <tr>
-    <td width="40%" align="right">Name on Credit Card:</td>
-    <td width="1%">&nbsp;</td>
-    <td><b><%=Utilities.getValue(ctInfo.CreditName)%></b></td>
+    <td>
+      <label>Name on Credit Card</label>
+      <b><%=Utilities.getValue(ctInfo.CreditName)%></b></td>
   </tr>
   <tr>
-    <td width="40%" align="right">Credit Card Type:</td>
-    <td width="1%">&nbsp;</td>
-    <td><b><%=Utilities.getValue(ctInfo.CreditType)%></b></td>
+    <td>
+      <label>Credit Card Type</label>
+      <b><%=Utilities.getValue(ctInfo.CreditType)%></b></td>
   </tr>
   <tr>
-    <td width="40%" align="right">Credit Card Number:</td>
-    <td width="1%">&nbsp;</td>
-    <td><b><%=Utilities.getValue(ctInfo.CreditNo)%></b></td>
+    <td>
+      <label>Credit Card Number</label>
+      <b><%=Utilities.getValue(ctInfo.CreditNo)%></b></td>
   </tr>
   <tr>
-   <td width="40%" align="right">Expired Date:</td>
-   <td width="1%">&nbsp;</td>
-    <td><b><%=Utilities.getValue(ctInfo.ExpiredMonth)%>, <%=Utilities.getValue(ctInfo.ExpiredYear)%></b></td>
+    <td>
+      <label>Exp Date</label>
+      <b><%=Utilities.getValue(ctInfo.ExpiredMonth)%>, <%=Utilities.getValue(ctInfo.ExpiredYear)%></b></td>
   </tr>
   <tr>
-   <td width="40%" align="right">Card Verification Number:</td>
-   <td width="1%">&nbsp;</td>
-    <td><b><%=Utilities.getValue(ctInfo.CSid)%></b></td>
+    <td>
+      <label>Card Verification Number</label>
+      <b><%=Utilities.getValue(ctInfo.CSid)%></b></td>
   </tr>
   <tr><td colspan="3" height="3"></td></tr>
  </table>
