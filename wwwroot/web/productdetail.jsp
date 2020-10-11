@@ -2,8 +2,7 @@
 <%@ page import="com.zyzit.weboffice.util.*"%>
 <%@ page import="com.zyzit.weboffice.web.ProductWeb"%>
 <%@ page import="com.zyzit.weboffice.model.ProductInfo"%>
-<
-%@ page import="com.zyzit.weboffice.model.ConfigInfo"%>
+<%@ page import="com.zyzit.weboffice.model.ConfigInfo"%>
 <%
 {
   int nProductID = Utilities.getInt(request.getParameter("productid"), 0);
@@ -12,7 +11,7 @@
 
   ConfigInfo cfInfo = product.getConfigInfo();
   ProductInfo pdInfo = product.getProduct(nProductID);
-  int nSize = 2;
+//  int nSize = 2;
   String sCategoryName = product.getCategoryName(request);
   int nCategoryId = product.getCategoryId();
 
@@ -34,7 +33,7 @@
     {
 %>
        <li data-thumb="/productimages/<%=arMediumFile[i]%>">
-          <a href="/productimages/<%=arMediumFile[i]%>" class="imageLightbox">
+          <a href="/productimages/<%=arLargeFile[i]%>" class="imageLightbox">
               <img src="/productimages/<%=arLargeFile[i]%>" />
           </a>
       </li>
